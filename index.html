@@ -31,16 +31,20 @@
   .tab-panel{ display:none; }
   .tab-panel.active{ display:block; }
 
-  /* ===== DATA IMPORT/EXPORT BAR ===== */
-  .databar{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:22px; }
-  .databar-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  /* ===== DATA IMPORT/EXPORT — icon entry point at page top ===== */
+  .util-bar{ margin:0 0 16px; }
+  .util-bar-row{ display:flex; align-items:center; justify-content:flex-end; gap:12px; flex-wrap:wrap; }
+  .util-status{ font-size:10.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',ui-monospace,monospace; margin-right:auto; }
+  .util-status b{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+  .util-icons{ display:flex; gap:6px; flex:0 0 auto; }
+  .icon-btn{ display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--ink-soft); cursor:pointer; padding:0; flex:0 0 auto; }
+  .icon-btn:hover{ color:var(--amr); border-color:var(--amr); }
+  .icon-btn:focus-visible{ outline:2px solid var(--amr); outline-offset:2px; }
   .databar-btn{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:12.5px; font-weight:600; color:#fff; background:var(--amr); border:none; border-radius:8px; padding:8px 14px; cursor:pointer; }
   .databar-btn:hover{ opacity:.88; }
   .databar-btn:focus-visible{ outline:2px solid var(--amr); outline-offset:2px; }
   .databar-btn.ghost{ background:var(--bg); color:var(--ink); border:1px solid var(--line); }
-  .databar-status{ font-size:11.5px; color:var(--ink-soft); margin-left:auto; }
-  .databar-status b{ color:var(--ink); font-variant-numeric:tabular-nums; }
-  .databar-panel{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); }
+  .databar-panel{ margin-top:10px; padding:14px 16px; background:var(--panel); border:1px solid var(--line); border-radius:12px; }
   .databar-desc{ font-size:12px; color:var(--ink-soft); margin:0 0 10px; }
   .databar-controls{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
   .databar-controls input[type=file]{ font-size:12px; color:var(--ink-soft); max-width:100%; }
@@ -102,12 +106,19 @@
   .realstat .rs-lbl{ font-size:10.5px; color:var(--ink-soft); margin-top:6px; }
   .realstat.warn .rs-num{ color:var(--warn); } .realstat.good .rs-num{ color:var(--good); }
 
+  .trip-live-card{ background:var(--amr-soft); border:1px solid var(--line); border-radius:14px; padding:16px 17px; margin-top:14px; }
+  .trip-live-head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .trip-live-sub{ font-size:11.5px; color:var(--ink-soft); }
+  .trip-live-note{ font-size:11.5px; color:var(--ink-soft); margin:10px 0 0; }
+
   .formula-box{ background:var(--bg); border:1px dashed var(--line); border-radius:10px; padding:13px 15px; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11.5px; line-height:1.9; margin:16px 0 20px; overflow-x:auto; white-space:pre; }
   .def-box{ background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-size:12px; color:var(--ink-soft); margin:0 0 20px; }
   .def-box b{ color:var(--ink); }
   .caveat-box{ background:var(--warn-soft); border:1px solid var(--warn-soft-line); border-radius:12px; padding:15px 17px; }
   .caveat-box .cv-title{ font-size:12.5px; font-weight:600; margin-bottom:6px; color:var(--warn-strong); }
   .caveat-box p{ font-size:12px; color:var(--ink-soft); margin:0; }
+  .caveat-box ul{ margin:0; padding-left:18px; font-size:12px; color:var(--ink-soft); }
+  .caveat-box li{ margin-bottom:4px; } .caveat-box li:last-child{ margin-bottom:0; }
 
   .calc{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; }
   .calc-note{ font-size:11.5px; color:var(--ink-soft); margin-bottom:16px; }
@@ -264,28 +275,24 @@
 <body>
 <div class="wrap">
 
-  <div class="eyebrow">POLYMEDX · CSH PMS P1 VALUE REPORT</div>
-  <h1 class="serif">藥品配送模式轉型：AMR導入效益與下一步</h1>
-
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="exec">總覽</button>
-    <button class="tab-btn" data-tab="value">Value</button>
-    <button class="tab-btn" data-tab="workflow">Workflow &amp; Trust</button>
-    <button class="tab-btn" data-tab="next">Next</button>
-    <button class="tab-btn" data-tab="appendix">附錄</button>
-  </div>
-
-  <div class="databar">
-    <div class="databar-row">
-      <button class="databar-btn" id="btn-import" type="button">📥 匯入資料</button>
-      <button class="databar-btn" id="btn-export" type="button">📤 匯出資料</button>
-      <span class="databar-status">目前資料：<b id="databar-count">16</b> 位受訪對象・<b id="databar-issues">14</b> 項UI缺口紀錄</span>
+  <div class="util-bar">
+    <div class="util-bar-row">
+      <span class="util-status">目前資料：<b id="databar-count">16</b> 位受訪對象・<b id="databar-issues">14</b> 項UI缺口紀錄・<b id="databar-trips">85</b> 趟送藥記錄</span>
+      <div class="util-icons">
+        <button class="icon-btn" id="btn-import" type="button" title="匯入資料" aria-label="匯入資料">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        </button>
+        <button class="icon-btn" id="btn-export" type="button" title="匯出資料" aria-label="匯出資料">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M7 10l5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        </button>
+      </div>
     </div>
     <div class="databar-panel" id="panel-import" hidden>
-      <p class="databar-desc">上傳符合範本格式的 CSV 或 Excel（.xlsx／.xls）檔案，「Workflow &amp; Trust」分頁的滿意度分數／回饋引言，以及附錄與「Next」分頁的UI缺口清單會自動更新，不需要再透過對話調整。（Value分頁的Time Study數字、以及各分頁的分析文字為團隊撰寫的解讀，不隨匯入資料自動改寫。）</p>
+      <p class="databar-desc">上傳符合範本格式的 CSV 或 Excel（.xlsx／.xls）檔案——可以是「滿意度問卷／UI缺口」範本，也可以是「人工／AMR送藥逐趟記錄」範本，系統會自動判斷檔案類型並更新對應區塊。（Value分頁的敘事數字，以及各分頁的分析文字，屬團隊撰寫的解讀，不隨匯入資料自動改寫；逐趟記錄匯入後，會在Value分頁新增一個「目前資料試算」區塊呈現重新計算的結果，供對照。）</p>
       <div class="databar-controls">
         <input type="file" id="file-input" accept=".csv,.xlsx,.xls" />
-        <button class="databar-btn ghost" id="btn-template" type="button">顯示範本CSV</button>
+        <button class="databar-btn ghost" id="btn-template" type="button">顯示問卷範本CSV</button>
+        <button class="databar-btn ghost" id="btn-template-trips" type="button">顯示逐趟記錄範本CSV</button>
       </div>
       <p class="databar-msg" id="import-msg"></p>
       <div class="export-output" id="template-output" hidden>
@@ -299,6 +306,7 @@
         <button class="databar-btn ghost" type="button" data-export="json">問卷資料（JSON）</button>
         <button class="databar-btn ghost" type="button" data-export="csv">問卷資料（CSV，可用Excel開啟）</button>
         <button class="databar-btn ghost" type="button" data-export="md">問卷摘要（Markdown）</button>
+        <button class="databar-btn ghost" type="button" data-export="tripscsv">逐趟送藥記錄（CSV）</button>
       </div>
       <p class="databar-msg" id="export-msg"></p>
       <div class="export-output" id="export-output-wrap" hidden>
@@ -306,6 +314,17 @@
         <button class="databar-btn ghost" id="btn-copy-export" type="button">複製到剪貼簿</button>
       </div>
     </div>
+  </div>
+
+  <div class="eyebrow">POLYMEDX · CSH PMS P1 VALUE REPORT</div>
+  <h1 class="serif">藥品配送模式轉型：AMR導入效益與下一步</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="exec">總覽</button>
+    <button class="tab-btn" data-tab="value">Value</button>
+    <button class="tab-btn" data-tab="workflow">Workflow &amp; Trust</button>
+    <button class="tab-btn" data-tab="next">Next</button>
+    <button class="tab-btn" data-tab="appendix">附錄</button>
   </div>
 
   <!-- ======================================================= -->
@@ -428,6 +447,28 @@ After：藥師核發96s + 護理接收84s = 180s
       </div>
     </div>
 
+    <div class="trip-live-card" id="trip-live-1-1">
+      <div class="trip-live-head">
+        <span class="badge-live">🔄 目前資料試算</span>
+        <span class="trip-live-sub">根據頁首匯入（或內建）的逐趟原始時間戳記錄重新計算，供與上方敘事數字對照</span>
+      </div>
+      <div class="realdata-grid" style="margin-top:10px;">
+        <div class="realstat">
+          <div class="rs-num" id="tl-human-avg">—</div>
+          <div class="rs-lbl">人工送藥平均單趟耗時<br>（有效趟次 n=<span id="tl-human-n">—</span>，已排除白跑）</div>
+        </div>
+        <div class="realstat">
+          <div class="rs-num" id="tl-amr-avg">—</div>
+          <div class="rs-lbl">AMR正式環境平均單趟耗時<br>（n=<span id="tl-amr-n">—</span>）</div>
+        </div>
+        <div class="realstat">
+          <div class="rs-num" id="tl-wait-avg">—</div>
+          <div class="rs-lbl">人工藥單等待時間平均<br>（＝②前往藥局－①印出藥單）</div>
+        </div>
+      </div>
+      <p class="trip-live-note">此區塊為原始逐趟時間戳的獨立試算，與上方「300s／793s」等敘事數字來自同一份Time Study、方法論一致；但因資料清理範圍與樣本區間可能略有差異，數字未必逐位相同。上方敘事數字為效標計算表之正式結果，不會因此區塊而改變。</p>
+    </div>
+
     <div class="hero" style="margin-top:16px;">
       <div class="hero-title">配送流程時間軸　（長度 ∝ 實際耗時，取自時間戳記錄之平均值）</div>
       <div class="hero-note">Before：n=61趟人工送藥實測平均；After：n=9趟AMR正式環境實測平均（總時長為實測值，段內占比沿用單趟精細時間戳案例之比例推算，因正式環境段級記錄尚未完整覆蓋，詳見附錄）</div>
@@ -511,6 +552,19 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <div class="realstat"><div class="rs-num">94.7%</div><div class="rs-lbl">任務自主完成率<br>（54/57，人工基準）</div></div>
     </div>
 
+    <div class="trip-live-card" id="trip-live-1-3">
+      <div class="trip-live-head">
+        <span class="badge-live">🔄 目前資料試算</span>
+        <span class="trip-live-sub">涵蓋目前資料集中所有「人工送藥」趟次</span>
+      </div>
+      <div class="realdata-grid" style="margin-top:10px;">
+        <div class="realstat warn"><div class="rs-num" id="tl-selfpick-rate">—</div><div class="rs-lbl">護理師自取率<br>（n=<span id="tl-human-total-n">—</span>）</div></div>
+        <div class="realstat warn"><div class="rs-num" id="tl-fail-rate">—</div><div class="rs-lbl">傳送白跑率<br>（n=<span id="tl-human-total-n2">—</span>）</div></div>
+        <div class="realstat"><div class="rs-num" id="tl-complete-rate">—</div><div class="rs-lbl">任務完成率（含自取）</div></div>
+      </div>
+      <p class="trip-live-note">上方「7.0%／5.3%／94.7%」為官方效標計算表之正式結果（07/22–24觀察窗，n=57）；此區塊方法論一致，但涵蓋目前資料集的完整區間，數字可能因樣本區間不同而略有差異。</p>
+    </div>
+
     <div class="exec-fin" style="margin-top:4px;">
       <div class="ef-lbl">Traceability｜藥事法規可追溯性理論改善空間</div>
       <div class="ef-num">86%</div>
@@ -548,17 +602,17 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
     <div class="part-header">
       <div class="part-eyebrow">SEC. 2</div>
       <h2 class="serif">Workflow Fit / Trust 流程契合度與信任</h2>
-      <div class="part-sub">醫護人員使用前預期評分與使用後真實反饋，以及流程層面（非UI畫面層面）的優化機會點</div>
+      <div class="part-sub">醫護人員使用前預期評分與評價，以及流程層面（非UI畫面層面）的優化機會點</div>
     </div>
 
-    <div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與使用後真實反饋</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
+    <div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與評價</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
 
     <div class="insight-box" style="margin-top:0;">
       <div class="iv-title">⚠ 關鍵洞察：信任機器可靠，但還沒感受到減負</div>
-      <p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用後的開放式回饋（見下方）也印證了這點。</p>
+      <p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用前的預期心聲（見下方）也印證了這點。</p>
     </div>
 
-    <div class="section-note" style="margin-top:14px;" id="sec21-note">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分與使用後開放式回饋，共16位受邀對象，其餘11位尚未填答</div>
+    <div class="section-note" style="margin-top:14px;" id="sec21-note">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分，共16位受邀對象，其餘11位尚未填答</div>
 
     <div class="sat-table" id="sat-table">
       <div class="sat-row head"><div>評分項目</div><div>藥師（n=<span id="sat-n-pharm">3</span>）</div><div>護理師（n=<span id="sat-n-nurse">2</span>）</div></div>
@@ -567,7 +621,7 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <div class="sat-row"><div class="sq">Q3　預期降低工作負擔</div><div class="sv pharm" data-label="藥師" id="sat-p-q3">2.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q3">2.5</div></div>
       <div class="sat-row"><div class="sq">Q4　預期更專注其他專業工作</div><div class="sv pharm" data-label="藥師" id="sat-p-q4">2.7</div><div class="sv nurse" data-label="護理師" id="sat-n-q4">2.5</div></div>
     </div>
-    <div class="section-note" style="margin-top:10px;">使用後的1–5分量表尚未收集，待實際導入後同步填入以便前後對照；以下為已回收的使用後開放式文字回饋（依代號呈現，不揭露姓名）</div>
+    <div class="section-note" style="margin-top:10px;">說明：這批評分與心得是受訪者在首次實際使用AMR之後，回溯描述「當初使用前」的預期想法所得——並非使用後的真實心得。正式的「使用後」1–5分量表與心得尚未收集，待實際導入後同步填入以便前後對照。以下為每位受訪者評分理由的摘要（依代號呈現，不揭露姓名）</div>
 
     <div class="quote-grid" id="quote-grid"></div>
 
@@ -592,13 +646,13 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       </div>
       <div class="pain-card">
         <div class="pain-title"><span class="letter">D</span>特殊藥品類別仍需人工介入</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥品仍要跑腿：</b>護理站常見的鎮靜藥品（身心科用藥）與冷藏藥品，急診端的ADC（自動藥櫃）沒有備藥，加上臨時醫囑常指定這類藥品，護理師仍得自行跑一趟藥局；同一張醫囑若同時有ADC藥與AMR送的藥，護理師也傾向等AMR一起到再給藥，不傾向分兩趟</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部盤點這類「常態性臨時醫囑＋ADC無備藥」的品項，評估優先擴充ADC備藥範圍或建立AMR快速通道，而非仰賴護理師跑腿</p></div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥仍要跑腿：</b>護理站常見的鎮靜藥、冷藏藥，ADC沒有備藥，加上臨時醫囑常指定這類藥，護理師仍得自行跑一趟藥局</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部評估擴充ADC備藥範圍，或建立AMR快速通道，取代護理師跑腿</p></div>
       </div>
       <div class="pain-card">
         <div class="pain-title"><span class="letter">E</span>站別判斷責任轉移到藥師</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去由人工傳送依藥袋上的目的地代碼判斷送藥站別，藥師不需介入；改用AMR後，藥師在放藥介面必須自行選擇站別，多位藥師反映這與原本工作流程不吻合，也增加了放藥時的操作負擔</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷，而非藥師：</b>若能讀取藥袋上既有的目的地代碼自動帶入站別，藥師只需確認而非從頭選擇，把這塊認知負擔還給系統</p></div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去人工傳送依藥袋代碼判斷站別，藥師不需介入；改用AMR後，藥師得自行選擇站別，增加放藥負擔</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷：</b>讀取藥袋既有的目的地代碼自動帶入站別，藥師只需確認，把判斷還給系統</p></div>
       </div>
     </div>
   </div>
@@ -657,7 +711,13 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
 
     <div class="caveat-box">
       <div class="cv-title">一眼看重點</div>
-      <p>藥師端問題數最多（8項），其中「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項——特別是新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項，其中『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
+      <ul>
+        <li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
+        <li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
+        <li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
+        <li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
+      </ul>
+      <p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
     </div>
   </div>
 
@@ -709,9 +769,9 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <strong>使用說明與資料限制</strong>
       <ul>
         <li>AMR側正式環境樣本仍少（n=9），且段級時間戳尚未完整覆蓋，Sec.1.1的After段內占比為推算值，建議上線後持續累積至可比於人工的規模。</li>
-        <li>Sec.2滿意度調查僅<span id="footer-ratio">5/16</span>位受訪者已填答，護理師僅2筆，屬方向性參考，不宜作為正式結論引用。</li>
+        <li>Sec.2滿意度調查僅<span id="footer-ratio">5/16</span>位受訪者已填答，護理師僅2筆，屬方向性參考，不宜作為正式結論引用；且該批評分與開放式心得皆為受訪者於首次使用後回溯描述的「使用前預期」，並非使用後的真實心得。</li>
         <li>Financial Impact試算器之「每案件所需時間」「可轉換比例」為假設值，「次均醫療收入」為公開下限參考值，正式報告前請以貴院財務室與藥劑部提供之實際數字替換。</li>
-        <li>「匯入／匯出資料」功能會更新本頁的滿意度分數、開放式回饋引言、UI缺口清單與相關計數；各分頁的分析文字與建議屬團隊撰寫的解讀，不會被自動改寫。</li>
+        <li>「匯入／匯出資料」功能會更新本頁的滿意度分數、評分理由摘要、UI缺口清單、以及Value分頁的「目前資料試算」區塊；各分頁的分析文字與建議屬團隊撰寫的解讀，不會被自動改寫。</li>
       </ul>
     </footer>
   </div>
@@ -746,22 +806,26 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
   var DEFAULT_SURVEY = {
     respondents: [
       {role:'pharm', id:'PP1', name:'吳雀維', q1:3, q2:4, q3:1, q4:1,
+        summary:'認可系統穩定、介面好上手，但覺得自己仍要花力氣把藥裝進AMR、放藥後看不到後續狀態，工作負擔沒有實際減輕。',
         rationale:'可靠度：認為系統程式設計穩定可靠／降低負擔：認為沒有減輕自己身為藥師的工作負擔，需要特別把藥裝進AMR／專注本職：承上，沒有減輕工作負擔',
         highlight:'1.節省人工傳送人力，但自己身為放藥的藥師沒有更輕鬆　2.介面操作易上手，不難',
         confusion:'1.需在介面上選送藥站別，和現在的工作流程不太吻合，因為現在是交由人工傳送自行依據藥袋上的目的地代碼判斷站別　2.派送藥品後，看不到藥品核發和配送狀態，認為身為藥師應有掌握藥品狀態的責任',
         suggestion:'1.還沒聽過AMR聲音，但建議聲音可以柔一點，較具親和力，被接納度可能提高　2.AMR上的藥櫃目前空間有剩，藥籃可以再大一點，讓裝藥更有空間餘裕'},
       {role:'pharm', id:'PP2', name:'謝椏涵'},
       {role:'pharm', id:'PP3', name:'陳致潔', q1:4, q2:4, q3:4, q4:4,
+        summary:'肯定AMR紓解了傳送人力壓力、送藥比想像中快，但放藥時多一道「選站別」的步驟，覺得繁瑣。',
         rationale:'滿意度：節省送藥人力，過往人工傳送員在等藥師包藥時，會造成藥師包藥壓力，甚至有過傳送員因等待時情緒不穩的暴力事件／可靠度：認為可靠，因為藥品都在藥櫃中／降低負擔：原本預期藥櫃空間會比目前再更大一點／專注本職：因為面對的是機器人，所以相對於人工傳送在櫃檯等，更能沒有壓力地好好核對藥品、給藥',
         highlight:'1.AMR送藥比想像中快，原以為一趟要30分鐘，但體感上發現一趟只需不到10分鐘　2.AMR上單一藥品資訊的圖片比原本院方的HIS系統更大更清楚，不然原本在HIS上會一直很想放大圖片',
         confusion:'放藥的步驟繁瑣，還要特別選站別很麻煩（原先由人工傳送送藥，藥師並不須選送藥站別）',
         suggestion:'1.建議藥袋上印刷送藥站別　2.放藥時，若該筆藥並非當下所選站別，跳警示彈窗的同時，能有捷徑按鈕，點擊後直接進入該所屬站別的放藥介面'},
       {role:'pharm', id:'PP4', name:'蔡濬宇'},
       {role:'pharm', id:'PP5', name:'吳欣樺', q1:3, q2:4, q3:2, q4:3,
+        summary:'覺得AMR動作偏慢、送藥耗時比預期久，加上還要額外轉身放藥、且無法幫忙核對藥袋內容，預期負擔沒有明顯減輕。',
         rationale:'滿意度：認為AMR動作慢，送一趟藥品蠻久的／降低負擔：需要額外轉身放藥／專注本職：「袋中藥品是否符合藥袋資訊」這件事AMR無法代為審核，原本以為AMR可以直接掃描藥品身上的條碼，做這件審核工作'},
       {role:'pharm', id:'PP6', name:'何如茵'},
       {role:'nurse', id:'PA1', name:'陳若晴'},
       {role:'nurse', id:'PA2', name:'林郁婕', q1:2.5, q2:4, q3:3, q4:2,
+        summary:'肯定能省下自己跑腿拿急用藥的人力，但認為對日常取藥時間影響不大，取藥流程（掃識別證、逐筆掃藥、三讀五對）本身仍繁瑣。',
         rationale:'專注本職：不太有影響，人工走路取藥也是差不多時間',
         highlight:'節省護理師因為急用藥而自己出發至藥局拿藥的人力',
         confusion:'取藥流程繁瑣，必須先掃描識別證，再將藥品一筆一筆掃描後取出。在正式給藥給病人前，又必須在電腦前掃瞄和對一次藥品無誤（三讀五對SOP）',
@@ -769,6 +833,7 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       {role:'nurse', id:'PA3', name:'謝佳妤'},
       {role:'nurse', id:'PA4', name:'林家儀'},
       {role:'nurse', id:'PA5', name:'蔡尚芳', q1:1, q2:5, q3:2, q4:3,
+        summary:'認為機器可靠、出錯機率低，但預期AMR速度跟不上夜班用藥量，急用藥仍得自己跑一趟，也擔心操作不熟悉。',
         rationale:'滿意度：認為AMR送藥速度不快，夜班護理站的藥品需求大，預期對於AMR送藥滿意度不高／可靠度：認為機器一定不會出錯，如果有錯應是藥師放錯／降低負擔：急用藥的話，還是需護理師自己跑一趟急診藥局／專注本職：沒想過可以更專注其他專業工作',
         confusion:'有點擔心介面操作不會用，但如果有說明文件或簡報檔案，就不會太擔心'},
       {role:'nurse', id:'PB1', name:'陳佩瑤'},
@@ -795,7 +860,14 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
     ]
   };
 
+  // ---------------------------------------------------------------
+  // Default trip-level dataset — parsed from Time_Study raw log
+  // (人工/AMR delivery trip records; sender: human|amr, env: test|official|null)
+  // ---------------------------------------------------------------
+  var DEFAULT_TRIPS = [{"no":"1","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P1","total":152,"wait":4,"pure":148,"qty":"1","route":"B站","status":"無異常"},{"no":"2","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":273,"wait":138,"pure":135,"qty":"1","route":"B站","status":"無異常"},{"no":"3","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":182,"wait":107,"pure":75,"qty":"1","route":"B站","status":"無異常"},{"no":"4","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":173,"wait":84,"pure":89,"qty":"1","route":"B站","status":"中斷"},{"no":"5","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":291,"wait":0,"pure":291,"qty":"1","route":"B站","status":"無異常"},{"no":"6","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":140,"wait":30,"pure":110,"qty":"1","route":"B站","status":"無異常"},{"no":"7","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":103,"wait":5,"pure":98,"qty":"1","route":"B站","status":"無異常"},{"no":"8","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":109,"wait":10,"pure":99,"qty":"1","route":"其他（於備註說明）","status":"無異常"},{"no":"9","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":66,"wait":0,"pure":66,"qty":"1","route":"其他（於備註說明）","status":"無異常"},{"no":"10","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":1079,"wait":880,"pure":199,"qty":"3","route":"B->A站","status":"失敗, 白跑一躺"},{"no":"11","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":54,"wait":0,"pure":54,"qty":"1","route":"","status":"護理師自取"},{"no":"12","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":312,"wait":172,"pure":140,"qty":"2","route":"B->A站","status":"中斷"},{"no":"13","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P2","total":749,"wait":580,"pure":100,"qty":"2","route":"B->A站","status":"無異常"},{"no":"14","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P1","total":2617,"wait":2374,"pure":180,"qty":"2","route":"A->B站","status":"無異常"},{"no":"15","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"P3","total":91,"wait":10,"pure":79,"qty":"1","route":"","status":"無異常"},{"no":"16","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":116,"wait":0,"pure":116,"qty":"1","route":"","status":"無異常"},{"no":"17","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":559,"wait":0,"pure":37,"qty":"3","route":"","status":"無異常"},{"no":"18","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":152,"wait":0,"pure":120,"qty":"1","route":"A站","status":"中斷"},{"no":"19","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":105,"wait":0,"pure":99,"qty":"1","route":"","status":"中斷"},{"no":"20","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":0,"wait":0,"pure":0,"qty":"na","route":"","status":"護理師自取"},{"no":"21","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":126,"wait":0,"pure":126,"qty":"1","route":"","status":"無異常"},{"no":"22","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":661,"wait":420,"pure":213,"qty":"3","route":"其他（於備註說明）","status":"護理師自取"},{"no":"23","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":0,"wait":0,"pure":0,"qty":"1","route":"","status":"無異常"},{"no":"24","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":83,"wait":0,"pure":83,"qty":"1","route":"A站","status":"無異常"},{"no":"25","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":313,"wait":37,"pure":263,"qty":"4","route":"其他（於備註說明）","status":"無異常"},{"no":"26","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":689,"wait":389,"pure":300,"qty":"1","route":"","status":"無異常"},{"no":"27","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":121,"wait":0,"pure":121,"qty":"1","route":"","status":"無異常"},{"no":"28","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":354,"wait":157,"pure":197,"qty":"1","route":"","status":"無異常"},{"no":"29","sender":"human","env":null,"task":"deliver","date":"07/22","staff":"","total":773,"wait":691,"pure":82,"qty":"1","route":"","status":"無異常"},{"no":"30","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":321,"wait":214,"pure":83,"qty":"1","route":"A->B站","status":"無異常"},{"no":"31","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":168,"wait":29,"pure":139,"qty":"1","route":"B站","status":"無異常"},{"no":"32","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":110,"wait":10,"pure":90,"qty":"1","route":"其他（於備註說明）","status":"無異常"},{"no":"33","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":960,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"34","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":840,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"35","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":1260,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"36","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":780,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"37","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":628,"wait":520,"pure":83,"qty":"3","route":"A->B站","status":"無異常"},{"no":"38","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":710,"wait":558,"pure":152,"qty":"3","route":"B站","status":"無異常"},{"no":"39","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":130,"wait":40,"pure":90,"qty":"1","route":"B站","status":"失敗, 白跑一躺"},{"no":"40","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":209,"wait":30,"pure":145,"qty":"3","route":"A->B站","status":"無異常"},{"no":"41","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":104,"wait":0,"pure":104,"qty":"1","route":"B站","status":"無異常"},{"no":"42","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":59,"wait":0,"pure":59,"qty":"0","route":"其他（於備註說明）","status":"無異常"},{"no":"43","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P2","total":990,"wait":898,"pure":92,"qty":"1","route":"B站","status":"無異常"},{"no":"44","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":611,"wait":450,"pure":120,"qty":"2","route":"A->B站","status":"無異常"},{"no":"45","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":92,"wait":0,"pure":92,"qty":"1","route":"B站","status":"無異常"},{"no":"46","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":124,"wait":2,"pure":79,"qty":"1","route":"A->B站","status":"無異常"},{"no":"47","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":424,"wait":335,"pure":89,"qty":"2","route":"B站","status":"無異常"},{"no":"48","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":139,"wait":9,"pure":130,"qty":"2","route":"B站","status":"無異常"},{"no":"49","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":264,"wait":124,"pure":85,"qty":"1","route":"A->B站","status":"無異常"},{"no":"50","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":290,"wait":155,"pure":87,"qty":"1","route":"A->B站","status":"無異常"},{"no":"51","sender":"human","env":null,"task":"deliver","date":"07/23","staff":"P4","total":224,"wait":135,"pure":89,"qty":"2","route":"B站","status":"無異常"},{"no":"52","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"53","sender":"amr","env":"test","task":"deliver","date":"07/23","staff":"","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"54","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":281,"wait":38,"pure":219,"qty":"1","route":"A站","status":"中斷"},{"no":"55","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":64,"wait":0,"pure":64,"qty":"1","route":"其他（於備註說明）","status":"配送錯誤, 白跑一躺"},{"no":"56","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":64,"wait":0,"pure":64,"qty":"1","route":"","status":"無異常"},{"no":"57","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":241,"wait":114,"pure":127,"qty":"1","route":"","status":"無異常"},{"no":"58","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":51,"wait":0,"pure":51,"qty":"1","route":"","status":"無異常"},{"no":"59","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":226,"wait":115,"pure":82,"qty":"2","route":"B站","status":"中斷"},{"no":"60","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":115,"wait":35,"pure":80,"qty":"1","route":"","status":"無異常"},{"no":"61","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":141,"wait":74,"pure":36,"qty":"2","route":"","status":"無異常"},{"no":"62","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":74,"wait":26,"pure":48,"qty":"1","route":"A站","status":"護理師自取"},{"no":"63","sender":"human","env":null,"task":"deliver","date":"07/24","staff":"","total":80,"wait":33,"pure":47,"qty":"1","route":"","status":"無異常"},{"no":"64","sender":"human","env":null,"task":"deliver","date":"08/04","staff":"沒看過的支援人員（待編號）","total":197,"wait":5,"pure":192,"qty":"1","route":"","status":"無異常"},{"no":"65","sender":"human","env":null,"task":"other","date":"08/04","staff":"p2","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"66","sender":"human","env":null,"task":"deliver","date":"08/04","staff":"P2","total":480,"wait":340,"pure":140,"qty":"1","route":"","status":"中斷"},{"no":"67","sender":"human","env":null,"task":"other","date":"08/04","staff":"p1","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"68","sender":"human","env":null,"task":"deliver","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"69","sender":"human","env":null,"task":"deliver","date":"08/05","staff":"俊宏（待編號）","total":100,"wait":25,"pure":75,"qty":"1","route":"","status":"白跑一躺"},{"no":"70","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"71","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"72","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"73","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"74","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"75","sender":"human","env":null,"task":"other","date":"08/05","staff":"俊宏（待編號）","total":null,"wait":null,"pure":null,"qty":"","route":"","status":""},{"no":"76","sender":"human","env":null,"task":"deliver","date":"08/05","staff":"","total":127,"wait":0,"pure":60,"qty":"1","route":"","status":"無異常"},{"no":"77","sender":"amr","env":"official","task":"deliver","date":"08/13","staff":"NA","total":720,"wait":null,"pure":null,"qty":"3","route":"A->B站","status":""},{"no":"78","sender":"amr","env":"official","task":"deliver","date":"08/13","staff":"NA","total":900,"wait":null,"pure":null,"qty":"2","route":"A->B站","status":""},{"no":"79","sender":"amr","env":"official","task":"deliver","date":"08/13","staff":"NA","total":840,"wait":null,"pure":null,"qty":"4","route":"A->B站","status":""},{"no":"80","sender":"amr","env":"official","task":"deliver","date":"08/13","staff":"NA","total":1242,"wait":null,"pure":null,"qty":"6","route":"A->B站","status":""},{"no":"81","sender":"amr","env":"official","task":"deliver","date":"08/13","staff":"NA","total":840,"wait":null,"pure":null,"qty":"4","route":"A->B站","status":""},{"no":"82","sender":"amr","env":"official","task":"deliver","date":"08/14","staff":"NA","total":660,"wait":null,"pure":null,"qty":"2","route":"B站","status":""},{"no":"83","sender":"amr","env":"official","task":"deliver","date":"08/14","staff":"NA","total":600,"wait":null,"pure":null,"qty":"1","route":"A站","status":""},{"no":"84","sender":"amr","env":"official","task":"deliver","date":"08/14","staff":"NA","total":762,"wait":null,"pure":null,"qty":"2","route":"A站","status":""},{"no":"85","sender":"amr","env":"official","task":"deliver","date":"08/14","staff":"NA","total":574,"wait":null,"pure":null,"qty":"1","route":"A站","status":""}];
+
   var SURVEY = JSON.parse(JSON.stringify(DEFAULT_SURVEY));
+  var TRIPS = DEFAULT_TRIPS.slice();
 
   // ---------------------------------------------------------------
   // Stats / formatting
@@ -863,18 +935,14 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
     grid.innerHTML = '';
     var norm = function(v){ v=(v||'').trim(); return (v==='' || v==='無') ? '' : v; };
     SURVEY.respondents.forEach(function(r){
-      var highlight = norm(r.highlight), confusion = norm(r.confusion), suggestion = norm(r.suggestion), rationale = norm(r.rationale);
-      if(!highlight && !confusion && !suggestion && !rationale) return;
+      var summary = norm(r.summary);
+      if(!summary) return;
       var card = document.createElement('div');
       card.className = 'quote-card';
       var roleCls = r.role==='pharm' ? 'pharm' : 'nurse';
       var roleLabel = r.role==='pharm' ? '藥師' : '護理師';
-      var html = '<div class="qc-head"><span class="qc-role '+roleCls+'">'+escapeHtml(r.id)+'</span>'+roleLabel+'</div>';
-      if(rationale) html += '<p class="quote-line"><b>📌 評分理由：</b>'+escapeHtml(rationale)+'</p>';
-      if(highlight) html += '<p class="quote-line"><b>😊 亮點：</b>'+escapeHtml(highlight)+'</p>';
-      if(confusion) html += '<p class="quote-line"><b>❓ 困惑：</b>'+escapeHtml(confusion)+'</p>';
-      if(suggestion) html += '<p class="quote-line"><b>💡 建議：</b>'+escapeHtml(suggestion)+'</p>';
-      card.innerHTML = html;
+      card.innerHTML = '<div class="qc-head"><span class="qc-role '+roleCls+'">'+escapeHtml(r.id)+'</span>'+roleLabel+'</div>'+
+        '<p class="quote-line">'+escapeHtml(summary)+'</p>';
       grid.appendChild(card);
     });
   }
@@ -933,11 +1001,65 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
     setText('databar-issues', SURVEY.uxIssues.length);
   }
 
+  // ---------------------------------------------------------------
+  // Trip-level (人工/AMR送藥逐趟記錄) stats
+  // ---------------------------------------------------------------
+  function fmtDuration(sec){
+    if(sec==null || isNaN(sec)) return '—';
+    sec = Math.round(sec);
+    var m = Math.floor(sec/60), s = sec%60;
+    return m+'m'+(s<10?'0':'')+s+'s';
+  }
+
+  function fmtPct1(n){
+    if(n==null || isNaN(n)) return '—';
+    return (n*100).toFixed(1)+'%';
+  }
+
+  function computeTripStats(trips){
+    function avg(arr){ if(!arr.length) return null; var s=0; arr.forEach(function(v){ s+=v; }); return s/arr.length; }
+    var humanDeliver = trips.filter(function(t){ return t.sender==='human' && t.task==='deliver'; });
+    var validHuman = humanDeliver.filter(function(t){ return t.total!=null && t.total>0 && t.status.indexOf('白跑')===-1; });
+    var waitVals = validHuman.filter(function(t){ return t.wait!=null; }).map(function(t){ return t.wait; });
+    var amrOfficial = trips.filter(function(t){ return t.sender==='amr' && t.env==='official' && t.total!=null; });
+    var selfPick = humanDeliver.filter(function(t){ return t.status.indexOf('自取')>=0; }).length;
+    var fail = humanDeliver.filter(function(t){ return t.status.indexOf('白跑')>=0; }).length;
+    var denom = humanDeliver.length;
+    return {
+      humanValidN: validHuman.length,
+      humanAvgTotal: avg(validHuman.map(function(t){ return t.total; })),
+      humanAvgWait: avg(waitVals),
+      amrOfficialN: amrOfficial.length,
+      amrAvgTotal: avg(amrOfficial.map(function(t){ return t.total; })),
+      humanTotalN: denom,
+      selfPickRate: denom ? selfPick/denom : null,
+      failRate: denom ? fail/denom : null,
+      completeRate: denom ? (denom-fail)/denom : null,
+      deliverTripCount: trips.filter(function(t){ return t.task==='deliver'; }).length
+    };
+  }
+
+  function renderTripLive(){
+    var s = computeTripStats(TRIPS);
+    setText('tl-human-avg', fmtDuration(s.humanAvgTotal));
+    setText('tl-human-n', s.humanValidN);
+    setText('tl-amr-avg', fmtDuration(s.amrAvgTotal));
+    setText('tl-amr-n', s.amrOfficialN);
+    setText('tl-wait-avg', fmtDuration(s.humanAvgWait));
+    setText('tl-selfpick-rate', fmtPct1(s.selfPickRate));
+    setText('tl-fail-rate', fmtPct1(s.failRate));
+    setText('tl-complete-rate', fmtPct1(s.completeRate));
+    setText('tl-human-total-n', s.humanTotalN);
+    setText('tl-human-total-n2', s.humanTotalN);
+    setText('databar-trips', s.deliverTripCount);
+  }
+
   function renderAll(){
     renderSatSection();
     renderQuotes();
     renderUxAppendix();
     renderCatsum();
+    renderTripLive();
   }
 
   // ---------------------------------------------------------------
@@ -967,7 +1089,9 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
     if(!rows.length) return 'unknown';
     var header = (rows[0]||[]).map(function(h){ return (h||'').trim(); });
     if(header[0]==='type' && header.indexOf('role')>=0) return 'template';
+    if(header[0]==='trip_no') return 'trips_template';
     var joined = rows.slice(0,3).map(function(r){ return r.join(','); }).join('\n');
+    if(joined.indexOf('趟次')>=0 && joined.indexOf('傳送者')>=0) return 'trips_raw';
     if(joined.indexOf('身份')>=0 && joined.indexOf('編號')>=0 && joined.indexOf('姓名')>=0) return 'raw';
     return 'unknown';
   }
@@ -988,7 +1112,7 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
           q2: get('q2')!=='' ? parseFloat(get('q2')) : null,
           q3: get('q3')!=='' ? parseFloat(get('q3')) : null,
           q4: get('q4')!=='' ? parseFloat(get('q4')) : null,
-          highlight: get('highlight'), confusion: get('confusion'), suggestion: get('suggestion')
+          summary: get('summary'), highlight: get('highlight'), confusion: get('confusion'), suggestion: get('suggestion')
         });
       } else if(type==='issue'){
         var tagsRaw = get('tags');
@@ -997,6 +1121,58 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       }
     }
     return {respondents: respondents, uxIssues: uxIssues};
+  }
+
+  function importTripsTemplate(rows){
+    var header = rows[0].map(function(h){ return (h||'').trim(); });
+    function idx(name){ return header.indexOf(name); }
+    var out = [];
+    for(var i=1;i<rows.length;i++){
+      var r = rows[i];
+      if(!r || r.every(function(c){ return !c || !String(c).trim(); })) continue;
+      function get(name){ var j=idx(name); return j>=0 ? String(r[j]==null?'':r[j]).trim() : ''; }
+      out.push({
+        no: get('trip_no'), sender: get('sender')==='amr' ? 'amr' : 'human',
+        env: get('env') || null, task: get('task')==='other' ? 'other' : 'deliver',
+        date: get('date'), staff: get('staff'),
+        total: get('total_sec')!=='' ? parseFloat(get('total_sec')) : null,
+        wait: get('wait_sec')!=='' ? parseFloat(get('wait_sec')) : null,
+        pure: get('pure_sec')!=='' ? parseFloat(get('pure_sec')) : null,
+        qty: get('qty'), route: get('route'), status: get('status')
+      });
+    }
+    return out;
+  }
+
+  function importTripsRaw(rows){
+    var header = rows[0];
+    function colLike(part){ for(var j=0;j<header.length;j++){ if(header[j] && header[j].indexOf(part)>=0) return j; } return -1; }
+    var cNo=colLike('趟次'), cSender=colLike('傳送者'), cEnv=colLike('環境'), cTask=colLike('任務類型'), cDate=colLike('日期');
+    var cStaff=colLike('傳送\n人員'); if(cStaff<0) cStaff=colLike('傳送人員');
+    var cTotal=colLike('單趟耗時'), cWait=colLike('藥單等待時間'), cPure=colLike('純配送'), cQty=colLike('單量'), cRoute=colLike('傳送路線'), cStatus=colLike('單趟狀況');
+    function toSec(s){
+      s=(s||'').trim(); if(!s) return null;
+      var m = s.match(/^(\d+):(\d{2}):(\d{2})$/);
+      return m ? (parseInt(m[1],10)*3600+parseInt(m[2],10)*60+parseInt(m[3],10)) : null;
+    }
+    var out = [];
+    for(var i=1;i<rows.length;i++){
+      var r = rows[i];
+      if(!r || !r[cSender]) continue;
+      var senderRaw = (r[cSender]||'').trim();
+      if(senderRaw!=='人工' && senderRaw!=='AMR') continue;
+      var envRaw = cEnv>=0 ? (r[cEnv]||'').trim() : '';
+      var taskRaw = cTask>=0 ? (r[cTask]||'').trim() : '';
+      out.push({
+        no: (r[cNo]||'').trim(), sender: senderRaw==='AMR' ? 'amr' : 'human',
+        env: envRaw==='測試' ? 'test' : (envRaw==='正式' ? 'official' : null),
+        task: taskRaw==='送藥' ? 'deliver' : 'other',
+        date: cDate>=0 ? (r[cDate]||'').trim() : '', staff: cStaff>=0 ? (r[cStaff]||'').trim() : '',
+        total: cTotal>=0 ? toSec(r[cTotal]) : null, wait: cWait>=0 ? toSec(r[cWait]) : null, pure: cPure>=0 ? toSec(r[cPure]) : null,
+        qty: cQty>=0 ? (r[cQty]||'').trim() : '', route: cRoute>=0 ? (r[cRoute]||'').trim() : '', status: cStatus>=0 ? (r[cStatus]||'').trim() : ''
+      });
+    }
+    return out;
   }
 
   function importRaw(rows){
@@ -1058,13 +1234,27 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
             SURVEY = {respondents: raw.respondents, uxIssues: SURVEY.uxIssues};
             renderAll();
             msgEl.className = 'databar-msg ok';
-            msgEl.textContent = '✅ 已匯入 '+raw.respondents.length+' 筆問卷評分資料，滿意度分數與引言已更新。偵測到此檔案的UI問題清單為自由格式，尚無法自動分類，如需更新UI問題清單，請改用「顯示範本CSV」的格式重新整理後匯入。';
+            msgEl.textContent = '✅ 已匯入 '+raw.respondents.length+' 筆問卷評分資料，滿意度分數已更新。偵測到此檔案的UI問題清單為自由格式，尚無法自動分類，如需更新UI問題清單，請改用「顯示問卷範本CSV」的格式重新整理後匯入。（注意：此格式沒有摘要欄位，2.1的引言卡片需另外用範本補上「summary」欄位才會顯示。）';
+          } else if(fmt==='trips_template'){
+            var t1 = importTripsTemplate(rows);
+            if(!t1.length) throw new Error('EMPTY');
+            TRIPS = t1;
+            renderAll();
+            msgEl.className = 'databar-msg ok';
+            msgEl.textContent = '✅ 已匯入 '+t1.length+' 筆逐趟送藥記錄，Value分頁的「目前資料試算」已更新。';
+          } else if(fmt==='trips_raw'){
+            var t2 = importTripsRaw(rows);
+            if(!t2.length) throw new Error('EMPTY');
+            TRIPS = t2;
+            renderAll();
+            msgEl.className = 'databar-msg ok';
+            msgEl.textContent = '✅ 已匯入 '+t2.length+' 筆逐趟送藥記錄（原始格式），Value分頁的「目前資料試算」已更新。';
           } else {
             throw new Error('FORMAT');
           }
         } catch(err){
           msgEl.className = 'databar-msg err';
-          msgEl.textContent = '⚠️ 無法辨識檔案格式，請點擊「顯示範本CSV」確認欄位格式後再試一次。';
+          msgEl.textContent = '⚠️ 無法辨識檔案格式，請點擊「顯示問卷範本CSV」或「顯示逐趟記錄範本CSV」確認欄位格式後再試一次。';
         }
       }
 
@@ -1114,25 +1304,38 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
   }
 
   function buildTemplateCSV(){
-    var header = ['type','role','id','name','q1','q2','q3','q4','highlight','confusion','suggestion','category','desc','tags'];
+    var header = ['type','role','id','name','q1','q2','q3','q4','summary','highlight','confusion','suggestion','category','desc','tags'];
     var lines = [header.join(',')];
     SURVEY.respondents.forEach(function(r){
       lines.push([
         'respondent', r.role||'', r.id||'', r.name||'',
         r.q1==null?'':r.q1, r.q2==null?'':r.q2, r.q3==null?'':r.q3, r.q4==null?'':r.q4,
-        r.highlight||'', r.confusion||'', r.suggestion||'', '', '', ''
+        r.summary||'', r.highlight||'', r.confusion||'', r.suggestion||'', '', '', ''
       ].map(toCSVValue).join(','));
     });
     SURVEY.uxIssues.forEach(function(i){
       lines.push([
-        'issue', i.area||'', '', '', '', '', '', '', '', '', '',
+        'issue', i.area||'', '', '', '', '', '', '', '', '', '', '',
         i.category||'', i.desc||'', (i.tags||[]).join(';')
       ].map(toCSVValue).join(','));
     });
     return lines.join('\r\n');
   }
 
-  function buildJSON(){ return JSON.stringify(SURVEY, null, 2); }
+  function buildTripsCSV(){
+    var header = ['trip_no','sender','env','task','date','staff','total_sec','wait_sec','pure_sec','qty','route','status'];
+    var lines = [header.join(',')];
+    TRIPS.forEach(function(t){
+      lines.push([
+        t.no||'', t.sender||'', t.env||'', t.task||'', t.date||'', t.staff||'',
+        t.total==null?'':t.total, t.wait==null?'':t.wait, t.pure==null?'':t.pure,
+        t.qty||'', t.route||'', t.status||''
+      ].map(toCSVValue).join(','));
+    });
+    return lines.join('\r\n');
+  }
+
+  function buildJSON(){ return JSON.stringify({survey: SURVEY, trips: TRIPS}, null, 2); }
 
   function buildMarkdown(){
     var s = computeStats();
@@ -1153,6 +1356,11 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       });
       md += '\n';
     });
+    var ts = computeTripStats(TRIPS);
+    md += '## 逐趟送藥記錄試算\n\n';
+    md += '- 人工送藥有效趟次：'+ts.humanValidN+'（平均單趟耗時 '+fmtDuration(ts.humanAvgTotal)+'，平均藥單等待 '+fmtDuration(ts.humanAvgWait)+'）\n';
+    md += '- AMR正式環境趟次：'+ts.amrOfficialN+'（平均單趟耗時 '+fmtDuration(ts.amrAvgTotal)+'）\n';
+    md += '- 護理師自取率：'+fmtPct1(ts.selfPickRate)+'／傳送白跑率：'+fmtPct1(ts.failRate)+'／任務完成率：'+fmtPct1(ts.completeRate)+'（n='+ts.humanTotalN+'）\n';
     return md;
   }
 
@@ -1182,7 +1390,20 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       ta.value = buildTemplateCSV();
       wrap.hidden = false;
       msgEl.className = 'databar-msg ok';
-      msgEl.textContent = '範本內容已產生（欄位：type/role/id/name/q1-4/highlight/confusion/suggestion/category/desc/tags）。複製後貼到Excel或文字編輯器，另存為 .csv 即可編輯、重新上傳。';
+      msgEl.textContent = '問卷範本／目前資料已產生（欄位：type/role/id/name/q1-4/summary/highlight/confusion/suggestion/category/desc/tags）。複製後貼到Excel或文字編輯器，另存為 .csv 即可編輯、重新上傳。';
+    });
+  }
+
+  var btnTemplateTrips = document.getElementById('btn-template-trips');
+  if(btnTemplateTrips){
+    btnTemplateTrips.addEventListener('click', function(){
+      var msgEl = document.getElementById('import-msg');
+      var wrap = document.getElementById('template-output');
+      var ta = document.getElementById('template-textarea');
+      ta.value = buildTripsCSV();
+      wrap.hidden = false;
+      msgEl.className = 'databar-msg ok';
+      msgEl.textContent = '逐趟記錄範本／目前資料已產生（欄位：trip_no/sender/env/task/date/staff/total_sec/wait_sec/pure_sec/qty/route/status；sender為human或amr，env為test/official/空白，task為deliver或other，時間單位為秒）。複製後可編輯，另存為 .csv 重新上傳。';
     });
   }
 
@@ -1212,6 +1433,7 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       if(fmt==='json') data = buildJSON();
       else if(fmt==='csv') data = buildTemplateCSV();
       else if(fmt==='md') data = buildMarkdown();
+      else if(fmt==='tripscsv') data = buildTripsCSV();
       else return;
       ta.value = data;
       wrap.hidden = false;
