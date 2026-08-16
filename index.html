@@ -359,12 +359,12 @@
   <h1 class="serif">中山醫學大學附設醫院 | AMR 急診藥品配送效益分析報告</h1>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="exec">總覽</button>
+    <button class="tab-btn active" data-tab="exec">Overview</button>
     <button class="tab-btn" data-tab="value">Value</button>
-    <button class="tab-btn" data-tab="kpi">KPI Register</button>
     <button class="tab-btn" data-tab="workflow">Workflow &amp; Trust</button>
     <button class="tab-btn" data-tab="next">Next</button>
-    <button class="tab-btn" data-tab="appendix">附錄</button>
+    <button class="tab-btn" data-tab="kpi">KPI Register</button>
+    <button class="tab-btn" data-tab="appendix">Appendix</button>
   </div>
 
   <!-- ======================================================= -->
@@ -711,6 +711,132 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
   </div>
 
   <!-- ======================================================= -->
+  <!-- WORKFLOW & TRUST TAB -->
+  <!-- ======================================================= -->
+  <div class="tab-panel" id="panel-workflow">
+    <div class="part-header">
+      <div class="part-eyebrow">SEC. 2</div>
+      <h2 class="serif">Workflow Fit / Trust 流程契合度與信任</h2>
+      <div class="part-sub">醫護人員使用前預期評分與評價，以及流程層面（非UI畫面層面）的優化機會點</div>
+    </div>
+
+    <div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與評價</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
+
+    <div class="insight-box" style="margin-top:0;">
+      <div class="iv-title">⚠ 關鍵洞察：信任機器可靠，但還沒感受到減負</div>
+      <p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用前的預期心聲（見下方）也印證了這點。</p>
+    </div>
+
+    <div class="section-note" style="margin-top:14px;" id="sec21-note">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分，共16位受邀對象，其餘11位尚未填答</div>
+
+    <div class="sat-table" id="sat-table">
+      <div class="sat-row head"><div>評分項目</div><div>藥師（n=<span id="sat-n-pharm">3</span>）</div><div>護理師（n=<span id="sat-n-nurse">2</span>）</div></div>
+      <div class="sat-row"><div class="sq">Q1　預期滿意度</div><div class="sv pharm" data-label="藥師" id="sat-p-q1">3.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q1">1.75</div></div>
+      <div class="sat-row"><div class="sq">Q2　預期可靠度</div><div class="sv pharm" data-label="藥師" id="sat-p-q2">4.0</div><div class="sv nurse" data-label="護理師" id="sat-n-q2">4.5</div></div>
+      <div class="sat-row"><div class="sq">Q3　預期降低工作負擔</div><div class="sv pharm" data-label="藥師" id="sat-p-q3">2.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q3">2.5</div></div>
+      <div class="sat-row"><div class="sq">Q4　預期更專注其他專業工作</div><div class="sv pharm" data-label="藥師" id="sat-p-q4">2.7</div><div class="sv nurse" data-label="護理師" id="sat-n-q4">2.5</div></div>
+    </div>
+    <div class="section-note" style="margin-top:10px;">說明：這批評分與心得是受訪者在首次實際使用AMR之後，回溯描述「當初使用前」的預期想法所得——並非使用後的真實心得。正式的「使用後」1–5分量表與心得尚未收集，待實際導入後同步填入以便前後對照。以下為每位受訪者評分理由的摘要（依代號呈現，不揭露姓名）</div>
+
+    <div class="quote-grid" id="quote-grid"></div>
+
+    <div class="section-title"><span class="section-num">2.2</span><h3>流程優化機會點</h3></div>
+    <div class="section-note">根據現場質性觀察與使用者回饋整理，聚焦「流程設計」層級（畫面操作層級的缺口見附錄A.2）</div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-title"><span class="letter">A</span>資訊不透明造成白跑</div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>庫存判斷靠猜：</b>部分護理師無法判斷急診是否已有庫存，攜藥單至藥局才發現庫存已有而白跑；藥單列印延遲也拉長等待</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>出發前攔截白跑：</b>若AMR/PMS串接庫存資訊，可於出發前攔截「庫存已有」情境，直接降低白跑率</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-title"><span class="letter">B</span>傳送人力被非送藥任務佔用</div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>配送真空時段：</b>傳送人力常被挪用推病床、推輪椅、送血/檢體，14:00–15:30尤其明顯</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>角色重新分配：</b>AMR專職送藥這類規則化任務，把人力解放去做需要人情判斷的工作——是分工調整，而非取代</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-title"><span class="letter">C</span>流程中斷被隱形化</div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>延誤不留痕跡：</b>藥師不在時，傳送用牌子壓單直接折返，下一趟才一併領回——延誤不會出現在耗時統計中</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>延誤變得可追蹤：</b>AMR任務執行完整度可預期，不會被「順手幫忙」中斷，讓延誤可量化</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-title"><span class="letter">D</span>特殊藥品類別仍需人工介入</div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥仍要跑腿：</b>護理站常見的鎮靜藥、冷藏藥，ADC沒有備藥，加上臨時醫囑常指定這類藥，護理師仍得自行跑一趟藥局</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部評估擴充ADC備藥範圍，或建立AMR快速通道，取代護理師跑腿</p></div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-title"><span class="letter">E</span>站別判斷責任轉移到藥師</div>
+        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去人工傳送依藥袋代碼判斷站別，藥師不需介入；改用AMR後，藥師得自行選擇站別，增加放藥負擔</p></div>
+        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷：</b>讀取藥袋既有的目的地代碼自動帶入站別，藥師只需確認，把判斷還給系統</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- NEXT TAB -->
+  <!-- ======================================================= -->
+  <div class="tab-panel" id="panel-next">
+    <div class="part-header">
+      <div class="part-eyebrow">SEC. 3</div>
+      <h2 class="serif">Next 下一步：社交導航與易用性</h2>
+      <div class="part-sub">從「能完成任務」走向「讀懂環境氛圍」，並修補現行UI與workflow的落差</div>
+    </div>
+
+    <div class="section-title"><span class="section-num">3.1</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
+    <div class="section-note">取自P1 Value Report簡報《AMR Capability Summary》：7/22–23現場實測問題整理</div>
+
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-top"><span class="cap-letter">A</span><span class="cap-name">社交導航不足（含沿路語音、病床優先）</span></div>
+        <p class="cap-desc">缺乏符合醫療場域社會規範的互動能力，難以自然與人共享空間——包含優先權判斷、人流判斷、路徑決策三個子問題</p>
+        <p class="cap-sub"><b>語音：</b>建議每個路段配置符合情境的語音訊息，例如轉角、視野死角處應主動出聲提醒對向路人，避免碰撞，而非全程使用同一種提示音　｜　<b>病床優先：</b>與病床爭道時僅減速未立即禮讓，曾發生AMR卡在B站出口、病床需倒退避讓延誤入急診的情形</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-top"><span class="cap-letter">B</span><span class="cap-name">場域整合不足</span></div>
+        <p class="cap-desc">尚未充分融入場域空間配置與工作流程，與既有醫療作業（如病床停靠動線）產生衝突。根源之一是<b>環境感知能力不足</b>——例如偵測不到點滴架腳架、無法辨識移動中的病床，導致AMR無法即時判斷該讓行或該通過，才進一步演變成場域整合的衝突</p>
+      </div>
+    </div>
+
+    <div class="roadmap2">
+      <div class="rm2-card">
+        <div class="rm2-when">Stage 1 · 現行推動中</div>
+        <div class="rm2-title">Rule-based 規則調整</div>
+        <div class="rm2-desc">先建立固定的優先權與人流規則（例如電梯口自動減速禮讓、病床固定靠左AMR固定靠右），用最快速度解決現場觀察到的具體衝突點</div>
+      </div>
+      <div class="rm2-card stage2">
+        <div class="rm2-when">Stage 2 · 後續規劃中</div>
+        <div class="rm2-title">關鍵物件辨識導入</div>
+        <div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="section-num">3.2</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
+    <div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
+
+    <div class="catsum-grid" id="catsum-grid">
+      <div class="catsum-card">
+        <div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
+        <div id="cs-rows-pharm"></div>
+      </div>
+      <div class="catsum-card">
+        <div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
+        <div id="cs-rows-nurse"></div>
+      </div>
+    </div>
+
+    <div class="caveat-box">
+      <div class="cv-title">一眼看重點</div>
+      <ul>
+        <li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
+        <li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
+        <li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
+        <li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
+      </ul>
+      <p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
   <!-- KPI COMPARISON TAB -->
   <!-- ======================================================= -->
   <div class="tab-panel" id="panel-kpi">
@@ -891,137 +1017,18 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <div class="ef-note">+75 個百分點（pp）——人工僅「藥師核發」節點有系統紀錄，其餘三節點需靠備註／記憶補述；AMR因系統自動記錄，四節點全數可追溯</div>
     </div>
 
+    <div class="exec-fin" style="margin:0 0 20px;">
+      <div class="ef-lbl">可延伸效益</div>
+      <div class="ef-num">待補</div>
+      <div class="ef-note">年度可追溯效益 =（Before 每趟查詢/確認工時 − After 每趟查詢/確認工時）× 年配送趟次 × 人員每分鐘成本</div>
+      <div class="ef-note" style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--warn-soft-line);">如減少查件/電話確認、減少配送異常處理、減少錯送/遺失成本、降低藥品延遲造成的臨床等待、稽核工時減少</div>
+    </div>
+
     <div class="caveat-box" style="margin-top:16px;">
       <div class="cv-title">⚠ 兩項需要特別說明的數字</div>
       <p><b>①「病人取得藥物的總等待時間改善率」為 −110%：</b>用官方公式直接代入現有數字，AMR的總完成時間（13m13s）比人工（6m18s）更長，wall-clock意義上的等待時間不降反升。這與Value分頁強調的「Human Touch Time下降40%」並不矛盾——兩者衡量的是不同的東西：一個是「病人等多久」，一個是「人力綁住多久」。若要讓Lead Time也轉正，優化重點應放在Next分頁的Phase 2（導航時間壓縮），而非現階段的宣傳重點。<br><br>
       <b>④配送結果的完整性仍取決於護理端掃碼合規率：</b>上表④護理師接收節點雖標示AMR系統「✓」（技術上可自動記錄接收事件），但實際完整性仍取決於護理師是否確實掃碼——Next分頁的易用性缺口已指出護理師可不掃碼直接取藥，這會讓④節點的實際可追溯率低於系統理論值100%，建議搭配掃碼合規率一併追蹤。<br><br>
       <b>②「護理物流工時改善率」約+73%為推算值：</b>官方公式中的「護理物流工時」定義尚未完全明確（原表公式括號內容為空），本報告以「護理端接收操作時間」（84秒）作為After值的最佳代理指標，計算得改善率約73%。此數字的可信度取決於「護理物流工時」的官方定義是否等同於此操作時間，建議與黃醫師/PM確認定義後校正。</p>
-    </div>
-  </div>
-
-  <!-- ======================================================= -->
-  <!-- WORKFLOW & TRUST TAB -->
-  <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-workflow">
-    <div class="part-header">
-      <div class="part-eyebrow">SEC. 2</div>
-      <h2 class="serif">Workflow Fit / Trust 流程契合度與信任</h2>
-      <div class="part-sub">醫護人員使用前預期評分與評價，以及流程層面（非UI畫面層面）的優化機會點</div>
-    </div>
-
-    <div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與評價</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
-
-    <div class="insight-box" style="margin-top:0;">
-      <div class="iv-title">⚠ 關鍵洞察：信任機器可靠，但還沒感受到減負</div>
-      <p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用前的預期心聲（見下方）也印證了這點。</p>
-    </div>
-
-    <div class="section-note" style="margin-top:14px;" id="sec21-note">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分，共16位受邀對象，其餘11位尚未填答</div>
-
-    <div class="sat-table" id="sat-table">
-      <div class="sat-row head"><div>評分項目</div><div>藥師（n=<span id="sat-n-pharm">3</span>）</div><div>護理師（n=<span id="sat-n-nurse">2</span>）</div></div>
-      <div class="sat-row"><div class="sq">Q1　預期滿意度</div><div class="sv pharm" data-label="藥師" id="sat-p-q1">3.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q1">1.75</div></div>
-      <div class="sat-row"><div class="sq">Q2　預期可靠度</div><div class="sv pharm" data-label="藥師" id="sat-p-q2">4.0</div><div class="sv nurse" data-label="護理師" id="sat-n-q2">4.5</div></div>
-      <div class="sat-row"><div class="sq">Q3　預期降低工作負擔</div><div class="sv pharm" data-label="藥師" id="sat-p-q3">2.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q3">2.5</div></div>
-      <div class="sat-row"><div class="sq">Q4　預期更專注其他專業工作</div><div class="sv pharm" data-label="藥師" id="sat-p-q4">2.7</div><div class="sv nurse" data-label="護理師" id="sat-n-q4">2.5</div></div>
-    </div>
-    <div class="section-note" style="margin-top:10px;">說明：這批評分與心得是受訪者在首次實際使用AMR之後，回溯描述「當初使用前」的預期想法所得——並非使用後的真實心得。正式的「使用後」1–5分量表與心得尚未收集，待實際導入後同步填入以便前後對照。以下為每位受訪者評分理由的摘要（依代號呈現，不揭露姓名）</div>
-
-    <div class="quote-grid" id="quote-grid"></div>
-
-    <div class="section-title"><span class="section-num">2.2</span><h3>流程優化機會點</h3></div>
-    <div class="section-note">根據現場質性觀察與使用者回饋整理，聚焦「流程設計」層級（畫面操作層級的缺口見附錄A.2）</div>
-
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">A</span>資訊不透明造成白跑</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>庫存判斷靠猜：</b>部分護理師無法判斷急診是否已有庫存，攜藥單至藥局才發現庫存已有而白跑；藥單列印延遲也拉長等待</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>出發前攔截白跑：</b>若AMR/PMS串接庫存資訊，可於出發前攔截「庫存已有」情境，直接降低白跑率</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">B</span>傳送人力被非送藥任務佔用</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>配送真空時段：</b>傳送人力常被挪用推病床、推輪椅、送血/檢體，14:00–15:30尤其明顯</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>角色重新分配：</b>AMR專職送藥這類規則化任務，把人力解放去做需要人情判斷的工作——是分工調整，而非取代</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">C</span>流程中斷被隱形化</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>延誤不留痕跡：</b>藥師不在時，傳送用牌子壓單直接折返，下一趟才一併領回——延誤不會出現在耗時統計中</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>延誤變得可追蹤：</b>AMR任務執行完整度可預期，不會被「順手幫忙」中斷，讓延誤可量化</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">D</span>特殊藥品類別仍需人工介入</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥仍要跑腿：</b>護理站常見的鎮靜藥、冷藏藥，ADC沒有備藥，加上臨時醫囑常指定這類藥，護理師仍得自行跑一趟藥局</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部評估擴充ADC備藥範圍，或建立AMR快速通道，取代護理師跑腿</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">E</span>站別判斷責任轉移到藥師</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去人工傳送依藥袋代碼判斷站別，藥師不需介入；改用AMR後，藥師得自行選擇站別，增加放藥負擔</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷：</b>讀取藥袋既有的目的地代碼自動帶入站別，藥師只需確認，把判斷還給系統</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======================================================= -->
-  <!-- NEXT TAB -->
-  <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-next">
-    <div class="part-header">
-      <div class="part-eyebrow">SEC. 3</div>
-      <h2 class="serif">Next 下一步：社交導航與易用性</h2>
-      <div class="part-sub">從「能完成任務」走向「讀懂環境氛圍」，並修補現行UI與workflow的落差</div>
-    </div>
-
-    <div class="section-title"><span class="section-num">3.1</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
-    <div class="section-note">取自P1 Value Report簡報《AMR Capability Summary》：7/22–23現場實測問題整理</div>
-
-    <div class="cap-grid">
-      <div class="cap-card">
-        <div class="cap-top"><span class="cap-letter">A</span><span class="cap-name">社交導航不足（含沿路語音、病床優先）</span></div>
-        <p class="cap-desc">缺乏符合醫療場域社會規範的互動能力，難以自然與人共享空間——包含優先權判斷、人流判斷、路徑決策三個子問題</p>
-        <p class="cap-sub"><b>語音：</b>建議每個路段配置符合情境的語音訊息，例如轉角、視野死角處應主動出聲提醒對向路人，避免碰撞，而非全程使用同一種提示音　｜　<b>病床優先：</b>與病床爭道時僅減速未立即禮讓，曾發生AMR卡在B站出口、病床需倒退避讓延誤入急診的情形</p>
-      </div>
-      <div class="cap-card">
-        <div class="cap-top"><span class="cap-letter">B</span><span class="cap-name">場域整合不足</span></div>
-        <p class="cap-desc">尚未充分融入場域空間配置與工作流程，與既有醫療作業（如病床停靠動線）產生衝突。根源之一是<b>環境感知能力不足</b>——例如偵測不到點滴架腳架、無法辨識移動中的病床，導致AMR無法即時判斷該讓行或該通過，才進一步演變成場域整合的衝突</p>
-      </div>
-    </div>
-
-    <div class="roadmap2">
-      <div class="rm2-card">
-        <div class="rm2-when">Stage 1 · 現行推動中</div>
-        <div class="rm2-title">Rule-based 規則調整</div>
-        <div class="rm2-desc">先建立固定的優先權與人流規則（例如電梯口自動減速禮讓、病床固定靠左AMR固定靠右），用最快速度解決現場觀察到的具體衝突點</div>
-      </div>
-      <div class="rm2-card stage2">
-        <div class="rm2-when">Stage 2 · 後續規劃中</div>
-        <div class="rm2-title">關鍵物件辨識導入</div>
-        <div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
-      </div>
-    </div>
-
-    <div class="section-title"><span class="section-num">3.2</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
-    <div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
-
-    <div class="catsum-grid" id="catsum-grid">
-      <div class="catsum-card">
-        <div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
-        <div id="cs-rows-pharm"></div>
-      </div>
-      <div class="catsum-card">
-        <div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
-        <div id="cs-rows-nurse"></div>
-      </div>
-    </div>
-
-    <div class="caveat-box">
-      <div class="cv-title">一眼看重點</div>
-      <ul>
-        <li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
-        <li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
-        <li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
-        <li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
-      </ul>
-      <p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
     </div>
   </div>
 
