@@ -150,6 +150,20 @@
   .advantage-list ul{ margin:0; padding-left:18px; font-size:12px; color:var(--ink-soft); }
   .advantage-list li{ margin-bottom:5px; }
 
+  /* Sec 1.4 Before/After full metric table */
+  .metric-table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+  .metric-table{ width:100%; border-collapse:collapse; font-size:11.5px; min-width:780px; }
+  .metric-table th, .metric-table td{ padding:9px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  .metric-table thead th{ background:var(--bg); font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:9.5px; color:var(--ink-soft); font-weight:600; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+  .metric-table tbody tr:last-child td{ border-bottom:none; }
+  .metric-table td.metric-name{ font-weight:600; color:var(--ink); white-space:nowrap; }
+  .metric-table td.formula{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:10px; color:var(--ink-soft); line-height:1.5; min-width:190px; }
+  .metric-table td.value{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-weight:700; color:var(--human); white-space:nowrap; }
+  .metric-table td.value.after{ color:var(--amr); }
+  .metric-table .mt-sub{ display:block; font-size:9px; color:var(--ink-soft); font-weight:400; margin-top:2px; font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; }
+  .metric-table .mt-na{ color:var(--ink-soft); font-style:italic; font-weight:400; }
+  .metric-table tr.cat-row-header td{ background:var(--amr-soft); color:var(--amr); font-weight:700; font-size:11px; letter-spacing:.04em; padding:7px 12px; }
+
   /* satisfaction score table */
   .sat-table{ background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:8px; }
   .sat-row{ display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:8px; padding:13px 15px; border-bottom:1px solid var(--line); align-items:center; }
@@ -478,7 +492,7 @@
       <div class="rm2-card stage2">
         <div class="rm2-when">Phase 2 — Context-aware Navigation</div>
         <div class="rm2-title">Navigation Time ↓20%</div>
-        <div class="rm2-desc">先以規則調整解決人流與禮讓問題，後續導入物件辨識，才能真正達到「等待與禮讓」的社交導航能力。</div>
+        <div class="rm2-desc">先以規則調整解決人流與禮讓問題，導入智慧監視系統，即時辨識院內應優先禮讓的物件（如移動中的病床、輪椅、急救推車等），以落實院內禮讓原則，才能真正達到「等待與禮讓」的社交導航能力。</div>
         <div class="eb-link">→ 詳見「Next」分頁</div>
       </div>
     </div>
@@ -682,6 +696,135 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
         <li><b>優勢三：</b>流程透明、到位時間可預期，讓「等不到藥而自行跑腿」這種重工自然消失——前提是AMR到位時間必須穩定（見Sec.3導航韌性缺口）。</li>
       </ul>
     </div>
+
+    <div class="section-title"><span class="section-num">1.4</span><h3>Before / After 全指標對照表</h3><span class="badge-live">🔄 依raw data計算</span></div>
+    <div class="section-note">整合現場蒐集簡報中 Efficiency／Reliability／Operational Value 三大類指標（取兩頁簡報之聯集），數字皆由「AI讀_大表」逐趟原始時間戳重新計算，方法論與Sec.1.1的「目前資料試算」一致（人工取n=55有效趟次或n=61已知狀態趟次，依指標而定）。標示「資料不足」代表現有raw data未包含對應欄位（如排班工時、AMR受阻/人工介入事件紀錄），並非數值為0；AMR側樣本僅9趟，標示「樣本極小」的數字僅供參考，不宜作為結論。</div>
+
+    <div class="metric-table-wrap">
+      <table class="metric-table">
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th>Before／人工傳送・公式</th>
+            <th>Before・數值</th>
+            <th>After／AMR・公式</th>
+            <th>After・數值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row-header"><td colspan="5">Efficiency 服務量能</td></tr>
+          <tr>
+            <td class="metric-name">平均每一趟任務完成時間</td>
+            <td class="formula">Σ完成時間(抵達護理站－護理師印出藥單)÷有效趟次</td>
+            <td class="value">5m07s<span class="mt-sub">n=55</span></td>
+            <td class="formula">Σ完成時間(任務完成－任務建立)÷任務數</td>
+            <td class="value after">13m13s<span class="mt-sub">n=9</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">平均配送時間／平均導航時間</td>
+            <td class="formula">Σ配送時間(抵達護理站－傳送人員前往藥局)÷有效趟次</td>
+            <td class="value">1m54s<span class="mt-sub">n=55</span></td>
+            <td class="formula">Σ導航時間÷任務數</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">AMR逐趟記錄無法拆解導航子段落，612s為單趟精細案例估算，非本表raw data直接計算</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">每小時完成的趟次</td>
+            <td class="formula">完成任務數(不含白跑)÷運作小時</td>
+            <td class="value mt-na">資料不足<span class="mt-sub">raw data無班表／工時紀錄</span></td>
+            <td class="formula">完成任務數÷運作小時</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">同左</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">人工作業時間比例</td>
+            <td class="formula">人工參與時間÷任務完成時間</td>
+            <td class="value">100%<span class="mt-sub">定義上全程人工</span></td>
+            <td class="formula">人工作業時間比例(放取藥)＝人工參與時間÷任務完成時間</td>
+            <td class="value after">22.7%<span class="mt-sub">單趟精細案例估算，見Sec.1.1</span></td>
+          </tr>
+
+          <tr class="cat-row-header"><td colspan="5">Reliability 服務可靠度</td></tr>
+          <tr>
+            <td class="metric-name">稼動率</td>
+            <td class="formula">配送作業時間÷工作時間×100%</td>
+            <td class="value mt-na">資料不足<span class="mt-sub">raw data無工作時間紀錄</span></td>
+            <td class="formula">任務執行時間÷可運作時間×100%</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">同左</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">可用率</td>
+            <td class="formula">可配送時間÷排班時間×100%</td>
+            <td class="value mt-na">資料不足<span class="mt-sub">raw data無排班紀錄</span></td>
+            <td class="formula">可運作時間÷提供運作時間×100%</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">同左</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">每班次完成任務數</td>
+            <td class="formula">完成任務數÷班次數</td>
+            <td class="value mt-na">資料不足<span class="mt-sub">raw data無班次紀錄</span></td>
+            <td class="formula">單次充電任務數＝完成任務數÷充電次數</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">raw data無充電紀錄</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">任務自主完成率／任務無異常完成率</td>
+            <td class="formula">(總任務數－白跑趟次)÷總任務數</td>
+            <td class="value">93.44%<span class="mt-sub">57/61</span></td>
+            <td class="formula">自主完成任務÷總任務數</td>
+            <td class="value after">100%<span class="mt-sub">9/9，樣本極小僅供參考</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">配送中斷率／受阻率</td>
+            <td class="formula">受中斷任務數÷總任務數</td>
+            <td class="value">11.48%<span class="mt-sub">7/61</span></td>
+            <td class="formula">導航受阻率＝遇阻任務÷總任務數</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">raw data無逐趟受阻標記，質性觀察見附錄／Next 3.1</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">人工支援／介入率（護理師自取）</td>
+            <td class="formula">受人工支援/介入任務數÷總任務數</td>
+            <td class="value">6.56%<span class="mt-sub">4/61</span></td>
+            <td class="formula">導航人工介入率＝人工介入任務÷總任務數</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">raw data無逐趟人工介入標記</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">任務失敗率</td>
+            <td class="formula">(白跑趟次＋配送錯誤趟次)÷總任務數</td>
+            <td class="value">6.56%<span class="mt-sub">4/61</span></td>
+            <td class="formula">任務失敗÷總任務數</td>
+            <td class="value after">0%<span class="mt-sub">0/9，樣本極小僅供參考</span></td>
+          </tr>
+
+          <tr class="cat-row-header"><td colspan="5">Operational Value 運營效益</td></tr>
+          <tr>
+            <td class="metric-name">病人取得藥物總Lead Time變化率</td>
+            <td class="formula mt-na">—</td>
+            <td class="value mt-na">—</td>
+            <td class="formula">(導入前Lead Time－導入後Lead Time)÷導入前Lead Time</td>
+            <td class="value after">−158%<span class="mt-sub">5m07s→13m13s，不降反增，屬設計取捨，見總覽Technical Value</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">因物流，藥師作業中斷率</td>
+            <td class="formula">藥師作業因物流中斷/失敗任務次數÷總任務數</td>
+            <td class="value">8.20%<span class="mt-sub">5/61（不在3趟＋等待確認2趟）</span></td>
+            <td class="formula">改善率＝(導入前中斷率－導入後中斷率)÷導入前中斷率</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">AMR尚無對應事件紀錄</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">護理物流工時</td>
+            <td class="formula">Σ護理物流工時</td>
+            <td class="value mt-na">資料不足<span class="mt-sub">raw data無此欄位；原簡報標註5m15s，來源待與貴院確認</span></td>
+            <td class="formula">改善率＝(導入前物流時間－導入後物流時間)÷導入前物流時間</td>
+            <td class="value after mt-na">資料不足<span class="mt-sub">同左</span></td>
+          </tr>
+          <tr>
+            <td class="metric-name">配送可追溯率</td>
+            <td class="formula">時間戳齊全趟次÷總配送任務數（代理指標）</td>
+            <td class="value">83.6%<span class="mt-sub">51/61</span></td>
+            <td class="formula">時間戳齊全趟次÷總配送任務數</td>
+            <td class="value after">100%<span class="mt-sub">9/9</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!-- ======================================================= -->
@@ -780,7 +923,7 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <div class="rm2-card stage2">
         <div class="rm2-when">Stage 2 · 後續規劃中</div>
         <div class="rm2-title">Stage 2　物件辨識導入</div>
-        <div class="rm2-desc">導入物件辨識能力，讓AMR能區分病床、輪椅、行人並判斷其移動狀態，才能真正達到「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
+        <div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
       </div>
     </div>
 
