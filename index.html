@@ -265,22 +265,25 @@
   .exec-brief-item .eb-link{ font-size:11.5px; color:var(--amr); margin-top:4px; }
 
   /* Technical Value x Adoption = Realized Value framing */
-  .value-equation{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin:0 0 22px; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12.5px; }
-  .value-equation .ve-term{ background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:6px 14px; font-weight:600; color:var(--ink); }
+  .value-equation-box{ background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px; margin-bottom:22px; }
+  .value-equation{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12.5px; }
+  .value-equation .ve-term{ background:var(--bg); border:1px solid var(--line); border-radius:20px; padding:6px 14px; font-weight:600; color:var(--ink); }
   .value-equation .ve-term.result{ background:var(--good-soft); border-color:var(--good-soft-line); color:var(--good); }
   .value-equation .ve-op{ color:var(--ink-soft); font-weight:600; }
   .ve-tag{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em; color:var(--amr); margin:26px 0 10px; }
   .ve-tag:first-of-type{ margin-top:0; }
   .exec-num .en-sub{ font-size:10px; color:var(--ink-soft); margin-top:9px; padding-top:8px; border-top:1px dashed var(--line); line-height:1.7; font-family:'IBM Plex Mono',ui-monospace,monospace; }
   .exec-fin .ef-sub{ font-size:11px; color:var(--ink-soft); margin-top:-2px; margin-bottom:2px; }
-  .value-funnel{ display:flex; flex-direction:column; margin-top:14px; }
-  .funnel-stage{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:13px 16px; text-align:left; }
-  .funnel-stage .fs-tag{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:10px; color:var(--amr); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
-  .funnel-stage .fs-desc{ font-size:13px; font-weight:600; color:var(--ink); }
+  .value-funnel{ display:flex; flex-direction:column; margin-top:4px; }
+  .funnel-stage{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 16px; text-align:left; }
+  .funnel-stage .fs-tag{ font-size:12px; font-weight:700; color:var(--ink); margin-bottom:5px; }
+  .funnel-stage .fs-note{ font-size:10.5px; color:var(--ink-soft); margin-bottom:4px; }
+  .funnel-stage .fs-desc{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:17px; font-weight:700; color:var(--amr); font-variant-numeric:tabular-nums; }
+  .funnel-stage .fs-desc .fs-unit{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:11px; font-weight:600; color:var(--ink-soft); margin-left:4px; }
   .funnel-stage.final{ background:var(--good-soft); border-color:var(--good-soft-line); text-align:center; }
   .funnel-stage.final .fs-tag{ color:var(--good); }
-  .funnel-stage.final .ef-num{ margin-top:8px; }
-  .funnel-arrow{ text-align:center; font-size:15px; color:var(--ink-soft); padding:2px 0; line-height:1.4; }
+  .funnel-stage.final .fs-unit{ font-size:11px; color:var(--ink-soft); font-weight:600; }
+  .funnel-arrow{ text-align:center; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px; color:var(--ink-soft); padding:7px 0; line-height:1.8; }
   .rm2-card .eb-link{ font-size:11.5px; color:var(--amr); margin-top:10px; }
 
   footer{ margin-top:44px; padding-top:20px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-soft); }
@@ -335,7 +338,7 @@
   </div>
 
   <div class="eyebrow">POLYMEDX · CSH PMS P1 VALUE REPORT</div>
-  <h1 class="serif">藥品配送模式轉型：AMR導入效益與下一步</h1>
+  <h1 class="serif">中山醫學大學附設醫院 | AMR 急診藥品配送效益分析報告</h1>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="exec">總覽</button>
@@ -354,8 +357,10 @@
       <p>初步觀察顯示，AMR 可將人員由「全程隨行」轉為「兩端交接」，降低單趟任務的人員綁定時間；後續將以更多任務驗證實際可回收工時與流程效益。</p>
     </div>
 
-    <div class="value-equation">
-      <span class="ve-term">Technical Value</span><span class="ve-op">×</span><span class="ve-term">Adoption</span><span class="ve-op">=</span><span class="ve-term result">Realized Value</span>
+    <div class="value-equation-box">
+      <div class="value-equation">
+        <span class="ve-term">Technical Value</span><span class="ve-op">×</span><span class="ve-term">Adoption</span><span class="ve-op">=</span><span class="ve-term result">Realized Value</span>
+      </div>
     </div>
 
     <div class="ve-tag">TECHNICAL VALUE</div>
@@ -366,13 +371,14 @@
         <div class="en-sub">Human Touch Time / Task<br>人員實際投入時間下降<br>Before 5:00 → After 3:00</div>
       </div>
       <div class="exec-num good">
-        <div class="en-num">86%</div>
+        <div class="en-num">100%</div>
         <div class="en-lbl">Process Failure Rate</div>
-        <div class="en-sub">流程失效改善率<br>Before 12.3% → After 1.8%</div>
+        <div class="en-sub">流程失效改善率（不含藥師劑量誤判，假設AMR流程失誤趨近於0）<br>Before 10.5% → After ~0%</div>
       </div>
       <div class="exec-num good">
-        <div class="en-num">100%</div>
+        <div class="en-num">77.3%</div>
         <div class="en-lbl">Autonomous Task Time<br>任務時間由 AMR 自主執行</div>
+        <div class="en-sub">原本整趟100%人工，現已有77.3%改由AMR配送<br>Before 0% → After 77.3%</div>
       </div>
     </div>
 
@@ -416,20 +422,47 @@
     <div class="exec-fin">
       <div class="ef-lbl">Potential Capacity-Enabled Value</div>
       <div class="ef-sub">Scenario estimate, subject to validation</div>
-      <div class="formula-box" style="text-align:left; margin:14px 0;">AMR 年度價值 ＝ 每趟可回收人力時間 × 年配送需求 × AMR 可承接率 × 實際採用率
+      <div class="ef-num" id="exec-fin-num-k" style="margin-top:6px;">—</div>
+      <div class="ef-note" style="margin-bottom:14px;">/ year</div>
+      <div class="formula-box" style="text-align:left; margin:0 0 16px;">AMR 年度價值 ＝ 每趟可回收人力時間 × 年配送需求 × AMR 可承接率 × 實際採用率
 → Recovered Clinical Hours → Capacity Conversion → Incremental Revenue × Contribution Margin</div>
+
       <div class="value-funnel">
-        <div class="funnel-stage"><div class="fs-tag">Adoption</div><div class="fs-desc">Addressable Tasks × Actual Usage</div></div>
-        <div class="funnel-arrow">↓</div>
-        <div class="funnel-stage"><div class="fs-tag">Operational</div><div class="fs-desc">Recovered Professional Hours</div></div>
-        <div class="funnel-arrow">↓</div>
-        <div class="funnel-stage"><div class="fs-tag">Capacity</div><div class="fs-desc">Additional Patient Services</div></div>
-        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">① 年配送需求</div>
+          <div class="fs-note">以人工運送raw data估算</div>
+          <div class="fs-desc">10,000 <span class="fs-unit">Tasks/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × AMR可承接率 80%<br>↓ × 實際採用率 75%</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">② AMR實際承接</div>
+          <div class="fs-desc">6,000 <span class="fs-unit">Tasks/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × 每趟回收人力 3 min</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">③ 回收人工工時</div>
+          <div class="fs-desc">300 <span class="fs-unit">hr/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × 專業人員占比 50%</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">④ 護理／藥師專業工時回流</div>
+          <div class="fs-desc">150 <span class="fs-unit">hr/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × Capacity Conversion 30%</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">⑤ 額外病人服務量</div>
+          <div class="fs-desc">90 <span class="fs-unit">Patient Services/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × 每人次增量收入 NT$15K</div>
+        <div class="funnel-stage">
+          <div class="fs-tag">⑥ Incremental Revenue</div>
+          <div class="fs-desc">NT$1.35M <span class="fs-unit">/year</span></div>
+        </div>
+        <div class="funnel-arrow">↓ × Contribution Margin 40%</div>
         <div class="funnel-stage final">
-          <div class="fs-tag">Financial</div>
-          <div class="fs-desc">Incremental Revenue × 40% Contribution Margin</div>
-          <div class="ef-num" id="exec-fin-num-k">—</div>
-          <div class="ef-note">Potential Financial Value</div>
+          <div class="fs-tag">⑦ Potential Financial Value</div>
+          <div class="ef-num" id="exec-fin-num-k2" style="margin-top:6px;">—</div>
+          <div class="fs-unit">/ year</div>
         </div>
       </div>
     </div>
@@ -1565,6 +1598,8 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
 
     var execEl = document.getElementById('exec-fin-num-k');
     if(execEl) execEl.textContent = fmtK(financialImpact);
+    var execEl2 = document.getElementById('exec-fin-num-k2');
+    if(execEl2) execEl2.textContent = fmtK(financialImpact);
   }
 
   ['trips','days','wage','caseMin','convRate','revenue','margin'].forEach(function(id){
