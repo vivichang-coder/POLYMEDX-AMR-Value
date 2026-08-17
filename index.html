@@ -149,7 +149,7 @@
   .advantage-list ul{ margin:0; padding-left:18px; font-size:12px; color:var(--ink-soft); }
   .advantage-list li{ margin-bottom:5px; }
 
-  /* KPI Register tab: Before/After metric comparison table */
+  /* Before/After tabs: metric comparison table */
   .kpi-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
   .kpi-table{ width:100%; border-collapse:collapse; font-size:11.5px; min-width:900px; }
   .kpi-table th, .kpi-table td{ padding:9px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
@@ -310,6 +310,67 @@
   footer li{ margin-bottom:4px; }
 
   @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+
+  /* Account tab */
+  .account-list{ display:flex; flex-direction:column; gap:10px; }
+  .account-item{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  .account-item .ai-lbl{ font-size:12px; color:var(--ink-soft); font-family:'IBM Plex Mono',ui-monospace,monospace; letter-spacing:.05em; }
+  .account-item .ai-val{ font-size:15px; font-weight:700; color:var(--ink); }
+
+  /* Use Case tab */
+  .usecase-staff-table{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:420px; }
+  .usecase-staff-table th, .usecase-staff-table td{ padding:10px 12px; border-bottom:1px solid var(--line); text-align:center; }
+  .usecase-staff-table tbody tr:last-child td{ border-bottom:none; }
+  .usecase-staff-table thead th{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:10.5px; color:var(--ink-soft); background:var(--bg); }
+  .usecase-staff-table td:first-child{ text-align:left; font-weight:600; color:var(--ink); }
+  .usecase-staff-table input{ width:76px; padding:6px 8px; border:1px solid var(--line); border-radius:6px; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12.5px; background:var(--bg); color:var(--ink); text-align:center; }
+  .upload-box{ background:var(--panel); border:1px dashed var(--line); border-radius:14px; padding:18px 20px; margin-bottom:22px; }
+  .upload-box input[type=file]{ font-size:12px; color:var(--ink-soft); max-width:100%; }
+  .upload-hint{ font-size:11.5px; color:var(--ink-soft); margin:8px 0 0; }
+  .upload-preview{ margin-top:12px; }
+  .upload-preview img{ max-width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+  .upload-note{ font-size:11.5px; color:var(--amr); margin:10px 0 0; }
+  .distance-mock{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:8px; }
+  .distance-mock svg{ display:block; width:100%; height:auto; }
+  .distance-mock-caption{ font-size:11.5px; color:var(--ink-soft); margin:10px 0 0; }
+
+  /* TAMS / Service tab */
+  .tams-mock{ display:grid; grid-template-columns:1.3fr 1fr; gap:14px; margin-bottom:14px; }
+  @media(max-width:640px){ .tams-mock{ grid-template-columns:1fr; } }
+  .tams-map{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:10px; }
+  .tams-map svg{ display:block; width:100%; height:auto; }
+  .tams-map-caption{ font-size:10.5px; color:var(--ink-soft); text-align:center; margin-top:6px; }
+  .tams-status{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .tams-status-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .tams-status-head .ts-id{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:15px; font-weight:700; }
+  .tams-status-head .ts-state{ font-size:10.5px; font-weight:600; color:var(--amr); background:var(--amr-soft); border-radius:20px; padding:3px 10px; }
+  .ts-row{ display:flex; justify-content:space-between; gap:10px; font-size:12px; padding:7px 0; border-bottom:1px solid var(--line); }
+  .ts-row:last-child{ border-bottom:none; }
+  .ts-row .ts-lbl{ color:var(--ink-soft); flex:0 0 auto; }
+  .ts-row .ts-val{ color:var(--ink); font-weight:600; text-align:right; }
+  .ts-row .ts-val.mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px; font-weight:500; word-break:break-all; }
+  .tams-fleet{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 18px; margin-bottom:22px; }
+  .tf-title{ font-size:12px; font-weight:600; color:var(--ink-soft); margin-bottom:10px; }
+  .tf-row{ display:flex; align-items:center; gap:8px; font-size:13px; padding:6px 0; }
+  .tf-dot{ width:8px; height:8px; border-radius:50%; flex:0 0 auto; }
+  .tf-dot.on{ background:var(--amr); }
+  .tf-dot.off{ background:var(--ink-soft); }
+  .tf-pct{ margin-left:auto; font-family:'IBM Plex Mono',ui-monospace,monospace; font-weight:600; }
+
+  .sla-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+  @media(max-width:640px){ .sla-grid{ grid-template-columns:1fr; } }
+  .sla-card{ border-radius:14px; padding:16px 17px; border:1px solid var(--line); background:var(--panel); }
+  .sla-card .sla-title{ font-size:13.5px; font-weight:700; margin-bottom:4px; }
+  .sla-card .sla-target{ font-size:11px; color:var(--ink-soft); margin-bottom:12px; }
+  .sla-card .sla-current{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:20px; font-weight:700; }
+  .sla-card .sla-status{ font-size:12px; font-weight:600; margin-top:4px; }
+  .sla-card .sla-note{ font-size:10.5px; color:var(--ink-soft); margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); }
+  .sla-card.good{ border-color:var(--good-soft-line); background:var(--good-soft); }
+  .sla-card.good .sla-current, .sla-card.good .sla-status{ color:var(--good); }
+  .sla-card.pending{ border-color:var(--warn-soft-line); background:var(--warn-soft); }
+  .sla-card.pending .sla-current{ color:var(--ink-soft); font-style:italic; }
+  .sla-card.pending .sla-status{ color:var(--warn-strong); }
+
 </style>
 </head>
 <body>
@@ -327,7 +388,7 @@
       </div>
     </div>
     <div class="databar-panel" id="panel-import" hidden>
-      <p class="databar-desc">上傳符合範本格式的 CSV 或 Excel（.xlsx／.xls）檔案——可以是「滿意度問卷／UI缺口」範本，也可以是「人工／AMR送藥逐趟記錄」範本，系統會自動判斷檔案類型並更新對應區塊。（Value分頁的敘事數字，以及各分頁的分析文字，屬團隊撰寫的解讀，不隨匯入資料自動改寫；逐趟記錄匯入後，會在Value分頁新增一個「目前資料試算」區塊呈現重新計算的結果，供對照。）</p>
+      <p class="databar-desc">上傳符合範本格式的 CSV 或 Excel（.xlsx／.xls）檔案——可以是「滿意度問卷／UI缺口」範本，也可以是「人工／AMR送藥逐趟記錄」範本，系統會自動判斷檔案類型並更新對應區塊。（Diff Value分頁的敘事數字，以及各分頁的分析文字，屬團隊撰寫的解讀，不隨匯入資料自動改寫；逐趟記錄匯入後，會在Diff Value分頁新增一個「目前資料試算」區塊呈現重新計算的結果，供對照。）</p>
       <div class="databar-controls">
         <input type="file" id="file-input" accept=".csv,.xlsx,.xls" />
         <button class="databar-btn ghost" id="btn-template" type="button">顯示問卷範本CSV</button>
@@ -359,726 +420,758 @@
   <h1 class="serif">中山醫學大學附設醫院 | AMR 急診藥品配送效益分析報告</h1>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="exec">Overview</button>
-    <button class="tab-btn" data-tab="value">Value</button>
+    <button class="tab-btn active" data-tab="account">Account</button>
+    <button class="tab-btn" data-tab="usecase">Use Case</button>
+    <button class="tab-btn" data-tab="diffvalue">Diff Value</button>
+    <button class="tab-btn" data-tab="before">Before</button>
+    <button class="tab-btn" data-tab="after">After</button>
+    <button class="tab-btn" data-tab="roadmap">Roadmap</button>
     <button class="tab-btn" data-tab="workflow">Workflow &amp; Trust</button>
-    <button class="tab-btn" data-tab="next">Next</button>
-    <button class="tab-btn" data-tab="kpi">KPI Register</button>
+    <button class="tab-btn" data-tab="service">Service &amp; SLA</button>
     <button class="tab-btn" data-tab="appendix">Appendix</button>
   </div>
 
   <!-- ======================================================= -->
-  <!-- OVERVIEW TAB -->
+  <!-- ACCOUNT TAB -->
   <!-- ======================================================= -->
-  <div class="tab-panel active" id="panel-exec">
-
-    <div class="exec-thesis">
-      <p>初步觀察顯示，AMR 可將人員由「全程隨行」轉為「兩端交接」，降低單趟任務的人員綁定時間；後續將以更多任務驗證實際可回收工時與流程效益。</p>
+<div class="tab-panel active" id="panel-account">
+    <div class="part-header">
+      <div class="part-eyebrow">ACCOUNT</div>
+      <h2 class="serif">醫院基本資料</h2>
+      <div class="part-sub">Account 對應窗口與合作資訊</div>
     </div>
-
-    <div class="value-equation-box">
-      <div class="value-equation">
-        <span class="ve-term">Technical Value</span><span class="ve-op">×</span><span class="ve-term">Adoption</span><span class="ve-op">=</span><span class="ve-term result">Realized Value</span>
-      </div>
-    </div>
-
-    <div class="ve-tag">TECHNICAL VALUE</div>
-    <div class="exec-num-row">
-      <div class="exec-num good">
-        <div class="en-num">−40%</div>
-        <div class="en-lbl">Human Touch Time</div>
-        <div class="en-sub">Human Touch Time / Task<br>人員實際投入時間下降<br>Before 5:00 → After 3:00</div>
-      </div>
-      <div class="exec-num good">
-        <div class="en-num">77.3%</div>
-        <div class="en-lbl">Autonomous Task Time<br>任務時間由 AMR 自主執行</div>
-        <div class="en-sub">原本整趟100%人工，現已有77.3%改由AMR配送<br>Before 0% → After 77.3%</div>
-      </div>
-      <div class="exec-num good">
-        <div class="en-num">25% → 100%</div>
-        <div class="en-lbl">Delivery Traceability Rate</div>
-        <div class="en-sub">+75 個百分點（pp）——人工僅「藥師核發」節點有系統紀錄，其餘三節點需靠備註／記憶補述；AMR因系統自動記錄，四節點全數可追溯</div>
-      </div>
-      <div class="exec-num good">
-        <div class="en-num">100%</div>
-        <div class="en-lbl">Process Failure Improvement Rate</div>
-        <div class="en-sub">流程失效改善率（不含藥師劑量誤判，假設AMR流程失誤趨近於0）<br>Before 10.5% → After ~0%</div>
-      </div>
-    </div>
-
-    <div class="hero" style="margin-bottom:22px;">
-      <div class="hero-title">AMR 的價值並非「送得比人快」，而是換取人力釋放與流程數位化</div>
-      <div class="hero-note" style="margin-bottom:14px;">AMR 整體 Lead Time 變長，但 Human Touch Time 下降</div>
-      <div class="track-row">
-        <div class="track-label"><span>人工配送（Before）</span><span class="total">5m00s，全程需要人力</span></div>
-        <div class="track"><div class="seg human" style="width:100%;">100% 人力</div></div>
-      </div>
-      <div class="track-row" style="margin-top:16px;">
-        <div class="track-label"><span>AMR配送（After）</span><span class="total">13m13s，AMR自主完成大部分路程</span></div>
-        <div class="track">
-          <div class="seg human" style="width:22.7%;">22.7% 人力</div>
-          <div class="seg amr" style="width:77.3%;">77.3% AMR自主</div>
-        </div>
-      </div>
-      <div class="legend" style="margin-top:14px;">
-        <span><i class="dot" style="background:var(--human);"></i>需要人力</span>
-        <span><i class="dot" style="background:var(--amr);"></i>AMR自主，人力可脫手</span>
-      </div>
-      <div class="realdata-grid" style="margin-top:16px;">
-        <div class="realstat"><div class="rs-num">5:00 → 13:13</div><div class="rs-lbl">Task Lead Time<br>單趟總耗時</div></div>
-        <div class="realstat good"><div class="rs-num">5:00 → 3:00</div><div class="rs-lbl">Human Touch Time<br>人員實際投入時間</div></div>
-        <div class="realstat"><div class="rs-num">+10:12</div><div class="rs-lbl">Autonomous Time Δ<br>新增的AMR自主時間</div></div>
-      </div>
-    </div>
-
-    <div class="ve-tag">ADOPTION</div>
-    <div class="exec-trust">
-      <div class="ef-lbl">Adoption Readiness Gap｜技術價值尚未完全轉化為實際使用</div>
-      <div class="et-nums">
-        <div class="et-num-block"><div class="et-num high">4.2</div><div class="et-tag">預期可靠度<br>（滿分5）</div></div>
-        <div class="et-vs">vs</div>
-        <div class="et-num-block"><div class="et-num low">2.4</div><div class="et-tag">預期降低工作負擔<br>（滿分5）</div></div>
-      </div>
-      <div class="ef-note">醫護對AMR「能穩定完成任務」評分高，但尚未實際感受到工作被減輕——這個落差與UI/流程易用性缺口高度相關</div>
-      <div class="ef-note" style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--warn-soft-line);">後續將觀察 Actual Adoption Rate XX%（待更新）——態度（attitude）要先轉化為實際使用行為（behavior），才會真正變成 Realized Value</div>
-    </div>
-
-    <div class="ve-tag">REALIZED VALUE</div>
-    <div class="exec-fin">
-      <div class="ef-lbl">Potential Capacity-Enabled Value</div>
-      <div class="ef-sub">Scenario estimate, subject to validation</div>
-      <div class="ef-num" id="exec-fin-num-k" style="margin-top:6px;">—</div>
-      <div class="ef-note" style="margin-bottom:14px;">/ year</div>
-      <div class="formula-box" style="text-align:left; margin:0 0 16px;">AMR 年度價值 ＝ 每趟可回收人力時間 × 年配送需求 × AMR 可承接率 × 實際採用率
-→ Recovered Clinical Hours → Capacity Conversion → Incremental Revenue × Contribution Margin</div>
-
-      <div class="value-funnel">
-        <div class="funnel-stage">
-          <div class="fs-tag">① 年配送需求</div>
-          <div class="fs-note">以人工運送raw data估算</div>
-          <div class="fs-desc">10,000 <span class="fs-unit">Tasks/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × AMR可承接率 80%<br>↓ × 實際採用率 75%</div>
-        <div class="funnel-stage">
-          <div class="fs-tag">② AMR實際承接</div>
-          <div class="fs-desc">6,000 <span class="fs-unit">Tasks/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × 每趟回收人力 3 min</div>
-        <div class="funnel-stage">
-          <div class="fs-tag">③ 回收人工工時</div>
-          <div class="fs-desc">300 <span class="fs-unit">hr/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × 專業人員占比 50%</div>
-        <div class="funnel-stage">
-          <div class="fs-tag">④ 護理／藥師專業工時回流</div>
-          <div class="fs-desc">150 <span class="fs-unit">hr/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × Capacity Conversion 30%</div>
-        <div class="funnel-stage">
-          <div class="fs-tag">⑤ 額外病人服務量</div>
-          <div class="fs-desc">90 <span class="fs-unit">Patient Services/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × 每人次增量收入 NT$15K</div>
-        <div class="funnel-stage">
-          <div class="fs-tag">⑥ Incremental Revenue</div>
-          <div class="fs-desc">NT$1.35M <span class="fs-unit">/year</span></div>
-        </div>
-        <div class="funnel-arrow">↓ × Contribution Margin 40%</div>
-        <div class="funnel-stage final">
-          <div class="fs-tag">⑦ Potential Financial Value</div>
-          <div class="ef-num" id="exec-fin-num-k2" style="margin-top:6px;">—</div>
-          <div class="fs-unit">/ year</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-title" style="margin-top:30px;"><h3>優化 Roadmap</h3></div>
-    <div class="roadmap2">
-      <div class="rm2-card">
-        <div class="rm2-when">Phase 1 — Workflow Optimization</div>
-        <div class="rm2-title">Human Touch Time ↓20%</div>
-        <div class="rm2-desc">藥品運送進度追溯不透明，藥師與護理師無法即時掌握，造成多餘溝通成本，導致可追溯性與效益數字都會被稀釋。</div>
-        <div class="eb-link">→ 詳見「Next」分頁</div>
-      </div>
-      <div class="rm2-card stage2">
-        <div class="rm2-when">Phase 2 — Context-aware Navigation</div>
-        <div class="rm2-title">Navigation Time ↓20%</div>
-        <div class="rm2-desc">先以規則調整解決人流與禮讓問題，導入智慧監視系統，即時辨識院內應優先禮讓的物件（如移動中的病床、輪椅、急救推車等），以落實院內禮讓原則，才能真正達到「等待與禮讓」的社交導航能力。</div>
-        <div class="eb-link">→ 詳見「Next」分頁</div>
-      </div>
-    </div>
-
-    <div class="caveat-box" style="margin-top:20px;">
-      <div class="cv-title">⚠ 讀這份報告前要知道</div>
-      <p>AMR正式環境樣本目前僅9趟，滿意度調查僅<span id="exec-caveat-ratio">5/16</span>位受訪者填答——本頁數字方向正確，但屬早期估算。標示 <span class="badge-live">🔄 持續更新</span> 的區塊，會隨資料增加而更新，正式決策建議待樣本擴大後複核。</p>
+    <div class="account-list">
+      <div class="account-item"><div class="ai-lbl">醫院名稱</div><div class="ai-val">中山醫學大學附設醫院</div></div>
+      <div class="account-item"><div class="ai-lbl">Account Manager</div><div class="ai-val">Jemwei</div></div>
+      <div class="account-item"><div class="ai-lbl">Sales</div><div class="ai-val">Jason</div></div>
     </div>
   </div>
 
   <!-- ======================================================= -->
-  <!-- VALUE TAB -->
+  <!-- USE CASE TAB -->
   <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-value">
+<div class="tab-panel" id="panel-usecase">
     <div class="part-header">
-      <div class="part-eyebrow">SEC. 1</div>
-      <h2 class="serif">Value 導入效益</h2>
-      <div class="part-sub">以平均一趟送藥為單位，量化時間結構的質變，並推導至醫院財務影響與藥事法規可追溯性</div>
+      <div class="part-eyebrow">USE CASE</div>
+      <h2 class="serif">院方送藥現況</h2>
+      <div class="part-sub">請填入目前人工送藥的作業量、人力配置與場域資訊，作為後續效益試算與場域規劃的基礎資料</div>
     </div>
 
-    <div class="section-title"><span class="section-num">1.1</span><h3>平均一趟送藥：前後時間結構</h3><span class="badge-live">🔄 AMR樣本持續累積中</span></div>
-
-    <div class="realdata-grid">
-      <div class="realstat good">
-        <div class="rs-num">77.3 pp</div>
-        <div class="rs-lbl">人力必要佔用比例下降<br>（100% → 22.7%；pp＝百分點，兩個百分比直接相減的差距，非成長倍數）</div>
-      </div>
-      <div class="realstat">
-        <div class="rs-num">120s</div>
-        <div class="rs-lbl">每趟真實節省人力工時<br>（可重新分配的時間池，是Financial Impact的計算基礎）</div>
-      </div>
-      <div class="card improve" style="text-align:left; padding:13px 12px;">
-        <div class="tag">後續優化目標</div>
-        <div class="rs-num" style="font-size:18px;">612s</div>
-        <div class="rs-lbl" style="margin-top:6px;">AMR自主導航時間——透過路徑規劃與速度調校，這段預期可再壓縮，是接下來效能優化的主要對象，而非固定不變的成本</div>
-      </div>
+    <div class="section-title"><span class="section-num">U.1</span><h3>每日作業量</h3></div>
+    <div class="calc-inputs" style="grid-template-columns:repeat(2,1fr); margin-bottom:22px;">
+      <div class="field"><label>每日送藥趟次</label><input type="number" id="uc-trips" placeholder="例如：50"></div>
+      <div class="field"><label>每日藥單張數</label><input type="number" id="uc-orders" placeholder="例如：120"></div>
     </div>
 
-    <div class="grid2" style="margin-top:14px;">
-      <div class="card">
-        <div class="tag">總任務時間變化</div>
-        <h4>單趟總時程（Wall-clock Time）</h4>
-        <div class="formula">ΔT = 793s − 300s = +493s</div>
-        <div class="result up">+164%</div>
-        <p class="meaning">總時程變長屬預期結果（AMR含同層往返、安全避讓路徑）。誠實揭露此trade-off，是後續「質變而非量變」論點的鋪陳。</p>
-      </div>
-      <div class="card">
-        <div class="tag">人力時間變化</div>
-        <h4>核心賣點：人力必要佔用時間反而下降</h4>
-        <div class="formula">Before：300s 全程需要人（100%）
+    <div class="section-title"><span class="section-num">U.2</span><h3>人力配置（三班制人數）</h3></div>
+    <div class="kpi-scroll" style="margin-bottom:22px;">
+      <table class="usecase-staff-table">
+        <thead><tr><th>角色</th><th>日班</th><th>小夜班</th><th>大夜班</th></tr></thead>
+        <tbody>
+          <tr><td>護理師</td><td><input type="number" id="uc-nurse-d"></td><td><input type="number" id="uc-nurse-e"></td><td><input type="number" id="uc-nurse-n"></td></tr>
+          <tr><td>藥師</td><td><input type="number" id="uc-pharm-d"></td><td><input type="number" id="uc-pharm-e"></td><td><input type="number" id="uc-pharm-n"></td></tr>
+          <tr><td>傳送人力</td><td><input type="number" id="uc-runner-d"></td><td><input type="number" id="uc-runner-e"></td><td><input type="number" id="uc-runner-n"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title"><span class="section-num">U.3</span><h3>人力成本與場域距離</h3></div>
+    <div class="calc-inputs" style="margin-bottom:22px;">
+      <div class="field"><label>護理師平均時薪(NT$)</label><input type="number" id="uc-wage-nurse"></div>
+      <div class="field"><label>藥師平均時薪(NT$)</label><input type="number" id="uc-wage-pharm"></div>
+      <div class="field"><label>傳送人力平均時薪(NT$)</label><input type="number" id="uc-wage-runner"></div>
+      <div class="field"><label>場域平均距離(公尺)</label><input type="number" id="uc-distance"></div>
+    </div>
+
+    <div class="section-title"><span class="section-num">U.4</span><h3>空間掃描檔上傳</h3><span class="badge-live">🔄 2D→3D Rendering</span></div>
+    <div class="section-note">上傳院內平面圖（圖片或PDF），作為後續3D場域建模與AMR路徑規劃的輸入</div>
+    <div class="upload-box">
+      <input type="file" id="uc-floorplan-input" accept="image/*,.pdf" />
+      <p class="upload-hint">支援 JPG／PNG／PDF，建議包含比例尺或已知距離標示，以利場域尺寸換算</p>
+      <div class="upload-preview" id="uc-floorplan-preview" hidden><img id="uc-floorplan-img" alt="平面圖預覽"></div>
+      <p class="upload-note">上傳後將用於自動生成3D場域模型（3D Rendering）——此功能串接開發中，目前僅提供2D預覽</p>
+    </div>
+
+    <div class="section-title"><span class="section-num">U.5</span><h3>場域尺寸量測（示意）</h3></div>
+    <div class="section-note">示意：使用者可於上傳的平面圖上點選 A、B 兩點，系統即顯示兩點間的實際場域直線距離（依比例尺換算）</div>
+    <div class="distance-mock">
+
+      <svg viewBox="0 0 400 220" role="img" aria-label="場域尺寸量測示意圖">
+        <rect x="1" y="1" width="398" height="218" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+        <path d="M30 30 H370 V190 H210 V130 H30 Z" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+        <circle cx="80" cy="70" r="7" fill="var(--amr)"/>
+        <text x="80" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="var(--amr)" font-family="IBM Plex Mono, ui-monospace, monospace">A</text>
+        <circle cx="300" cy="150" r="7" fill="var(--human)"/>
+        <text x="300" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="var(--human)" font-family="IBM Plex Mono, ui-monospace, monospace">B</text>
+        <line x1="80" y1="70" x2="300" y2="150" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="190" y="200" text-anchor="middle" font-size="12" fill="var(--ink)" font-family="'Noto Sans TC','PingFang TC',sans-serif">A → B　直線距離：18.6 m（示意值）</text>
+      </svg>
+
+      <p class="distance-mock-caption">上圖為UI示意，非即時運算結果；實際功能將於平面圖上傳並完成比例尺校正後開放</p>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- DIFF VALUE TAB -->
+  <!-- ======================================================= -->
+<div class="tab-panel" id="panel-diffvalue">
+    <div class="part-header">
+      <div class="part-eyebrow">DIFF VALUE</div>
+      <h2 class="serif">Diff Value｜技術價值、採用度與導入效益</h2>
+      <div class="part-sub">從 Technical Value 的量化提升，到 Adoption 的落差，推導 Realized Value 的財務潛力；並延伸至平均一趟送藥的時間結構、Financial Impact 試算與藥事法規可追溯性</div>
+    </div>
+
+<div class="exec-thesis">
+<p>初步觀察顯示，AMR 可將人員由「全程隨行」轉為「兩端交接」，降低單趟任務的人員綁定時間；後續將以更多任務驗證實際可回收工時與流程效益。</p>
+</div>
+
+<div class="value-equation-box">
+<div class="value-equation">
+<span class="ve-term">Technical Value</span><span class="ve-op">×</span><span class="ve-term">Adoption</span><span class="ve-op">=</span><span class="ve-term result">Realized Value</span>
+</div>
+</div>
+
+<div class="ve-tag">TECHNICAL VALUE</div>
+<div class="exec-num-row">
+<div class="exec-num good">
+<div class="en-num">−40%</div>
+<div class="en-lbl">Human Touch Time</div>
+<div class="en-sub">Human Touch Time / Task<br/>人員實際投入時間下降<br/>Before 5:00 → After 3:00</div>
+</div>
+<div class="exec-num good">
+<div class="en-num">77.3%</div>
+<div class="en-lbl">Autonomous Task Time<br/>任務時間由 AMR 自主執行</div>
+<div class="en-sub">原本整趟100%人工，現已有77.3%改由AMR配送<br/>Before 0% → After 77.3%</div>
+</div>
+<div class="exec-num good">
+<div class="en-num">25% → 100%</div>
+<div class="en-lbl">Delivery Traceability Rate</div>
+<div class="en-sub">+75 個百分點（pp）——人工僅「藥師核發」節點有系統紀錄，其餘三節點需靠備註／記憶補述；AMR因系統自動記錄，四節點全數可追溯</div>
+</div>
+<div class="exec-num good">
+<div class="en-num">100%</div>
+<div class="en-lbl">Process Failure Improvement Rate</div>
+<div class="en-sub">流程失效改善率（不含藥師劑量誤判，假設AMR流程失誤趨近於0）<br/>Before 10.5% → After ~0%</div>
+</div>
+</div>
+
+<div class="hero" style="margin-bottom:22px;">
+<div class="hero-title">AMR 的價值並非「送得比人快」，而是換取人力釋放與流程數位化</div>
+<div class="hero-note" style="margin-bottom:14px;">AMR 整體 Lead Time 變長，但 Human Touch Time 下降</div>
+<div class="track-row">
+<div class="track-label"><span>人工配送（Before）</span><span class="total">5m00s，全程需要人力</span></div>
+<div class="track"><div class="seg human" style="width:100%;">100% 人力</div></div>
+</div>
+<div class="track-row" style="margin-top:16px;">
+<div class="track-label"><span>AMR配送（After）</span><span class="total">13m13s，AMR自主完成大部分路程</span></div>
+<div class="track">
+<div class="seg human" style="width:22.7%;">22.7% 人力</div>
+<div class="seg amr" style="width:77.3%;">77.3% AMR自主</div>
+</div>
+</div>
+<div class="legend" style="margin-top:14px;">
+<span><i class="dot" style="background:var(--human);"></i>需要人力</span>
+<span><i class="dot" style="background:var(--amr);"></i>AMR自主，人力可脫手</span>
+</div>
+<div class="realdata-grid" style="margin-top:16px;">
+<div class="realstat"><div class="rs-num">5:00 → 13:13</div><div class="rs-lbl">Task Lead Time<br/>單趟總耗時</div></div>
+<div class="realstat good"><div class="rs-num">5:00 → 3:00</div><div class="rs-lbl">Human Touch Time<br/>人員實際投入時間</div></div>
+<div class="realstat"><div class="rs-num">+10:12</div><div class="rs-lbl">Autonomous Time Δ<br/>新增的AMR自主時間</div></div>
+</div>
+</div>
+
+<div class="ve-tag">ADOPTION</div>
+<div class="exec-trust">
+<div class="ef-lbl">Adoption Readiness Gap｜技術價值尚未完全轉化為實際使用</div>
+<div class="et-nums">
+<div class="et-num-block"><div class="et-num high">4.2</div><div class="et-tag">預期可靠度<br/>（滿分5）</div></div>
+<div class="et-vs">vs</div>
+<div class="et-num-block"><div class="et-num low">2.4</div><div class="et-tag">預期降低工作負擔<br/>（滿分5）</div></div>
+</div>
+<div class="ef-note">醫護對AMR「能穩定完成任務」評分高，但尚未實際感受到工作被減輕——這個落差與UI/流程易用性缺口高度相關</div>
+<div class="ef-note" style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--warn-soft-line);">後續將觀察 Actual Adoption Rate XX%（待更新）——態度（attitude）要先轉化為實際使用行為（behavior），才會真正變成 Realized Value</div>
+</div>
+
+<div class="ve-tag">REALIZED VALUE</div>
+<div class="exec-fin">
+<div class="ef-lbl">Potential Capacity-Enabled Value</div>
+<div class="ef-sub">Scenario estimate, subject to validation</div>
+<div class="ef-num" id="exec-fin-num-k" style="margin-top:6px;">—</div>
+<div class="ef-note" style="margin-bottom:14px;">/ year</div>
+<div class="formula-box" style="text-align:left; margin:0 0 16px;">AMR 年度價值 ＝ 每趟可回收人力時間 × 年配送需求 × AMR 可承接率 × 實際採用率
+→ Recovered Clinical Hours → Capacity Conversion → Incremental Revenue × Contribution Margin</div>
+<div class="value-funnel">
+<div class="funnel-stage">
+<div class="fs-tag">① 年配送需求</div>
+<div class="fs-note">以人工運送raw data估算</div>
+<div class="fs-desc">10,000 <span class="fs-unit">Tasks/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × AMR可承接率 80%<br/>↓ × 實際採用率 75%</div>
+<div class="funnel-stage">
+<div class="fs-tag">② AMR實際承接</div>
+<div class="fs-desc">6,000 <span class="fs-unit">Tasks/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × 每趟回收人力 3 min</div>
+<div class="funnel-stage">
+<div class="fs-tag">③ 回收人工工時</div>
+<div class="fs-desc">300 <span class="fs-unit">hr/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × 專業人員占比 50%</div>
+<div class="funnel-stage">
+<div class="fs-tag">④ 護理／藥師專業工時回流</div>
+<div class="fs-desc">150 <span class="fs-unit">hr/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × Capacity Conversion 30%</div>
+<div class="funnel-stage">
+<div class="fs-tag">⑤ 額外病人服務量</div>
+<div class="fs-desc">90 <span class="fs-unit">Patient Services/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × 每人次增量收入 NT$15K</div>
+<div class="funnel-stage">
+<div class="fs-tag">⑥ Incremental Revenue</div>
+<div class="fs-desc">NT$1.35M <span class="fs-unit">/year</span></div>
+</div>
+<div class="funnel-arrow">↓ × Contribution Margin 40%</div>
+<div class="funnel-stage final">
+<div class="fs-tag">⑦ Potential Financial Value</div>
+<div class="ef-num" id="exec-fin-num-k2" style="margin-top:6px;">—</div>
+<div class="fs-unit">/ year</div>
+</div>
+</div>
+</div>
+
+<div class="caveat-box" style="margin-top:20px;">
+<div class="cv-title">⚠ 讀這份報告前要知道</div>
+<p>AMR正式環境樣本目前僅9趟，滿意度調查僅<span id="exec-caveat-ratio">5/16</span>位受訪者填答——本頁數字方向正確，但屬早期估算。標示 <span class="badge-live">🔄 持續更新</span> 的區塊，會隨資料增加而更新，正式決策建議待樣本擴大後複核。</p>
+</div>
+
+<div class="part-header">
+<div class="part-eyebrow">SEC. 1</div>
+<h2 class="serif">Value 導入效益</h2>
+<div class="part-sub">以平均一趟送藥為單位，量化時間結構的質變，並推導至醫院財務影響與藥事法規可追溯性</div>
+</div>
+<div class="section-title"><span class="section-num">1.1</span><h3>平均一趟送藥：前後時間結構</h3><span class="badge-live">🔄 AMR樣本持續累積中</span></div>
+<div class="realdata-grid">
+<div class="realstat good">
+<div class="rs-num">77.3 pp</div>
+<div class="rs-lbl">人力必要佔用比例下降<br/>（100% → 22.7%；pp＝百分點，兩個百分比直接相減的差距，非成長倍數）</div>
+</div>
+<div class="realstat">
+<div class="rs-num">120s</div>
+<div class="rs-lbl">每趟真實節省人力工時<br/>（可重新分配的時間池，是Financial Impact的計算基礎）</div>
+</div>
+<div class="card improve" style="text-align:left; padding:13px 12px;">
+<div class="tag">後續優化目標</div>
+<div class="rs-num" style="font-size:18px;">612s</div>
+<div class="rs-lbl" style="margin-top:6px;">AMR自主導航時間——透過路徑規劃與速度調校，這段預期可再壓縮，是接下來效能優化的主要對象，而非固定不變的成本</div>
+</div>
+</div>
+<div class="grid2" style="margin-top:14px;">
+<div class="card">
+<div class="tag">總任務時間變化</div>
+<h4>單趟總時程（Wall-clock Time）</h4>
+<div class="formula">ΔT = 793s − 300s = +493s</div>
+<div class="result up">+164%</div>
+<p class="meaning">總時程變長屬預期結果（AMR含同層往返、安全避讓路徑）。誠實揭露此trade-off，是後續「質變而非量變」論點的鋪陳。</p>
+</div>
+<div class="card">
+<div class="tag">人力時間變化</div>
+<h4>核心賣點：人力必要佔用時間反而下降</h4>
+<div class="formula">Before：300s 全程需要人（100%）
 After：藥師核發96s + 護理接收84s = 180s
 ΔHuman = 180 − 300 = −120s</div>
-        <div class="result good">−40.0%</div>
-        <p class="meaning">導航段由AMR自主完成，不再綁定任何人力——這是<b>質變而非量變</b>：人工行走是人力成本（隨時薪計算），AMR導航是資本成本（隨設備攤提計算），兩者不是同一種支出。</p>
-      </div>
-    </div>
-
-    <div class="trip-live-card" id="trip-live-1-1">
-      <div class="trip-live-head">
-        <span class="badge-live">🔄 目前資料試算</span>
-        <span class="trip-live-sub">根據頁首匯入（或內建）的逐趟原始時間戳記錄重新計算，供與上方敘事數字對照</span>
-      </div>
-      <div class="realdata-grid" style="margin-top:10px;">
-        <div class="realstat">
-          <div class="rs-num" id="tl-human-avg">—</div>
-          <div class="rs-lbl">人工送藥平均單趟耗時<br>（有效趟次 n=<span id="tl-human-n">—</span>，已排除白跑）</div>
-        </div>
-        <div class="realstat">
-          <div class="rs-num" id="tl-amr-avg">—</div>
-          <div class="rs-lbl">AMR正式環境平均單趟耗時<br>（n=<span id="tl-amr-n">—</span>）</div>
-        </div>
-        <div class="realstat">
-          <div class="rs-num" id="tl-wait-avg">—</div>
-          <div class="rs-lbl">人工藥單等待時間平均<br>（＝②前往藥局－①印出藥單）</div>
-        </div>
-      </div>
-      <p class="trip-live-note">此區塊為原始逐趟時間戳的獨立試算，與上方「300s／793s」等敘事數字來自同一份Time Study、方法論一致；但因資料清理範圍與樣本區間可能略有差異，數字未必逐位相同。上方敘事數字為效標計算表之正式結果，不會因此區塊而改變。</p>
-    </div>
-
-    <div class="hero" style="margin-top:16px;">
-      <div class="hero-title">配送流程時間軸　（長度 ∝ 實際耗時，取自時間戳記錄之平均值）</div>
-      <div class="hero-note">Before：n=61趟人工送藥實測平均；After：n=9趟AMR正式環境實測平均（總時長為實測值，段內占比沿用單趟精細時間戳案例之比例推算，因正式環境段級記錄尚未完整覆蓋，詳見附錄）</div>
-
-      <div class="track-row">
-        <div class="track-label"><span>人工配送 · Before</span><span class="total">平均 5m00s（300s）</span></div>
-        <div class="track" style="width:37.8%;">
-          <div class="seg human" style="width:57%;">藥單等待<br>2m51s</div>
-          <div class="seg human" style="width:37%;">傳送配送<br>1m50s</div>
-          <div class="seg other" style="width:6%;"></div>
-        </div>
-      </div>
-      <div class="other-note"><span class="sw"></span>灰紋色塊＝中斷或未拆解的其他時間，約19秒（6%）——例如途中被臨時請求推輪椅、招呼病患、與同仁交談等非例行狀況</div>
-      <div class="callout">Before 多了一段<b>「傳送人員移動到藥局」</b>的實體行走時間（包含在「傳送配送」段內），且需先等待傳送人力有空才能出發</div>
-
-      <div class="track-row">
-        <div class="track-label"><span>AMR配送 · After</span><span class="total">平均 13m13s（793s）</span></div>
-        <div class="track" style="width:100%;">
-          <div class="seg human" style="width:12.1%;">藥師核發<br>1m36s</div>
-          <div class="seg amr" style="width:77.2%;">AMR自主導航　10m12s</div>
-          <div class="seg human" style="width:10.6%;">護理端接收<br>1m24s</div>
-        </div>
-      </div>
-      <div class="callout">After 多了一段<b>「藥師核發」</b>的明確時間——藥師成為發藥流程的啟動點，這段過去隱含在等待中的動作，現在變成清楚可見、可被審核品質檢視的步驟。</div>
-
-      <div class="legend">
-        <span><i class="dot" style="background:var(--human);"></i>需要人力直接操作</span>
-        <span><i class="dot" style="background:var(--amr);"></i>機器自主導航（人力可脫手）</span>
-      </div>
-    </div>
-
-    <div class="section-title"><span class="section-num">1.2</span><h3>Financial Impact：省下的工時如何變成醫院收益</h3><span class="badge-live">🔄 待財務室數字校準</span></div>
-    <div class="section-note">節省人力工時之餘，護理師／藥師／傳送人力可服務更多病人，以下用可調整參數的試算器呈現這條換算鏈，並非空泛類比</div>
-
-    <div class="calc">
-      <div class="calc-note">試算器：修改下方參數，右側數字即時更新</div>
-      <div class="calc-inputs">
-        <div class="field"><span class="src-tag">來源：貴院AI讀_指標</span><label>傳送人力時薪(NT$)</label><input type="number" id="wage" value="220" min="0"></div>
-        <div class="field"><span class="src-tag">來源：醫學中心急診部分負擔公開金額(僅為病人自付下限，非總收入，請以財務室數字替換)</span><label>次均醫療收入(NT$)</label><input type="number" id="revenue" value="750" min="0"></div>
-        <div class="field"><span class="src-tag">本次設定值</span><label>邊際貢獻率(%)</label><input type="number" id="margin" value="40" min="0" max="100"></div>
-        <div class="field"><span class="src-tag">假設值，待核實</span><label>可轉換比例(%)</label><input type="number" id="convRate" value="30" min="0" max="100"></div>
-        <div class="field"><span class="src-tag">假設值，待核實</span><label>每案件所需人力時間(分)</label><input type="number" id="caseMin" value="5" min="0.1" step="0.1"></div>
-        <div class="field"><span class="src-tag">來源：貴院Time Study統計</span><label>每日該站送藥趟數</label><input type="number" id="trips" value="50" min="0"></div>
-        <div class="field"><span class="src-tag">一般假設</span><label>年營運天數</label><input type="number" id="days" value="300" min="0"></div>
-      </div>
-      <div class="calc-outputs">
-        <div class="out-card human">
-          <div class="out-label">純人力成本節省（非收益，成本避免）</div>
-          <div class="out-num" id="out-laborcost">—</div>
-          <div class="out-sub" id="out-laborhours">—</div>
-        </div>
-        <div class="out-card amr">
-          <div class="out-label">年化Financial Impact（條件式貢獻邊際）</div>
-          <div class="out-num" id="out-financial">—</div>
-          <div class="out-sub" id="out-cases">—</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="formula-box" style="margin-top:16px;">額外可服務病人量　＝　年化節省人力工時 ÷ 每案件所需人力時間 × 可轉換比例
+<div class="result good">−40.0%</div>
+<p class="meaning">導航段由AMR自主完成，不再綁定任何人力——這是<b>質變而非量變</b>：人工行走是人力成本（隨時薪計算），AMR導航是資本成本（隨設備攤提計算），兩者不是同一種支出。</p>
+</div>
+</div>
+<div class="trip-live-card" id="trip-live-1-1">
+<div class="trip-live-head">
+<span class="badge-live">🔄 目前資料試算</span>
+<span class="trip-live-sub">根據頁首匯入（或內建）的逐趟原始時間戳記錄重新計算，供與上方敘事數字對照</span>
+</div>
+<div class="realdata-grid" style="margin-top:10px;">
+<div class="realstat">
+<div class="rs-num" id="tl-human-avg">—</div>
+<div class="rs-lbl">人工送藥平均單趟耗時<br/>（有效趟次 n=<span id="tl-human-n">—</span>，已排除白跑）</div>
+</div>
+<div class="realstat">
+<div class="rs-num" id="tl-amr-avg">—</div>
+<div class="rs-lbl">AMR正式環境平均單趟耗時<br/>（n=<span id="tl-amr-n">—</span>）</div>
+</div>
+<div class="realstat">
+<div class="rs-num" id="tl-wait-avg">—</div>
+<div class="rs-lbl">人工藥單等待時間平均<br/>（＝②前往藥局－①印出藥單）</div>
+</div>
+</div>
+<p class="trip-live-note">此區塊為原始逐趟時間戳的獨立試算，與上方「300s／793s」等敘事數字來自同一份Time Study、方法論一致；但因資料清理範圍與樣本區間可能略有差異，數字未必逐位相同。上方敘事數字為效標計算表之正式結果，不會因此區塊而改變。</p>
+</div>
+<div class="hero" style="margin-top:16px;">
+<div class="hero-title">配送流程時間軸　（長度 ∝ 實際耗時，取自時間戳記錄之平均值）</div>
+<div class="hero-note">Before：n=61趟人工送藥實測平均；After：n=9趟AMR正式環境實測平均（總時長為實測值，段內占比沿用單趟精細時間戳案例之比例推算，因正式環境段級記錄尚未完整覆蓋，詳見附錄）</div>
+<div class="track-row">
+<div class="track-label"><span>人工配送 · Before</span><span class="total">平均 5m00s（300s）</span></div>
+<div class="track" style="width:37.8%;">
+<div class="seg human" style="width:57%;">藥單等待<br/>2m51s</div>
+<div class="seg human" style="width:37%;">傳送配送<br/>1m50s</div>
+<div class="seg other" style="width:6%;"></div>
+</div>
+</div>
+<div class="other-note"><span class="sw"></span>灰紋色塊＝中斷或未拆解的其他時間，約19秒（6%）——例如途中被臨時請求推輪椅、招呼病患、與同仁交談等非例行狀況</div>
+<div class="callout">Before 多了一段<b>「傳送人員移動到藥局」</b>的實體行走時間（包含在「傳送配送」段內），且需先等待傳送人力有空才能出發</div>
+<div class="track-row">
+<div class="track-label"><span>AMR配送 · After</span><span class="total">平均 13m13s（793s）</span></div>
+<div class="track" style="width:100%;">
+<div class="seg human" style="width:12.1%;">藥師核發<br/>1m36s</div>
+<div class="seg amr" style="width:77.2%;">AMR自主導航　10m12s</div>
+<div class="seg human" style="width:10.6%;">護理端接收<br/>1m24s</div>
+</div>
+</div>
+<div class="callout">After 多了一段<b>「藥師核發」</b>的明確時間——藥師成為發藥流程的啟動點，這段過去隱含在等待中的動作，現在變成清楚可見、可被審核品質檢視的步驟。</div>
+<div class="legend">
+<span><i class="dot" style="background:var(--human);"></i>需要人力直接操作</span>
+<span><i class="dot" style="background:var(--amr);"></i>機器自主導航（人力可脫手）</span>
+</div>
+</div>
+<div class="section-title"><span class="section-num">1.2</span><h3>Financial Impact：省下的工時如何變成醫院收益</h3><span class="badge-live">🔄 待財務室數字校準</span></div>
+<div class="section-note">節省人力工時之餘，護理師／藥師／傳送人力可服務更多病人，以下用可調整參數的試算器呈現這條換算鏈，並非空泛類比</div>
+<div class="calc">
+<div class="calc-note">試算器：修改下方參數，右側數字即時更新</div>
+<div class="calc-inputs">
+<div class="field"><span class="src-tag">來源：貴院AI讀_指標</span><label>傳送人力時薪(NT$)</label><input id="wage" min="0" type="number" value="220"/></div>
+<div class="field"><span class="src-tag">來源：醫學中心急診部分負擔公開金額(僅為病人自付下限，非總收入，請以財務室數字替換)</span><label>次均醫療收入(NT$)</label><input id="revenue" min="0" type="number" value="750"/></div>
+<div class="field"><span class="src-tag">本次設定值</span><label>邊際貢獻率(%)</label><input id="margin" max="100" min="0" type="number" value="40"/></div>
+<div class="field"><span class="src-tag">假設值，待核實</span><label>可轉換比例(%)</label><input id="convRate" max="100" min="0" type="number" value="30"/></div>
+<div class="field"><span class="src-tag">假設值，待核實</span><label>每案件所需人力時間(分)</label><input id="caseMin" min="0.1" step="0.1" type="number" value="5"/></div>
+<div class="field"><span class="src-tag">來源：貴院Time Study統計</span><label>每日該站送藥趟數</label><input id="trips" min="0" type="number" value="50"/></div>
+<div class="field"><span class="src-tag">一般假設</span><label>年營運天數</label><input id="days" min="0" type="number" value="300"/></div>
+</div>
+<div class="calc-outputs">
+<div class="out-card human">
+<div class="out-label">純人力成本節省（非收益，成本避免）</div>
+<div class="out-num" id="out-laborcost">—</div>
+<div class="out-sub" id="out-laborhours">—</div>
+</div>
+<div class="out-card amr">
+<div class="out-label">年化Financial Impact（條件式貢獻邊際）</div>
+<div class="out-num" id="out-financial">—</div>
+<div class="out-sub" id="out-cases">—</div>
+</div>
+</div>
+</div>
+<div class="formula-box" style="margin-top:16px;">額外可服務病人量　＝　年化節省人力工時 ÷ 每案件所需人力時間 × 可轉換比例
 Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × 邊際貢獻率 40%）</div>
-
-    <div class="def-box">
-      <b>名詞解釋｜次均醫療收入</b>：指醫療機構在一定期間內，平均每一次就診（或每一次住院）所獲得的醫療收入，用來衡量病人在單次醫療服務中的平均花費，或醫院的單次服務產值。<br>
+<div class="def-box">
+<b>名詞解釋｜次均醫療收入</b>：指醫療機構在一定期間內，平均每一次就診（或每一次住院）所獲得的醫療收入，用來衡量病人在單次醫療服務中的平均花費，或醫院的單次服務產值。<br/>
       計算公式：<span class="mono">次均醫療收入 ＝ 總醫療收入 ÷ 總就診（或住院）人次</span>
-      <br><br>
-      <b>名詞解釋｜每案件所需人力時間</b>：指多服務一位病患，平均需要投入多少人力時間（例如掛號、初步評估、給藥等相關作業），用來把「省下的人力工時」換算成「可多服務幾個案次」。目前無精確統計，預設值沿用Before人工送藥單趟時間（5分鐘）作為保守估計，建議由臨床單位主管核實後替換。
+<br/><br/>
+<b>名詞解釋｜每案件所需人力時間</b>：指多服務一位病患，平均需要投入多少人力時間（例如掛號、初步評估、給藥等相關作業），用來把「省下的人力工時」換算成「可多服務幾個案次」。目前無精確統計，預設值沿用Before人工送藥單趟時間（5分鐘）作為保守估計，建議由臨床單位主管核實後替換。
     </div>
-
-    <div class="caveat-box" style="margin-bottom:20px;">
-      <div class="cv-title">⚠ 三個必要但書</div>
-      <p>① 不是所有省下的工時都能100%轉換為服務量——瓶頸可能在別處（例如沒有足夠護理師承接新增病患），需乘上「可轉換比例」保守估計。② 40%為邊際貢獻率之初抓估值，並非淨利率——這代表每多服務一位病患，貢獻40%的收入去覆蓋既有固定成本並創造盈餘，不是全部落袋為淨利。③ 下方預設參數已盡量採用貴院提供的Time Study與KPI Register數字，仍有兩項（每案件所需時間、可轉換比例）無公開數據可用，維持假設值，建議由財務室與藥劑部核實後替換。</p>
-    </div>
-
-    <div class="section-title"><span class="section-num">1.3</span><h3>藥事法規可追溯性</h3></div>
-    <div class="section-note">對應PolyMedX PMS KPI Register中「端到端可追溯率」「閉迴路完成率」等藥事法規相關指標</div>
-
-    <div class="realdata-grid" style="margin-bottom:16px;">
-      <div class="realstat warn"><div class="rs-num">7.0%</div><div class="rs-lbl">護理師自取率<br>（等不到配送，自行跑腿，n=57）</div></div>
-      <div class="realstat warn"><div class="rs-num">5.3%</div><div class="rs-lbl">傳送白跑率<br>（藥師不在／劑量誤判，n=57）</div></div>
-      <div class="realstat"><div class="rs-num">94.7%</div><div class="rs-lbl">任務自主完成率<br>（54/57，人工基準）</div></div>
-    </div>
-
-    <div class="trip-live-card" id="trip-live-1-3">
-      <div class="trip-live-head">
-        <span class="badge-live">🔄 目前資料試算</span>
-        <span class="trip-live-sub">涵蓋目前資料集中所有「人工送藥」趟次</span>
-      </div>
-      <div class="realdata-grid" style="margin-top:10px;">
-        <div class="realstat warn"><div class="rs-num" id="tl-selfpick-rate">—</div><div class="rs-lbl">護理師自取率<br>（n=<span id="tl-human-total-n">—</span>）</div></div>
-        <div class="realstat warn"><div class="rs-num" id="tl-fail-rate">—</div><div class="rs-lbl">傳送白跑率<br>（n=<span id="tl-human-total-n2">—</span>）</div></div>
-        <div class="realstat"><div class="rs-num" id="tl-complete-rate">—</div><div class="rs-lbl">任務完成率（含自取）</div></div>
-      </div>
-      <p class="trip-live-note">上方「7.0%／5.3%／94.7%」為官方效標計算表之正式結果（07/22–24觀察窗，n=57）；此區塊方法論一致，但涵蓋目前資料集的完整區間，數字可能因樣本區間不同而略有差異。</p>
-    </div>
-
-    <div class="exec-fin" style="margin-top:4px;">
-      <div class="ef-lbl">Traceability｜藥事法規可追溯性理論改善空間</div>
-      <div class="ef-num">86%</div>
-      <div class="ef-note">現行失效率12.3%中，護理師自取（7.0%，因等待時效不確定而生）與白跑中「藥師不在」的部分（約3.5%），在AMR穩定運行＋庫存串接下理論上可趨近於0；僅「劑量誤判」（約1.75%）屬人為判斷錯誤，與配送方式無關。合計理論上可從12.3%降至約1.8%。此為條件式估算，AMR正式環境樣本仍小（n=9），尚無足夠的AMR失敗率數據可直接對比，待樣本擴大後應以實測值校準。</div>
-    </div>
-
-    <div class="trace-table">
-      <div class="trace-row head"><div>指標</div><div>人工配送</div><div>AMR配送</div></div>
-      <div class="trace-row">
-        <div class="item">時間戳節點數</div>
-        <div class="trace-val human" data-label="人工">2–9個（常有NA缺漏）</div>
-        <div class="trace-val amr" data-label="AMR">系統自動記錄，理論無缺漏</div>
-      </div>
-      <div class="trace-row">
-        <div class="item">給藥鏈完整性（Chain of Custody）</div>
-        <div class="trace-val human" data-label="人工">紙本／口頭交接，牌子壓單等變通做法</div>
-        <div class="trace-val amr" data-label="AMR">電子記錄，對應KPI Register A13端到端可追溯率、A14閉迴路完成率</div>
-      </div>
-    </div>
-
-    <div class="advantage-list">
-      <div class="al-title">AMR優勢（條件式，待樣本擴大後校準）</div>
-      <ul>
-        <li><b>優勢一：</b>系統自動記錄時間戳，無需人工補登，追溯鏈不會因人力疏忽而中斷。</li>
-        <li><b>優勢二：</b>任務執行完整度可預期，不會像人工一樣被「順手幫忙」中斷而不留紀錄。</li>
-        <li><b>優勢三：</b>流程透明、到位時間可預期，讓「等不到藥而自行跑腿」這種重工自然消失——前提是AMR到位時間必須穩定（見Sec.3導航韌性缺口）。</li>
-      </ul>
-    </div>
-
+<div class="caveat-box" style="margin-bottom:20px;">
+<div class="cv-title">⚠ 三個必要但書</div>
+<p>① 不是所有省下的工時都能100%轉換為服務量——瓶頸可能在別處（例如沒有足夠護理師承接新增病患），需乘上「可轉換比例」保守估計。② 40%為邊際貢獻率之初抓估值，並非淨利率——這代表每多服務一位病患，貢獻40%的收入去覆蓋既有固定成本並創造盈餘，不是全部落袋為淨利。③ 下方預設參數已盡量採用貴院提供的Time Study與KPI Register數字，仍有兩項（每案件所需時間、可轉換比例）無公開數據可用，維持假設值，建議由財務室與藥劑部核實後替換。</p>
+</div>
+<div class="section-title"><span class="section-num">1.3</span><h3>藥事法規可追溯性</h3></div>
+<div class="section-note">對應PolyMedX PMS KPI Register中「端到端可追溯率」「閉迴路完成率」等藥事法規相關指標</div>
+<div class="realdata-grid" style="margin-bottom:16px;">
+<div class="realstat warn"><div class="rs-num">7.0%</div><div class="rs-lbl">護理師自取率<br/>（等不到配送，自行跑腿，n=57）</div></div>
+<div class="realstat warn"><div class="rs-num">5.3%</div><div class="rs-lbl">傳送白跑率<br/>（藥師不在／劑量誤判，n=57）</div></div>
+<div class="realstat"><div class="rs-num">94.7%</div><div class="rs-lbl">任務自主完成率<br/>（54/57，人工基準）</div></div>
+</div>
+<div class="trip-live-card" id="trip-live-1-3">
+<div class="trip-live-head">
+<span class="badge-live">🔄 目前資料試算</span>
+<span class="trip-live-sub">涵蓋目前資料集中所有「人工送藥」趟次</span>
+</div>
+<div class="realdata-grid" style="margin-top:10px;">
+<div class="realstat warn"><div class="rs-num" id="tl-selfpick-rate">—</div><div class="rs-lbl">護理師自取率<br/>（n=<span id="tl-human-total-n">—</span>）</div></div>
+<div class="realstat warn"><div class="rs-num" id="tl-fail-rate">—</div><div class="rs-lbl">傳送白跑率<br/>（n=<span id="tl-human-total-n2">—</span>）</div></div>
+<div class="realstat"><div class="rs-num" id="tl-complete-rate">—</div><div class="rs-lbl">任務完成率（含自取）</div></div>
+</div>
+<p class="trip-live-note">上方「7.0%／5.3%／94.7%」為官方效標計算表之正式結果（07/22–24觀察窗，n=57）；此區塊方法論一致，但涵蓋目前資料集的完整區間，數字可能因樣本區間不同而略有差異。</p>
+</div>
+<div class="exec-fin" style="margin-top:4px;">
+<div class="ef-lbl">Traceability｜藥事法規可追溯性理論改善空間</div>
+<div class="ef-num">86%</div>
+<div class="ef-note">現行失效率12.3%中，護理師自取（7.0%，因等待時效不確定而生）與白跑中「藥師不在」的部分（約3.5%），在AMR穩定運行＋庫存串接下理論上可趨近於0；僅「劑量誤判」（約1.75%）屬人為判斷錯誤，與配送方式無關。合計理論上可從12.3%降至約1.8%。此為條件式估算，AMR正式環境樣本仍小（n=9），尚無足夠的AMR失敗率數據可直接對比，待樣本擴大後應以實測值校準。</div>
+</div>
+<div class="trace-table">
+<div class="trace-row head"><div>指標</div><div>人工配送</div><div>AMR配送</div></div>
+<div class="trace-row">
+<div class="item">時間戳節點數</div>
+<div class="trace-val human" data-label="人工">2–9個（常有NA缺漏）</div>
+<div class="trace-val amr" data-label="AMR">系統自動記錄，理論無缺漏</div>
+</div>
+<div class="trace-row">
+<div class="item">給藥鏈完整性（Chain of Custody）</div>
+<div class="trace-val human" data-label="人工">紙本／口頭交接，牌子壓單等變通做法</div>
+<div class="trace-val amr" data-label="AMR">電子記錄，對應KPI Register A13端到端可追溯率、A14閉迴路完成率</div>
+</div>
+</div>
+<div class="advantage-list">
+<div class="al-title">AMR優勢（條件式，待樣本擴大後校準）</div>
+<ul>
+<li><b>優勢一：</b>系統自動記錄時間戳，無需人工補登，追溯鏈不會因人力疏忽而中斷。</li>
+<li><b>優勢二：</b>任務執行完整度可預期，不會像人工一樣被「順手幫忙」中斷而不留紀錄。</li>
+<li><b>優勢三：</b>流程透明、到位時間可預期，讓「等不到藥而自行跑腿」這種重工自然消失——前提是AMR到位時間必須穩定（見Sec.3導航韌性缺口）。</li>
+</ul>
+</div>
   </div>
 
   <!-- ======================================================= -->
-  <!-- WORKFLOW & TRUST TAB -->
+  <!-- BEFORE TAB -->
   <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-workflow">
+<div class="tab-panel" id="panel-before">
     <div class="part-header">
-      <div class="part-eyebrow">SEC. 2</div>
-      <h2 class="serif">Workflow Fit / Trust 流程契合度與信任</h2>
-      <div class="part-sub">醫護人員使用前預期評分與評價，以及流程層面（非UI畫面層面）的優化機會點</div>
+      <div class="part-eyebrow">BEFORE</div>
+      <h2 class="serif">Before｜人工傳送 現況數字</h2>
+      <div class="part-sub">取自貴院正式場域統計（人工傳送），對應PolyMedX PMS KPI Register官方定義之效標與公式</div>
     </div>
 
-    <div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與評價</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
-
-    <div class="insight-box" style="margin-top:0;">
-      <div class="iv-title">⚠ 關鍵洞察：信任機器可靠，但還沒感受到減負</div>
-      <p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用前的預期心聲（見下方）也印證了這點。</p>
+    <div class="legend" style="margin-bottom:16px;">
+      <span><i class="dot" style="background:#EEF1F0; border:1px solid var(--line);"></i>斜體灰字＝現有資料欄位無法計算，非0或不存在</span>
     </div>
 
-    <div class="section-note" style="margin-top:14px;" id="sec21-note">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分，共16位受邀對象，其餘11位尚未填答</div>
+    <div class="kpi-scroll"><table class="kpi-table" style="min-width:480px;"><thead>
+  <tr><th class="before-h" colspan="3">Before／人工傳送</th></tr>
+  <tr><th class="before-h">效標</th><th class="before-h">公式</th><th class="before-h">場域蒐集結果</th></tr>
+</thead><tbody><tr class="cat-row"><td colspan="3">Efficiency</td></tr>
+<tr><td class="metric">平均每一趟任務完成時間</td><td class="formula">Σ完成時間(抵達護理站－護理師印出藥單)÷完整任務趟數</td><td class="result">6m18s</td></tr>
+<tr><td class="metric">平均配送時間</td><td class="formula">Σ配送時間(抵達護理站－傳送人員前往藥局)÷完整任務趟數</td><td class="result">2m02s</td></tr>
+<tr><td class="metric">每小時完成的趟次</td><td class="formula">完成任務數(不含失敗)÷運作小時</td><td class="result">1.65趟/hr</td></tr>
+<tr><td class="metric">人工作業時間比例</td><td class="formula">人工參與時間÷任務完成時間</td><td class="result">100%</td></tr>
+<tr class="cat-row"><td colspan="3">Reliability</td></tr>
+<tr><td class="metric">稼動率</td><td class="formula">配送作業時間÷工作時間×100%</td><td class="result">17.6%</td></tr>
+<tr><td class="metric">可用率</td><td class="formula">可配送時間÷排班時間×100%</td><td class="result pending">現有資料無法計算（無休息／待命時段紀錄，分子分母會與稼動率重複）</td></tr>
+<tr><td class="metric">每班次完成任務數</td><td class="formula">完成任務數÷班次數</td><td class="result">16.6趟/班<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">觀察時數換算8hr標準班次：27.5hr÷8hr＝3.4375班</span></td></tr>
+<tr><td class="metric">任務自主完成率</td><td class="formula">自主完成任務÷總任務數</td><td class="result">93.44%</td></tr>
+<tr><td class="metric">配送中斷率</td><td class="formula">受中斷任務數÷總任務數</td><td class="result">11.48%</td></tr>
+<tr><td class="metric">配送人工支援／介入率<br/>（護理師自取）</td><td class="formula">受人工支援／介入任務數÷總任務數</td><td class="result">6.56%</td></tr>
+<tr><td class="metric">任務失敗</td><td class="formula">(白跑一趟任務數＋配送錯誤任務數)÷總任務數</td><td class="result">6.56%</td></tr>
+<tr class="cat-row"><td colspan="3">Operational Value</td></tr>
+<tr><td class="metric">－</td><td class="formula">－</td><td class="result">－</td></tr>
+<tr><td class="metric">因物流，藥師作業中斷率</td><td class="formula">藥師作業因物流中斷任務次數÷總任務數</td><td class="result">8.20%</td></tr>
+<tr><td class="metric">護理物流工時</td><td class="formula">Σ護理物流工時 ( )</td><td class="result">5m15s</td></tr>
+<tr><td class="metric">配送可追溯率</td><td class="formula">有系統紀錄的關鍵物流節點數÷應追蹤的關鍵物流節點總數×100%</td><td class="result">25%<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">4節點中僅1節點有系統紀錄</span></td></tr></tbody></table></div>
 
-    <div class="sat-table" id="sat-table">
-      <div class="sat-row head"><div>評分項目</div><div>藥師（n=<span id="sat-n-pharm">3</span>）</div><div>護理師（n=<span id="sat-n-nurse">2</span>）</div></div>
-      <div class="sat-row"><div class="sq">Q1　預期滿意度</div><div class="sv pharm" data-label="藥師" id="sat-p-q1">3.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q1">1.75</div></div>
-      <div class="sat-row"><div class="sq">Q2　預期可靠度</div><div class="sv pharm" data-label="藥師" id="sat-p-q2">4.0</div><div class="sv nurse" data-label="護理師" id="sat-n-q2">4.5</div></div>
-      <div class="sat-row"><div class="sq">Q3　預期降低工作負擔</div><div class="sv pharm" data-label="藥師" id="sat-p-q3">2.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q3">2.5</div></div>
-      <div class="sat-row"><div class="sq">Q4　預期更專注其他專業工作</div><div class="sv pharm" data-label="藥師" id="sat-p-q4">2.7</div><div class="sv nurse" data-label="護理師" id="sat-n-q4">2.5</div></div>
-    </div>
-    <div class="section-note" style="margin-top:10px;">說明：這批評分與心得是受訪者在首次實際使用AMR之後，回溯描述「當初使用前」的預期想法所得——並非使用後的真實心得。正式的「使用後」1–5分量表與心得尚未收集，待實際導入後同步填入以便前後對照。以下為每位受訪者評分理由的摘要（依代號呈現，不揭露姓名）</div>
-
-    <div class="quote-grid" id="quote-grid"></div>
-
-    <div class="section-title"><span class="section-num">2.2</span><h3>流程優化機會點</h3></div>
-    <div class="section-note">根據現場質性觀察與使用者回饋整理，聚焦「流程設計」層級（畫面操作層級的缺口見附錄A.2）</div>
-
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">A</span>資訊不透明造成白跑</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>庫存判斷靠猜：</b>部分護理師無法判斷急診是否已有庫存，攜藥單至藥局才發現庫存已有而白跑；藥單列印延遲也拉長等待</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>出發前攔截白跑：</b>若AMR/PMS串接庫存資訊，可於出發前攔截「庫存已有」情境，直接降低白跑率</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">B</span>傳送人力被非送藥任務佔用</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>配送真空時段：</b>傳送人力常被挪用推病床、推輪椅、送血/檢體，14:00–15:30尤其明顯</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>角色重新分配：</b>AMR專職送藥這類規則化任務，把人力解放去做需要人情判斷的工作——是分工調整，而非取代</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">C</span>流程中斷被隱形化</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>延誤不留痕跡：</b>藥師不在時，傳送用牌子壓單直接折返，下一趟才一併領回——延誤不會出現在耗時統計中</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>延誤變得可追蹤：</b>AMR任務執行完整度可預期，不會被「順手幫忙」中斷，讓延誤可量化</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">D</span>特殊藥品類別仍需人工介入</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥仍要跑腿：</b>護理站常見的鎮靜藥、冷藏藥，ADC沒有備藥，加上臨時醫囑常指定這類藥，護理師仍得自行跑一趟藥局</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部評估擴充ADC備藥範圍，或建立AMR快速通道，取代護理師跑腿</p></div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-title"><span class="letter">E</span>站別判斷責任轉移到藥師</div>
-        <div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去人工傳送依藥袋代碼判斷站別，藥師不需介入；改用AMR後，藥師得自行選擇站別，增加放藥負擔</p></div>
-        <div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷：</b>讀取藥袋既有的目的地代碼自動帶入站別，藥師只需確認，把判斷還給系統</p></div>
-      </div>
-    </div>
+    <div class="section-title"><span class="section-num">—</span><h3>關鍵物流節點可追溯性</h3></div>
+    <div class="kpi-scroll" style="margin-top:14px;"><table class="kpi-table" style="min-width:420px;"><thead><tr><th class="before-h" colspan="2">配送可追溯率・關鍵物流節點對照（Before／人工）</th></tr><tr><th class="before-h">關鍵物流節點</th><th class="before-h" style="text-align:center;">Before／人工</th></tr></thead><tbody><tr><td class="metric">① 藥師核發／Ready for Delivery</td><td class="result good" style="text-align:center;">✓</td></tr>
+<tr><td class="metric">② 配送啟程／Dispatch</td><td class="result warn" style="text-align:center;">✕</td></tr>
+<tr><td class="metric">③ 抵達護理站／Arrival</td><td class="result warn" style="text-align:center;">✕</td></tr>
+<tr><td class="metric">④ 護理師接收／Receipt</td><td class="result warn" style="text-align:center;">✕</td></tr></tbody></table></div>
   </div>
 
   <!-- ======================================================= -->
-  <!-- NEXT TAB -->
+  <!-- AFTER TAB -->
   <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-next">
+<div class="tab-panel" id="panel-after">
     <div class="part-header">
-      <div class="part-eyebrow">SEC. 3</div>
-      <h2 class="serif">Next 下一步：社交導航與易用性</h2>
-      <div class="part-sub">從「能完成任務」走向「讀懂環境氛圍」，並修補現行UI與workflow的落差</div>
+      <div class="part-eyebrow">AFTER</div>
+      <h2 class="serif">After｜AMR配送 現況數字</h2>
+      <div class="part-sub">AMR正式環境實測（n=9）或測試環境觀察，樣本仍小，數字方向正確但屬早期估算</div>
     </div>
 
-    <div class="section-title"><span class="section-num">3.1</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
-    <div class="section-note">取自P1 Value Report簡報《AMR Capability Summary》：7/22–23現場實測問題整理</div>
-
-    <div class="cap-grid">
-      <div class="cap-card">
-        <div class="cap-top"><span class="cap-letter">A</span><span class="cap-name">社交導航不足（含沿路語音、病床優先）</span></div>
-        <p class="cap-desc">缺乏符合醫療場域社會規範的互動能力，難以自然與人共享空間——包含優先權判斷、人流判斷、路徑決策三個子問題</p>
-        <p class="cap-sub"><b>語音：</b>建議每個路段配置符合情境的語音訊息，例如轉角、視野死角處應主動出聲提醒對向路人，避免碰撞，而非全程使用同一種提示音　｜　<b>病床優先：</b>與病床爭道時僅減速未立即禮讓，曾發生AMR卡在B站出口、病床需倒退避讓延誤入急診的情形</p>
-      </div>
-      <div class="cap-card">
-        <div class="cap-top"><span class="cap-letter">B</span><span class="cap-name">場域整合不足</span></div>
-        <p class="cap-desc">尚未充分融入場域空間配置與工作流程，與既有醫療作業（如病床停靠動線）產生衝突。根源之一是<b>環境感知能力不足</b>——例如偵測不到點滴架腳架、無法辨識移動中的病床，導致AMR無法即時判斷該讓行或該通過，才進一步演變成場域整合的衝突</p>
-      </div>
-    </div>
-
-    <div class="roadmap2">
-      <div class="rm2-card">
-        <div class="rm2-when">Stage 1 · 現行推動中</div>
-        <div class="rm2-title">Rule-based 規則調整</div>
-        <div class="rm2-desc">先建立固定的優先權與人流規則（例如電梯口自動減速禮讓、病床固定靠左AMR固定靠右），用最快速度解決現場觀察到的具體衝突點</div>
-      </div>
-      <div class="rm2-card stage2">
-        <div class="rm2-when">Stage 2 · 後續規劃中</div>
-        <div class="rm2-title">關鍵物件辨識導入</div>
-        <div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
-      </div>
-    </div>
-
-    <div class="section-title"><span class="section-num">3.2</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
-    <div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
-
-    <div class="catsum-grid" id="catsum-grid">
-      <div class="catsum-card">
-        <div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
-        <div id="cs-rows-pharm"></div>
-      </div>
-      <div class="catsum-card">
-        <div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
-        <div id="cs-rows-nurse"></div>
-      </div>
-    </div>
-
-    <div class="caveat-box">
-      <div class="cv-title">一眼看重點</div>
-      <ul>
-        <li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
-        <li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
-        <li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
-        <li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
-      </ul>
-      <p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
-    </div>
-  </div>
-
-  <!-- ======================================================= -->
-  <!-- KPI COMPARISON TAB -->
-  <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-kpi">
-    <div class="part-header">
-      <div class="part-eyebrow">KPI REGISTER</div>
-      <h2 class="serif">效標對照：Before / 人工傳送　vs　After / AMR</h2>
-      <div class="part-sub">對應PolyMedX PMS KPI Register官方定義之效標與公式，逐項填入場域蒐集結果</div>
-    </div>
-
-    <div class="section-title"><span class="section-num">—</span><h3>資料完整度</h3><span class="badge-live">🔄 After欄位持續累積中</span></div>
-    <div class="section-note">Before欄位取自貴院正式場域統計（人工傳送，較大樣本）；After欄位為AMR正式環境實測（n=9）或測試環境觀察，樣本仍小</div>
     <div class="legend" style="margin-bottom:16px;">
       <span><i class="dot" style="background:var(--good);"></i>已有穩定樣本支持</span>
       <span><i class="dot" style="background:var(--warn);"></i>橘底＝樣本極小（n個位數或單日觀察），數字僅供方向參考，非正式統計值</span>
       <span><i class="dot" style="background:#EEF1F0; border:1px solid var(--line);"></i>斜體灰字＝現有資料欄位無法計算，非0或不存在</span>
     </div>
 
-    <div class="kpi-scroll">
-      <table class="kpi-table">
-        <thead>
-          <tr>
-            <th class="before-h" colspan="3">Before／人工傳送</th>
-            <th class="after-h" colspan="3">After／AMR</th>
-          </tr>
-          <tr>
-            <th class="before-h">效標</th><th class="before-h">公式</th><th class="before-h">場域蒐集結果</th>
-            <th class="after-h">效標</th><th class="after-h">公式</th><th class="after-h">場域蒐集結果</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="cat-row"><td colspan="6">Efficiency</td></tr>
-          <tr>
-            <td class="metric before-col">平均每一趟任務完成時間</td>
-            <td class="formula before-col">Σ完成時間(抵達護理站－護理師印出藥單)÷完整任務趟數</td>
-            <td class="result before-col">6m18s</td>
-            <td class="metric divider">平均每一趟任務完成時間</td>
-            <td class="formula">Σ完成時間(任務完成時間－任務建立時間)÷任務數</td>
-            <td class="result warn">13m13s <span style="font-weight:400;">(n=9，正式環境)</span></td>
-          </tr>
-          <tr>
-            <td class="metric before-col">平均配送時間</td>
-            <td class="formula before-col">Σ配送時間(抵達護理站－傳送人員前往藥局)÷完整任務趟數</td>
-            <td class="result before-col">2m02s</td>
-            <td class="metric divider">平均導航時間／導航時間變異</td>
-            <td class="formula">Σ導航時間÷任務數</td>
-            <td class="result pending">約10m12s（含往返，推算值；單程實測219s，n=9，變異尚未計算）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">每小時完成的趟次</td>
-            <td class="formula before-col">完成任務數(不含失敗)÷運作小時</td>
-            <td class="result before-col">1.65趟/hr</td>
-            <td class="metric divider">每小時完成的趟次</td>
-            <td class="formula">完成任務數÷運作小時</td>
-            <td class="result pending">資料蒐集中（缺完整運作時數紀錄）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">人工作業時間比例</td>
-            <td class="formula before-col">人工參與時間÷任務完成時間</td>
-            <td class="result before-col">100%</td>
-            <td class="metric divider">人工作業時間比例（放取藥）</td>
-            <td class="formula">人工參與時間÷任務完成時間</td>
-            <td class="result good">22.7%</td>
-          </tr>
+    <div class="kpi-scroll"><table class="kpi-table" style="min-width:480px;"><thead>
+  <tr><th class="after-h" colspan="3">After／AMR</th></tr>
+  <tr><th class="after-h">效標</th><th class="after-h">公式</th><th class="after-h">場域蒐集結果</th></tr>
+</thead><tbody><tr class="cat-row"><td colspan="3">Efficiency</td></tr>
+<tr><td class="metric">平均每一趟任務完成時間</td><td class="formula">Σ完成時間(任務完成時間－任務建立時間)÷任務數</td><td class="result warn">13m13s <span style="font-weight:400;">(n=9，正式環境)</span></td></tr>
+<tr><td class="metric">平均導航時間／導航時間變異</td><td class="formula">Σ導航時間÷任務數</td><td class="result pending">約10m12s（含往返，推算值；單程實測219s，n=9，變異尚未計算）</td></tr>
+<tr><td class="metric">每小時完成的趟次</td><td class="formula">完成任務數÷運作小時</td><td class="result pending">資料蒐集中（缺完整運作時數紀錄）</td></tr>
+<tr><td class="metric">人工作業時間比例（放取藥）</td><td class="formula">人工參與時間÷任務完成時間</td><td class="result good">22.7%</td></tr>
+<tr class="cat-row"><td colspan="3">Reliability</td></tr>
+<tr><td class="metric">稼動率</td><td class="formula">任務執行時間÷可運作時間×100%</td><td class="result lowN">23.9%<span class="lowN-note">樣本極小：僅9趟，觀察窗口8.3hr（2日）</span></td></tr>
+<tr><td class="metric">可用率</td><td class="formula">可運作時間÷提供運作時間×100%</td><td class="result pending">現有資料無法計算（同左，缺乏獨立的可用性/停機紀錄）</td></tr>
+<tr><td class="metric">單次充電任務數</td><td class="formula">完成任務數÷充電次數</td><td class="result lowN">約26.3趟/充電<span class="lowN-note">外推值：測試環境單日電量94%→75%／5趟（3.8pp/趟），未涵蓋完整充放電週期，僅供方向參考</span></td></tr>
+<tr><td class="metric">任務自主完成率</td><td class="formula">自主完成任務÷總任務數</td><td class="result pending">資料蒐集中（n過小；已觀察到至少1次需人工遙控介入案例，見附錄）</td></tr>
+<tr><td class="metric">導航受阻率</td><td class="formula">遇阻任務數÷總任務數</td><td class="result pending">資料蒐集中（質性觀察已記錄多起受阻案例，見Roadmap分頁）</td></tr>
+<tr><td class="metric">導航人工介入率</td><td class="formula">人工介入任務數÷總任務數</td><td class="result pending">資料蒐集中（已知至少1次人工遙控介入案例）</td></tr>
+<tr><td class="metric">任務失敗</td><td class="formula">任務失敗÷總任務數</td><td class="result pending">資料蒐集中</td></tr>
+<tr class="cat-row"><td colspan="3">Operational Value</td></tr>
+<tr><td class="metric">病人取得藥物的總等待時間改善率</td><td class="formula">(導入前Lead Time－導入後Lead Time)÷導入前Lead Time</td><td class="result warn">−110%（見下方說明 ⚠）</td></tr>
+<tr><td class="metric">因物流，藥師作業中斷改善率</td><td class="formula">(導入前中斷率－導入後中斷率)÷導入前中斷率</td><td class="result pending">資料蒐集中</td></tr>
+<tr><td class="metric">護理物流工時改善率</td><td class="formula">(導入前物流時間－導入後物流時間)÷導入前物流時間</td><td class="result good">約+73%（推算，見下方說明 ⚠）</td></tr>
+<tr><td class="metric">配送可追溯率</td><td class="formula">有系統紀錄的關鍵物流節點數÷應追蹤的關鍵物流節點總數×100%</td><td class="result good">100%<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">4節點全數系統自動記錄</span></td></tr></tbody></table></div>
 
-          <tr class="cat-row"><td colspan="6">Reliability</td></tr>
-          <tr>
-            <td class="metric before-col">稼動率</td>
-            <td class="formula before-col">配送作業時間÷工作時間×100%</td>
-            <td class="result before-col">17.6%</td>
-            <td class="metric divider">稼動率</td>
-            <td class="formula">任務執行時間÷可運作時間×100%</td>
-            <td class="result lowN">23.9%<span class="lowN-note">樣本極小：僅9趟，觀察窗口8.3hr（2日）</span></td>
-          </tr>
-          <tr>
-            <td class="metric before-col">可用率</td>
-            <td class="formula before-col">可配送時間÷排班時間×100%</td>
-            <td class="result pending before-col">現有資料無法計算（無休息／待命時段紀錄，分子分母會與稼動率重複）</td>
-            <td class="metric divider">可用率</td>
-            <td class="formula">可運作時間÷提供運作時間×100%</td>
-            <td class="result pending">現有資料無法計算（同左，缺乏獨立的可用性/停機紀錄）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">每班次完成任務數</td>
-            <td class="formula before-col">完成任務數÷班次數</td>
-            <td class="result before-col">16.6趟/班<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">觀察時數換算8hr標準班次：27.5hr÷8hr＝3.4375班</span></td>
-            <td class="metric divider">單次充電任務數</td>
-            <td class="formula">完成任務數÷充電次數</td>
-            <td class="result lowN">約26.3趟/充電<span class="lowN-note">外推值：測試環境單日電量94%→75%／5趟（3.8pp/趟），未涵蓋完整充放電週期，僅供方向參考</span></td>
-          </tr>
-          <tr>
-            <td class="metric before-col">任務自主完成率</td>
-            <td class="formula before-col">自主完成任務÷總任務數</td>
-            <td class="result before-col">93.44%</td>
-            <td class="metric divider">任務自主完成率</td>
-            <td class="formula">自主完成任務÷總任務數</td>
-            <td class="result pending">資料蒐集中（n過小；已觀察到至少1次需人工遙控介入案例，見附錄）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">配送中斷率</td>
-            <td class="formula before-col">受中斷任務數÷總任務數</td>
-            <td class="result before-col">11.48%</td>
-            <td class="metric divider">導航受阻率</td>
-            <td class="formula">遇阻任務數÷總任務數</td>
-            <td class="result pending">資料蒐集中（質性觀察已記錄多起受阻案例，見Next分頁）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">配送人工支援／介入率<br>（護理師自取）</td>
-            <td class="formula before-col">受人工支援／介入任務數÷總任務數</td>
-            <td class="result before-col">6.56%</td>
-            <td class="metric divider">導航人工介入率</td>
-            <td class="formula">人工介入任務數÷總任務數</td>
-            <td class="result pending">資料蒐集中（已知至少1次人工遙控介入案例）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">任務失敗</td>
-            <td class="formula before-col">(白跑一趟任務數＋配送錯誤任務數)÷總任務數</td>
-            <td class="result before-col">6.56%</td>
-            <td class="metric divider">任務失敗</td>
-            <td class="formula">任務失敗÷總任務數</td>
-            <td class="result pending">資料蒐集中</td>
-          </tr>
-
-          <tr class="cat-row"><td colspan="6">Operational Value</td></tr>
-          <tr>
-            <td class="metric before-col">－</td>
-            <td class="formula before-col">－</td>
-            <td class="result before-col">－</td>
-            <td class="metric divider">病人取得藥物的總等待時間改善率</td>
-            <td class="formula">(導入前Lead Time－導入後Lead Time)÷導入前Lead Time</td>
-            <td class="result warn">−110%（見下方說明 ⚠）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">因物流，藥師作業中斷率</td>
-            <td class="formula before-col">藥師作業因物流中斷任務次數÷總任務數</td>
-            <td class="result before-col">8.20%</td>
-            <td class="metric divider">因物流，藥師作業中斷改善率</td>
-            <td class="formula">(導入前中斷率－導入後中斷率)÷導入前中斷率</td>
-            <td class="result pending">資料蒐集中</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">護理物流工時</td>
-            <td class="formula before-col">Σ護理物流工時 ( )</td>
-            <td class="result before-col">5m15s</td>
-            <td class="metric divider">護理物流工時改善率</td>
-            <td class="formula">(導入前物流時間－導入後物流時間)÷導入前物流時間</td>
-            <td class="result good">約+73%（推算，見下方說明 ⚠）</td>
-          </tr>
-          <tr>
-            <td class="metric before-col">配送可追溯率</td>
-            <td class="formula before-col">有系統紀錄的關鍵物流節點數÷應追蹤的關鍵物流節點總數×100%</td>
-            <td class="result before-col">25%<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">4節點中僅1節點有系統紀錄</span></td>
-            <td class="metric divider">配送可追溯率</td>
-            <td class="formula">有系統紀錄的關鍵物流節點數÷應追蹤的關鍵物流節點總數×100%</td>
-            <td class="result good">100%<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">4節點全數系統自動記錄</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="kpi-scroll" style="margin-top:14px;">
-      <table class="kpi-table" style="min-width:600px;">
-        <thead>
-          <tr><th class="after-h" colspan="3">配送可追溯率・關鍵物流節點對照</th></tr>
-          <tr><th class="after-h">關鍵物流節點</th><th class="before-h" style="text-align:center;">Before／人工</th><th class="after-h" style="text-align:center;">After／AMR</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="metric before-col">① 藥師核發／Ready for Delivery</td><td class="result good" style="text-align:center;">✓</td><td class="result good" style="text-align:center;">✓</td></tr>
-          <tr><td class="metric before-col">② 配送啟程／Dispatch</td><td class="result warn" style="text-align:center;">✕</td><td class="result good" style="text-align:center;">✓</td></tr>
-          <tr><td class="metric before-col">③ 抵達護理站／Arrival</td><td class="result warn" style="text-align:center;">✕</td><td class="result good" style="text-align:center;">✓</td></tr>
-          <tr><td class="metric before-col">④ 護理師接收／Receipt</td><td class="result warn" style="text-align:center;">✕</td><td class="result good" style="text-align:center;">✓</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="section-title"><span class="section-num">—</span><h3>關鍵物流節點可追溯性</h3></div>
+    <div class="kpi-scroll" style="margin-top:14px;"><table class="kpi-table" style="min-width:420px;"><thead><tr><th class="after-h" colspan="2">配送可追溯率・關鍵物流節點對照（After／AMR）</th></tr><tr><th class="after-h">關鍵物流節點</th><th class="after-h" style="text-align:center;">After／AMR</th></tr></thead><tbody><tr><td class="metric">① 藥師核發／Ready for Delivery</td><td class="result good" style="text-align:center;">✓</td></tr>
+<tr><td class="metric">② 配送啟程／Dispatch</td><td class="result good" style="text-align:center;">✓</td></tr>
+<tr><td class="metric">③ 抵達護理站／Arrival</td><td class="result good" style="text-align:center;">✓</td></tr>
+<tr><td class="metric">④ 護理師接收／Receipt</td><td class="result good" style="text-align:center;">✓</td></tr></tbody></table></div>
 
     <div class="exec-fin" style="margin:16px 0 20px;">
-      <div class="ef-lbl">配送可追溯率</div>
-      <div class="ef-num">25% → 100%</div>
-      <div class="ef-note"><b>改善幅度：</b>+75 個百分點（pp）——人工僅「藥師核發」節點有系統紀錄，其餘三節點需靠備註／記憶補述；AMR因系統自動記錄，四節點全數可追溯</div>
-      <div class="ef-note" style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--warn-soft-line);"><b>可延伸效益（待補）：</b>年度可追溯效益 =（Before 每趟查詢/確認工時 − After 每趟查詢/確認工時）× 年配送趟次 × 人員每分鐘成本<br>如減少查件/電話確認、減少配送異常處理、減少錯送/遺失成本、降低藥品延遲造成的臨床等待、稽核工時減少</div>
-    </div>
+<div class="ef-lbl">配送可追溯率</div>
+<div class="ef-num">25% → 100%</div>
+<div class="ef-note"><b>改善幅度：</b>+75 個百分點（pp）——人工僅「藥師核發」節點有系統紀錄，其餘三節點需靠備註／記憶補述；AMR因系統自動記錄，四節點全數可追溯</div>
+<div class="ef-note" style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--warn-soft-line);"><b>可延伸效益（待補）：</b>年度可追溯效益 =（Before 每趟查詢/確認工時 − After 每趟查詢/確認工時）× 年配送趟次 × 人員每分鐘成本<br/>如減少查件/電話確認、減少配送異常處理、減少錯送/遺失成本、降低藥品延遲造成的臨床等待、稽核工時減少</div>
+</div>
 
     <div class="caveat-box" style="margin-top:16px;">
-      <div class="cv-title">⚠ 兩項需要特別說明的數字</div>
-      <p><b>①「病人取得藥物的總等待時間改善率」為 −110%：</b>用官方公式直接代入現有數字，AMR的總完成時間（13m13s）比人工（6m18s）更長，wall-clock意義上的等待時間不降反升。這與Value分頁強調的「Human Touch Time下降40%」並不矛盾——兩者衡量的是不同的東西：一個是「病人等多久」，一個是「人力綁住多久」。若要讓Lead Time也轉正，優化重點應放在Next分頁的Phase 2（導航時間壓縮），而非現階段的宣傳重點。<br><br>
-      <b>④配送結果的完整性仍取決於護理端掃碼合規率：</b>上表④護理師接收節點雖標示AMR系統「✓」（技術上可自動記錄接收事件），但實際完整性仍取決於護理師是否確實掃碼——Next分頁的易用性缺口已指出護理師可不掃碼直接取藥，這會讓④節點的實際可追溯率低於系統理論值100%，建議搭配掃碼合規率一併追蹤。<br><br>
-      <b>②「護理物流工時改善率」約+73%為推算值：</b>官方公式中的「護理物流工時」定義尚未完全明確（原表公式括號內容為空），本報告以「護理端接收操作時間」（84秒）作為After值的最佳代理指標，計算得改善率約73%。此數字的可信度取決於「護理物流工時」的官方定義是否等同於此操作時間，建議與黃醫師/PM確認定義後校正。</p>
+<div class="cv-title">⚠ 兩項需要特別說明的數字</div>
+<p><b>①「病人取得藥物的總等待時間改善率」為 −110%：</b>用官方公式直接代入現有數字，AMR的總完成時間（13m13s）比人工（6m18s）更長，wall-clock意義上的等待時間不降反升。這與Diff Value分頁強調的「Human Touch Time下降40%」並不矛盾——兩者衡量的是不同的東西：一個是「病人等多久」，一個是「人力綁住多久」。若要讓Lead Time也轉正，優化重點應放在Roadmap分頁的Phase 2（導航時間壓縮），而非現階段的宣傳重點。<br/><br/>
+<b>④配送結果的完整性仍取決於護理端掃碼合規率：</b>上表④護理師接收節點雖標示AMR系統「✓」（技術上可自動記錄接收事件），但實際完整性仍取決於護理師是否確實掃碼——Roadmap分頁的易用性缺口已指出護理師可不掃碼直接取藥，這會讓④節點的實際可追溯率低於系統理論值100%，建議搭配掃碼合規率一併追蹤。<br/><br/>
+<b>②「護理物流工時改善率」約+73%為推算值：</b>官方公式中的「護理物流工時」定義尚未完全明確（原表公式括號內容為空），本報告以「護理端接收操作時間」（84秒）作為After值的最佳代理指標，計算得改善率約73%。此數字的可信度取決於「護理物流工時」的官方定義是否等同於此操作時間，建議與黃醫師/PM確認定義後校正。</p>
+</div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- ROADMAP TAB -->
+  <!-- ======================================================= -->
+<div class="tab-panel" id="panel-roadmap">
+    <div class="part-header">
+      <div class="part-eyebrow">SEC. 3</div>
+      <h2 class="serif">Roadmap</h2>
+      <div class="part-sub">優化路徑總覽、社交導航能力落差，以及UI與現行Workflow的易用性缺口</div>
+    </div>
+
+    <div class="section-title"><span class="section-num">3.0</span><h3>優化 Roadmap</h3></div>
+<div class="roadmap2">
+<div class="rm2-card">
+<div class="rm2-when">Phase 1 — Workflow Optimization</div>
+<div class="rm2-title">Human Touch Time ↓20%</div>
+<div class="rm2-desc">藥品運送進度追溯不透明，藥師與護理師無法即時掌握，造成多餘溝通成本，導致可追溯性與效益數字都會被稀釋。</div>
+<div class="eb-link">→ 詳見下方3.1／3.2</div>
+</div>
+<div class="rm2-card stage2">
+<div class="rm2-when">Phase 2 — Context-aware Navigation</div>
+<div class="rm2-title">Navigation Time ↓20%</div>
+<div class="rm2-desc">先以規則調整解決人流與禮讓問題，導入智慧監視系統，即時辨識院內應優先禮讓的物件（如移動中的病床、輪椅、急救推車等），以落實院內禮讓原則，才能真正達到「等待與禮讓」的社交導航能力。</div>
+<div class="eb-link">→ 詳見下方3.1／3.2</div>
+</div>
+</div>
+
+<div class="section-title"><span class="section-num">3.1</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
+<div class="section-note">取自P1 Value Report簡報《AMR Capability Summary》：7/22–23現場實測問題整理</div>
+<div class="cap-grid">
+<div class="cap-card">
+<div class="cap-top"><span class="cap-letter">A</span><span class="cap-name">社交導航不足（含沿路語音、病床優先）</span></div>
+<p class="cap-desc">缺乏符合醫療場域社會規範的互動能力，難以自然與人共享空間——包含優先權判斷、人流判斷、路徑決策三個子問題</p>
+<p class="cap-sub"><b>語音：</b>建議每個路段配置符合情境的語音訊息，例如轉角、視野死角處應主動出聲提醒對向路人，避免碰撞，而非全程使用同一種提示音　｜　<b>病床優先：</b>與病床爭道時僅減速未立即禮讓，曾發生AMR卡在B站出口、病床需倒退避讓延誤入急診的情形</p>
+</div>
+<div class="cap-card">
+<div class="cap-top"><span class="cap-letter">B</span><span class="cap-name">場域整合不足</span></div>
+<p class="cap-desc">尚未充分融入場域空間配置與工作流程，與既有醫療作業（如病床停靠動線）產生衝突。根源之一是<b>環境感知能力不足</b>——例如偵測不到點滴架腳架、無法辨識移動中的病床，導致AMR無法即時判斷該讓行或該通過，才進一步演變成場域整合的衝突</p>
+</div>
+</div>
+<div class="roadmap2">
+<div class="rm2-card">
+<div class="rm2-when">Stage 1 · 現行推動中</div>
+<div class="rm2-title">Rule-based 規則調整</div>
+<div class="rm2-desc">先建立固定的優先權與人流規則（例如電梯口自動減速禮讓、病床固定靠左AMR固定靠右），用最快速度解決現場觀察到的具體衝突點</div>
+</div>
+<div class="rm2-card stage2">
+<div class="rm2-when">Stage 2 · 後續規劃中</div>
+<div class="rm2-title">關鍵物件辨識導入</div>
+<div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
+</div>
+</div>
+<div class="section-title"><span class="section-num">3.2</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
+<div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
+<div class="catsum-grid" id="catsum-grid">
+<div class="catsum-card">
+<div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
+<div id="cs-rows-pharm"></div>
+</div>
+<div class="catsum-card">
+<div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
+<div id="cs-rows-nurse"></div>
+</div>
+</div>
+<div class="caveat-box">
+<div class="cv-title">一眼看重點</div>
+<ul>
+<li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
+<li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
+<li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
+<li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
+</ul>
+<p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
+</div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- WORKFLOW & TRUST TAB -->
+  <!-- ======================================================= -->
+<div class="tab-panel" id="panel-workflow">
+<div class="part-header">
+<div class="part-eyebrow">SEC. 2</div>
+<h2 class="serif">Workflow Fit / Trust 流程契合度與信任</h2>
+<div class="part-sub">醫護人員使用前預期評分與評價，以及流程層面（非UI畫面層面）的優化機會點</div>
+</div>
+<div class="section-title"><span class="section-num">2.1</span><h3>使用前預期評分與評價</h3><span class="badge-live" id="badge-21">🔄 <span id="badge-21-text">5/16位已填答，持續收集中</span></span></div>
+<div class="insight-box" style="margin-top:0;">
+<div class="iv-title">⚠ 關鍵洞察：信任機器可靠，但還沒感受到減負</div>
+<p>兩個角色都對可靠度打高分，卻在「降低負擔」與「更專注本職」上普遍偏低——尤其護理師的整體滿意度（<span id="ins-nurse-q1">1.75</span>）明顯低於藥師（<span id="ins-pharm-q1">3.3</span>）。醫護信任AMR「能穩定完成任務」，但尚未感受到工作被實際減輕；使用前的預期心聲（見下方）也印證了這點。</p>
+</div>
+<div class="section-note" id="sec21-note" style="margin-top:14px;">1–5分量表；已收集 5 位（藥師3位、護理師2位）的使用前預期評分，共16位受邀對象，其餘11位尚未填答</div>
+<div class="sat-table" id="sat-table">
+<div class="sat-row head"><div>評分項目</div><div>藥師（n=<span id="sat-n-pharm">3</span>）</div><div>護理師（n=<span id="sat-n-nurse">2</span>）</div></div>
+<div class="sat-row"><div class="sq">Q1　預期滿意度</div><div class="sv pharm" data-label="藥師" id="sat-p-q1">3.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q1">1.75</div></div>
+<div class="sat-row"><div class="sq">Q2　預期可靠度</div><div class="sv pharm" data-label="藥師" id="sat-p-q2">4.0</div><div class="sv nurse" data-label="護理師" id="sat-n-q2">4.5</div></div>
+<div class="sat-row"><div class="sq">Q3　預期降低工作負擔</div><div class="sv pharm" data-label="藥師" id="sat-p-q3">2.3</div><div class="sv nurse" data-label="護理師" id="sat-n-q3">2.5</div></div>
+<div class="sat-row"><div class="sq">Q4　預期更專注其他專業工作</div><div class="sv pharm" data-label="藥師" id="sat-p-q4">2.7</div><div class="sv nurse" data-label="護理師" id="sat-n-q4">2.5</div></div>
+</div>
+<div class="section-note" style="margin-top:10px;">說明：這批評分與心得是受訪者在首次實際使用AMR之後，回溯描述「當初使用前」的預期想法所得——並非使用後的真實心得。正式的「使用後」1–5分量表與心得尚未收集，待實際導入後同步填入以便前後對照。以下為每位受訪者評分理由的摘要（依代號呈現，不揭露姓名）</div>
+<div class="quote-grid" id="quote-grid"></div>
+<div class="section-title"><span class="section-num">2.2</span><h3>流程優化機會點</h3></div>
+<div class="section-note">根據現場質性觀察與使用者回饋整理，聚焦「流程設計」層級（畫面操作層級的缺口見附錄A.2）</div>
+<div class="pain-grid">
+<div class="pain-card">
+<div class="pain-title"><span class="letter">A</span>資訊不透明造成白跑</div>
+<div class="pain-row before"><span class="pain-tag">現況</span><p><b>庫存判斷靠猜：</b>部分護理師無法判斷急診是否已有庫存，攜藥單至藥局才發現庫存已有而白跑；藥單列印延遲也拉長等待</p></div>
+<div class="pain-row after"><span class="pain-tag">機會點</span><p><b>出發前攔截白跑：</b>若AMR/PMS串接庫存資訊，可於出發前攔截「庫存已有」情境，直接降低白跑率</p></div>
+</div>
+<div class="pain-card">
+<div class="pain-title"><span class="letter">B</span>傳送人力被非送藥任務佔用</div>
+<div class="pain-row before"><span class="pain-tag">現況</span><p><b>配送真空時段：</b>傳送人力常被挪用推病床、推輪椅、送血/檢體，14:00–15:30尤其明顯</p></div>
+<div class="pain-row after"><span class="pain-tag">機會點</span><p><b>角色重新分配：</b>AMR專職送藥這類規則化任務，把人力解放去做需要人情判斷的工作——是分工調整，而非取代</p></div>
+</div>
+<div class="pain-card">
+<div class="pain-title"><span class="letter">C</span>流程中斷被隱形化</div>
+<div class="pain-row before"><span class="pain-tag">現況</span><p><b>延誤不留痕跡：</b>藥師不在時，傳送用牌子壓單直接折返，下一趟才一併領回——延誤不會出現在耗時統計中</p></div>
+<div class="pain-row after"><span class="pain-tag">機會點</span><p><b>延誤變得可追蹤：</b>AMR任務執行完整度可預期，不會被「順手幫忙」中斷，讓延誤可量化</p></div>
+</div>
+<div class="pain-card">
+<div class="pain-title"><span class="letter">D</span>特殊藥品類別仍需人工介入</div>
+<div class="pain-row before"><span class="pain-tag">現況</span><p><b>ADC沒有的藥仍要跑腿：</b>護理站常見的鎮靜藥、冷藏藥，ADC沒有備藥，加上臨時醫囑常指定這類藥，護理師仍得自行跑一趟藥局</p></div>
+<div class="pain-row after"><span class="pain-tag">機會點</span><p><b>盤點高頻急用藥清單：</b>與藥劑部評估擴充ADC備藥範圍，或建立AMR快速通道，取代護理師跑腿</p></div>
+</div>
+<div class="pain-card">
+<div class="pain-title"><span class="letter">E</span>站別判斷責任轉移到藥師</div>
+<div class="pain-row before"><span class="pain-tag">現況</span><p><b>新增的認知負擔：</b>過去人工傳送依藥袋代碼判斷站別，藥師不需介入；改用AMR後，藥師得自行選擇站別，增加放藥負擔</p></div>
+<div class="pain-row after"><span class="pain-tag">機會點</span><p><b>讓系統做判斷：</b>讀取藥袋既有的目的地代碼自動帶入站別，藥師只需確認，把判斷還給系統</p></div>
+</div>
+</div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- SERVICE & SLA TAB -->
+  <!-- ======================================================= -->
+<div class="tab-panel" id="panel-service">
+    <div class="part-header">
+      <div class="part-eyebrow">SERVICE &amp; SLA</div>
+      <h2 class="serif">Service &amp; SLA｜即時監控與達成狀態</h2>
+      <div class="part-sub">透過 TAMS 系統 API 串接，即時掌握車隊任務狀態，並持續追蹤三項關鍵 SLA 指標</div>
+    </div>
+
+    <div class="section-title"><span class="section-num">S.1</span><h3>TAMS 即時車隊監控</h3><span class="badge-live">🔄 API 即時串接</span></div>
+    <div class="section-note">下圖依貴院 Fleet Control 系統截圖繪製示意，呈現地圖區域與單一AMR任務狀態；正式串接後將顯示即時動態畫面</div>
+
+    <div class="tams-mock">
+      <div class="tams-map">
+
+        <svg viewBox="0 0 400 260" role="img" aria-label="TAMS 車隊地圖示意">
+          <rect x="0" y="0" width="400" height="260" fill="#FFFFFF"/>
+          <path d="M40 20 L150 20 L150 60 L120 60 L120 100 L360 100" fill="none" stroke="#B9C2BD" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M60 140 L60 230 L340 230 L340 160" fill="none" stroke="#B9C2BD" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="120" cy="80" r="9" fill="var(--good)"/>
+          <text x="120" y="64" text-anchor="middle" font-size="10" fill="var(--good)" font-family="IBM Plex Mono, ui-monospace, monospace">g7p_charger_1</text>
+          <circle cx="200" cy="150" r="22" fill="var(--amr)" opacity="0.18"/>
+          <circle cx="200" cy="150" r="12" fill="var(--amr)"/>
+          <circle cx="300" cy="180" r="9" fill="var(--good)"/>
+          <text x="300" y="200" text-anchor="middle" font-size="10" fill="var(--good)" font-family="IBM Plex Mono, ui-monospace, monospace">Pharmacy</text>
+        </svg>
+
+        <div class="tams-map-caption">amr701　執行中　地圖區域示意（依系統截圖繪製）</div>
+      </div>
+      <div class="tams-status">
+        <div class="tams-status-head"><span class="ts-id">amr701</span><span class="ts-state">執行中</span></div>
+        <div class="ts-row"><span class="ts-lbl">系統 ID</span><span class="ts-val mono">6a6a0e1405f2ab7023fe8efc</span></div>
+        <div class="ts-row"><span class="ts-lbl">電量</span><span class="ts-val">69%</span></div>
+        <div class="ts-row"><span class="ts-lbl">訊號</span><span class="ts-val">-56 dBm</span></div>
+        <div class="ts-row"><span class="ts-lbl">目前位置</span><span class="ts-val mono">(58.61, -41.10)</span></div>
+        <div class="ts-row"><span class="ts-lbl">目的地</span><span class="ts-val">Pharmacy</span></div>
+        <div class="ts-row"><span class="ts-lbl">目前任務</span><span class="ts-val mono">Pharmacy(勿刪)<br>6a7c43f39d8bb4481105fb91</span></div>
+      </div>
+    </div>
+
+    <div class="tams-fleet">
+      <div class="tf-title">車隊概覽（3台）</div>
+      <div class="tf-row"><span class="tf-dot on"></span>amr701　執行中<span class="tf-pct">69%</span></div>
+      <div class="tf-row"><span class="tf-dot off"></span>amr702　離線<span class="tf-pct">0%</span></div>
+    </div>
+
+    <div class="section-title" style="margin-top:34px;"><span class="section-num">S.2</span><h3>SLA 達成狀態監控</h3></div>
+    <div class="section-note">依貴院訂定之三項SLA目標，逐項比對目前實測數據之達成狀態</div>
+
+    <div class="sla-grid">
+      <div class="sla-card good">
+        <div class="sla-title">配送時效</div>
+        <div class="sla-target">目標：每趟配送 ≤ 15 分鐘</div>
+        <div class="sla-current">13m13s</div>
+        <div class="sla-status">✓ 達成</div>
+        <div class="sla-note">AMR正式環境平均每趟任務完成時間，n=9</div>
+      </div>
+      <div class="sla-card pending">
+        <div class="sla-title">運輸產能</div>
+        <div class="sla-target">目標：每小時 ≥ 4 趟</div>
+        <div class="sla-current">資料蒐集中</div>
+        <div class="sla-status">◐ 待資料</div>
+        <div class="sla-note">缺完整運作時數紀錄，樣本擴大後可計算</div>
+      </div>
+      <div class="sla-card pending">
+        <div class="sla-title">電池續航力</div>
+        <div class="sla-target">目標：30–80% 電量可運作 ≥ 3 小時</div>
+        <div class="sla-current">資料不足</div>
+        <div class="sla-status">◐ 待實測</div>
+        <div class="sla-note">現有僅單日充放電觀察（94%→75%／5趟），未涵蓋完整週期，無法對應此SLA門檻</div>
+      </div>
     </div>
   </div>
 
   <!-- ======================================================= -->
   <!-- APPENDIX TAB -->
   <!-- ======================================================= -->
-  <div class="tab-panel" id="panel-appendix">
-    <div class="part-header">
-      <div class="part-eyebrow">APPENDIX</div>
-      <h2 class="serif">附錄</h2>
-      <div class="part-sub">資料樣本說明、Financial Impact方法論來源、UI易用性缺口逐項細節</div>
-    </div>
-
-    <div class="section-title"><span class="section-num">A.0</span><h3>資料樣本與來源說明</h3></div>
-    <div class="appendix-item">
-      <p><b>Time Study：</b>人工送藥70趟（有效61趟）、AMR 15趟（測試6趟／正式環境9趟）</p>
-      <p><b>使用回饋調查：</b>n=<span id="a0-answered">5</span>（藥師<span id="a0-pharm">3</span>位、護理師<span id="a0-nurse">2</span>位），共<span id="a0-total">16</span>位受邀參與者，其餘<span id="a0-remaining">11</span>位尚未填答</p>
-      <p><b>資料檔案：</b>Time_Study_AI讀_使用前後評價+UX_issues.csv、黃醫師提供_PolyMedX_PMS_KPI_Register_v1.xlsx、PolyMedX CSH PMS P1 Value Report_v0.3.pptx</p>
-    </div>
-
-    <div class="section-title"><span class="section-num">A.1</span><h3>Financial Impact 方法論參考來源</h3></div>
-    <div class="appendix-item">
-      <div class="ap-title">1. Time-Driven Activity-Based Costing（工時貨幣化）</div>
-      <p>Kaplan &amp; Porter提出的TDABC框架：以「每分鐘人力成本 × 花費時間」回推活動實際成本。</p>
-      <div class="ap-src">Kaplan et al., J Healthc Manag, 2014 · https://pubmed.ncbi.nlm.nih.gov/25647962/</div>
-    </div>
-    <div class="appendix-item">
-      <div class="ap-title">2. 醫院產能管理與貢獻邊際公式</div>
-      <p>可額外收治病患數 × 貢獻邊際 = 已實現收益影響。Guidehouse案例：縮短平均住院天數0.47天，多服務11,065名病患，12個月內淨利改善約6,400萬美元。</p>
-      <div class="ap-src">Guidehouse, 2025 · https://guidehouse.com/insights/healthcare/2025/mastering-capacity-management<br>EY · https://www.ey.com/en_us/insights/strategy/hospital-capacity-management-strategy-can-create-value</div>
-    </div>
-    <div class="appendix-item">
-      <div class="ap-title">3. 同類配送機器人實測案例（Aethon TUG）</div>
-      <p>JMIR系統性文獻回顧：藥局收醫囑到出藥週期縮短29.6%，技術人員配送時間減少7.2小時，轉投其他藥局任務。</p>
-      <div class="ap-src">JMIR, 2022 · https://www.jmir.org/2022/5/e33380<br>Aethon (RIA Magazine) · https://aethon.com/aethon-tug-autonomous-mobile-robot-discussed-ria-magazine/</div>
-    </div>
-    <div class="appendix-item">
-      <div class="ap-title">4. 次均醫療收入之公開參考數字</div>
-      <p>試算器預設值NT$750，取自衛福部健保署公告之「醫學中心急診部分負擔金額」——此為病人自付下限，非醫院實際總醫療收入（含健保給付部分）。實際次均醫療收入通常遠高於此，建議以貴院財務室提供之數字替換。</p>
-    </div>
-
-    <div class="section-title"><span class="section-num">A.2</span><h3>UI易用性缺口・逐項細節</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
-    <div class="section-note">依問題來源（藥師端／護理端）與問題類型分類；下方清單隨匯入資料自動更新</div>
-
-    <div id="ux-appendix-pharm"></div>
-    <div id="ux-appendix-nurse"></div>
-
-    <footer>
-      <strong>使用說明與資料限制</strong>
-      <ul>
-        <li>AMR側正式環境樣本仍少（n=9），且段級時間戳尚未完整覆蓋，Sec.1.1的After段內占比為推算值，建議上線後持續累積至可比於人工的規模。</li>
-        <li>Sec.2滿意度調查僅<span id="footer-ratio">5/16</span>位受訪者已填答，護理師僅2筆，屬方向性參考，不宜作為正式結論引用；且該批評分與開放式心得皆為受訪者於首次使用後回溯描述的「使用前預期」，並非使用後的真實心得。</li>
-        <li>Financial Impact試算器之「每案件所需時間」「可轉換比例」為假設值，「次均醫療收入」為公開下限參考值，正式報告前請以貴院財務室與藥劑部提供之實際數字替換。</li>
-        <li>「匯入／匯出資料」功能會更新本頁的滿意度分數、評分理由摘要、UI缺口清單、以及Value分頁的「目前資料試算」區塊；各分頁的分析文字與建議屬團隊撰寫的解讀，不會被自動改寫。</li>
-      </ul>
-    </footer>
+<div class="tab-panel" id="panel-appendix">
+<div class="part-header">
+<div class="part-eyebrow">APPENDIX</div>
+<h2 class="serif">附錄</h2>
+<div class="part-sub">資料樣本說明、Financial Impact方法論來源、UI易用性缺口逐項細節</div>
+</div>
+<div class="section-title"><span class="section-num">A.0</span><h3>資料樣本與來源說明</h3></div>
+<div class="appendix-item">
+<p><b>Time Study：</b>人工送藥70趟（有效61趟）、AMR 15趟（測試6趟／正式環境9趟）</p>
+<p><b>使用回饋調查：</b>n=<span id="a0-answered">5</span>（藥師<span id="a0-pharm">3</span>位、護理師<span id="a0-nurse">2</span>位），共<span id="a0-total">16</span>位受邀參與者，其餘<span id="a0-remaining">11</span>位尚未填答</p>
+<p><b>資料檔案：</b>Time_Study_AI讀_使用前後評價+UX_issues.csv、黃醫師提供_PolyMedX_PMS_KPI_Register_v1.xlsx、PolyMedX CSH PMS P1 Value Report_v0.3.pptx</p>
+</div>
+<div class="section-title"><span class="section-num">A.1</span><h3>Financial Impact 方法論參考來源</h3></div>
+<div class="appendix-item">
+<div class="ap-title">1. Time-Driven Activity-Based Costing（工時貨幣化）</div>
+<p>Kaplan &amp; Porter提出的TDABC框架：以「每分鐘人力成本 × 花費時間」回推活動實際成本。</p>
+<div class="ap-src">Kaplan et al., J Healthc Manag, 2014 · https://pubmed.ncbi.nlm.nih.gov/25647962/</div>
+</div>
+<div class="appendix-item">
+<div class="ap-title">2. 醫院產能管理與貢獻邊際公式</div>
+<p>可額外收治病患數 × 貢獻邊際 = 已實現收益影響。Guidehouse案例：縮短平均住院天數0.47天，多服務11,065名病患，12個月內淨利改善約6,400萬美元。</p>
+<div class="ap-src">Guidehouse, 2025 · https://guidehouse.com/insights/healthcare/2025/mastering-capacity-management<br/>EY · https://www.ey.com/en_us/insights/strategy/hospital-capacity-management-strategy-can-create-value</div>
+</div>
+<div class="appendix-item">
+<div class="ap-title">3. 同類配送機器人實測案例（Aethon TUG）</div>
+<p>JMIR系統性文獻回顧：藥局收醫囑到出藥週期縮短29.6%，技術人員配送時間減少7.2小時，轉投其他藥局任務。</p>
+<div class="ap-src">JMIR, 2022 · https://www.jmir.org/2022/5/e33380<br/>Aethon (RIA Magazine) · https://aethon.com/aethon-tug-autonomous-mobile-robot-discussed-ria-magazine/</div>
+</div>
+<div class="appendix-item">
+<div class="ap-title">4. 次均醫療收入之公開參考數字</div>
+<p>試算器預設值NT$750，取自衛福部健保署公告之「醫學中心急診部分負擔金額」——此為病人自付下限，非醫院實際總醫療收入（含健保給付部分）。實際次均醫療收入通常遠高於此，建議以貴院財務室提供之數字替換。</p>
+</div>
+<div class="section-title"><span class="section-num">A.2</span><h3>UI易用性缺口・逐項細節</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
+<div class="section-note">依問題來源（藥師端／護理端）與問題類型分類；下方清單隨匯入資料自動更新</div>
+<div id="ux-appendix-pharm"></div>
+<div id="ux-appendix-nurse"></div>
+<footer>
+<strong>使用說明與資料限制</strong>
+<ul>
+<li>AMR側正式環境樣本仍少（n=9），且段級時間戳尚未完整覆蓋，Sec.1.1的After段內占比為推算值，建議上線後持續累積至可比於人工的規模。</li>
+<li>Sec.2滿意度調查僅<span id="footer-ratio">5/16</span>位受訪者已填答，護理師僅2筆，屬方向性參考，不宜作為正式結論引用；且該批評分與開放式心得皆為受訪者於首次使用後回溯描述的「使用前預期」，並非使用後的真實心得。</li>
+<li>Financial Impact試算器之「每案件所需時間」「可轉換比例」為假設值，「次均醫療收入」為公開下限參考值，正式報告前請以貴院財務室與藥劑部提供之實際數字替換。</li>
+<li>「匯入／匯出資料」功能會更新本頁的滿意度分數、評分理由摘要、UI缺口清單、以及Diff Value分頁的「目前資料試算」區塊；各分頁的分析文字與建議屬團隊撰寫的解讀，不會被自動改寫。</li>
+</ul>
+</footer>
   </div>
 
 </div>
@@ -1762,6 +1855,26 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       });
     });
   }
+
+  // ---------------------------------------------------------------
+  // Use Case tab: floor plan upload preview
+  // ---------------------------------------------------------------
+  (function(){
+    var input = document.getElementById('uc-floorplan-input');
+    if (!input) return;
+    input.addEventListener('change', function(){
+      var file = input.files && input.files[0];
+      var preview = document.getElementById('uc-floorplan-preview');
+      var img = document.getElementById('uc-floorplan-img');
+      if (!file || !file.type.startsWith('image/')) { preview.hidden = true; return; }
+      var reader = new FileReader();
+      reader.onload = function(e){
+        img.src = e.target.result;
+        preview.hidden = false;
+      };
+      reader.readAsDataURL(file);
+    });
+  })();
 
   // ---------------------------------------------------------------
   // Tab switching
