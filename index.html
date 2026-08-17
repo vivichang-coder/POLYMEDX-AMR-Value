@@ -328,11 +328,21 @@
   .upload-box input[type=file]{ font-size:12px; color:var(--ink-soft); max-width:100%; }
   .upload-hint{ font-size:11.5px; color:var(--ink-soft); margin:8px 0 0; }
   .upload-preview{ margin-top:12px; }
-  .upload-preview img{ max-width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
   .upload-note{ font-size:11.5px; color:var(--amr); margin:10px 0 0; }
-  .distance-mock{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:8px; }
-  .distance-mock svg{ display:block; width:100%; height:auto; }
-  .distance-mock-caption{ font-size:11.5px; color:var(--ink-soft); margin:10px 0 0; }
+  .databar-btn:disabled{ opacity:.5; cursor:not-allowed; }
+  .floorplan-stage{ position:relative; display:inline-block; max-width:100%; }
+  .floorplan-stage img{ display:block; max-width:100%; border-radius:10px; border:1px solid var(--line); cursor:crosshair; }
+  .floorplan-overlay{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .uc-scale-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .uc-scale-row .field{ max-width:170px; }
+  .uc-scale-readout{ font-size:11.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',ui-monospace,monospace; }
+  .uc-action-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  .uc-measure-result{ display:flex; align-items:center; gap:10px; margin-top:12px; background:var(--good-soft); border:1px solid var(--good-soft-line); border-radius:10px; padding:10px 14px; }
+  .uc-measure-result .mr-lbl{ font-size:12px; color:var(--ink-soft); }
+  .uc-measure-result .mr-val{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:16px; font-weight:700; color:var(--good); }
+  .uc-3d-box{ margin-top:16px; background:var(--bg); border:1px dashed var(--line); border-radius:12px; padding:6px 14px 14px; }
+  .uc-3d-stage{ perspective:900px; display:flex; justify-content:center; padding:20px 0; }
+  .uc-3d-stage img{ max-width:80%; border-radius:8px; border:1px solid var(--line); box-shadow:0 20px 40px -12px rgba(0,0,0,.35); transform:rotateX(45deg) scale(0.9); }
 
   /* TAMS / Service tab */
   .tams-mock{ display:grid; grid-template-columns:1.3fr 1fr; gap:14px; margin-bottom:14px; }
@@ -356,6 +366,10 @@
   .tf-dot.on{ background:var(--amr); }
   .tf-dot.off{ background:var(--ink-soft); }
   .tf-pct{ margin-left:auto; font-family:'IBM Plex Mono',ui-monospace,monospace; font-weight:600; }
+  .status-pill{ display:inline-block; font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:10px; font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:.03em; white-space:nowrap; }
+  .status-pill.completed{ background:var(--good-soft); color:var(--good); border:1px solid var(--good-soft-line); }
+  .status-pill.aborted{ background:var(--warn-soft); color:var(--warn-strong); border:1px solid var(--warn-soft-line); }
+  .tams-task-table td.tt-action{ color:var(--amr); font-weight:600; }
 
   .sla-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
   @media(max-width:640px){ .sla-grid{ grid-template-columns:1fr; } }
@@ -442,7 +456,7 @@
     </div>
     <div class="account-list">
       <div class="account-item"><div class="ai-lbl">醫院名稱</div><div class="ai-val">中山醫學大學附設醫院</div></div>
-      <div class="account-item"><div class="ai-lbl">Account Manager</div><div class="ai-val">Jemwei</div></div>
+      <div class="account-item"><div class="ai-lbl">Account Manager</div><div class="ai-val">Jenwei</div></div>
       <div class="account-item"><div class="ai-lbl">Sales</div><div class="ai-val">Jason</div></div>
     </div>
   </div>
@@ -483,31 +497,40 @@
       <div class="field"><label>場域平均距離(公尺)</label><input type="number" id="uc-distance"></div>
     </div>
 
-    <div class="section-title"><span class="section-num">U.4</span><h3>空間掃描檔上傳</h3><span class="badge-live">🔄 2D→3D Rendering</span></div>
-    <div class="section-note">上傳院內平面圖（圖片或PDF），作為後續3D場域建模與AMR路徑規劃的輸入</div>
+    <div class="section-title"><span class="section-num">U.4</span><h3>空間掃描檔上傳與場域尺寸量測</h3><span class="badge-live">🔄 2D→3D Rendering</span></div>
+    <div class="section-note">上傳院內平面圖後，先輸入比例尺參考資訊完成校正，即可將圖檔轉換為3D場域模型，或於圖上點選任兩點取得實際直線距離</div>
     <div class="upload-box">
-      <input type="file" id="uc-floorplan-input" accept="image/*,.pdf" />
-      <p class="upload-hint">支援 JPG／PNG／PDF，建議包含比例尺或已知距離標示，以利場域尺寸換算</p>
-      <div class="upload-preview" id="uc-floorplan-preview" hidden><img id="uc-floorplan-img" alt="平面圖預覽"></div>
-      <p class="upload-note">上傳後將用於自動生成3D場域模型（3D Rendering）——此功能串接開發中，目前僅提供2D預覽</p>
-    </div>
+      <input type="file" id="uc-floorplan-input" accept="image/*" />
+      <p class="upload-hint">支援 JPG／PNG；上傳後請先完成下方比例尺校正，再進行3D轉換或距離量測</p>
 
-    <div class="section-title"><span class="section-num">U.5</span><h3>場域尺寸量測（示意）</h3></div>
-    <div class="section-note">示意：使用者可於上傳的平面圖上點選 A、B 兩點，系統即顯示兩點間的實際場域直線距離（依比例尺換算）</div>
-    <div class="distance-mock">
+      <div class="upload-preview" id="uc-floorplan-preview" hidden>
+        <div class="floorplan-stage" id="uc-floorplan-stage">
+          <img id="uc-floorplan-img" alt="平面圖預覽">
+          <svg id="uc-floorplan-overlay" class="floorplan-overlay"></svg>
+        </div>
 
-      <svg viewBox="0 0 400 220" role="img" aria-label="場域尺寸量測示意圖">
-        <rect x="1" y="1" width="398" height="218" rx="12" fill="var(--bg)" stroke="var(--line)"/>
-        <path d="M30 30 H370 V190 H210 V130 H30 Z" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
-        <circle cx="80" cy="70" r="7" fill="var(--amr)"/>
-        <text x="80" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="var(--amr)" font-family="IBM Plex Mono, ui-monospace, monospace">A</text>
-        <circle cx="300" cy="150" r="7" fill="var(--human)"/>
-        <text x="300" y="132" text-anchor="middle" font-size="13" font-weight="700" fill="var(--human)" font-family="IBM Plex Mono, ui-monospace, monospace">B</text>
-        <line x1="80" y1="70" x2="300" y2="150" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4"/>
-        <text x="190" y="200" text-anchor="middle" font-size="12" fill="var(--ink)" font-family="'Noto Sans TC','PingFang TC',sans-serif">A → B　直線距離：18.6 m（示意值）</text>
-      </svg>
+        <div class="uc-scale-row">
+          <div class="field"><label>已知參考距離(公尺)</label><input type="number" id="uc-ref-dist" step="0.1" placeholder="例如：10"></div>
+          <button class="databar-btn ghost" id="uc-btn-calibrate" type="button">點選圖上兩點校正比例尺</button>
+          <span class="uc-scale-readout" id="uc-scale-readout">尚未校正比例尺</span>
+        </div>
 
-      <p class="distance-mock-caption">上圖為UI示意，非即時運算結果；實際功能將於平面圖上傳並完成比例尺校正後開放</p>
+        <div class="uc-action-row">
+          <button class="databar-btn" id="uc-btn-3d" type="button">轉換為3D模型</button>
+          <button class="databar-btn ghost" id="uc-btn-measure" type="button" disabled>點選圖上A、B兩點量測距離</button>
+        </div>
+
+        <div class="uc-measure-result" id="uc-measure-result" hidden>
+          <span class="mr-lbl">A → B 直線距離</span><span class="mr-val" id="uc-measure-val">—</span>
+        </div>
+
+        <div class="uc-3d-box" id="uc-3d-box" hidden>
+          <div class="uc-3d-stage"><img id="uc-3d-img" alt="3D場域模型預覽"></div>
+          <p class="upload-note">3D 模型為示意預覽（依上傳圖檔生成透視效果）——正式3D場域重建服務串接開發中</p>
+        </div>
+      </div>
+
+      <p class="upload-note" id="uc-floorplan-empty-note">上傳平面圖後，即可進行比例尺校正、3D轉換與距離量測</p>
     </div>
   </div>
 
@@ -1094,6 +1117,28 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
       <div class="tf-title">車隊概覽（3台）</div>
       <div class="tf-row"><span class="tf-dot on"></span>amr701　執行中<span class="tf-pct">69%</span></div>
       <div class="tf-row"><span class="tf-dot off"></span>amr702　離線<span class="tf-pct">0%</span></div>
+    </div>
+
+    <div class="section-title" style="margin-top:28px;"><span class="section-num">—</span><h3>任務歷程記錄（Task Management）</h3></div>
+    <div class="section-note">下表依貴院 TAMS 系統 Task Management 頁面截圖繪製示意，呈現任務記錄的完整欄位</div>
+    <div class="kpi-scroll" style="margin-bottom:22px;">
+      <table class="kpi-table tams-task-table">
+        <thead>
+          <tr><th>類型</th><th>記錄 ID</th><th>定義 ID</th><th>路徑摘要</th><th>開始時間</th><th>結束時間</th><th>狀態</th><th>操作</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>📦</td><td class="mono">T-20260813-00031</td><td>DEL-002</td><td>g7p_charger_1</td><td class="mono">2026-08-13 18:01</td><td class="mono">2026-08-13 18:01</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00030</td><td>DEL-003</td><td>—</td><td class="mono">2026-08-13 18:00</td><td class="mono">-</td><td><span class="status-pill aborted">ABORTED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00029</td><td>DEL-002</td><td>g7p_charger_1</td><td class="mono">2026-08-13 17:57</td><td class="mono">2026-08-13 17:58</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00028</td><td>DEL-004</td><td>Nurse_A → Nurse_B → Pharmacy</td><td class="mono">2026-08-13 17:42</td><td class="mono">2026-08-13 17:55</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00027</td><td>DEL-004</td><td>Nurse_A → Nurse_B → Pharmacy</td><td class="mono">2026-08-13 16:44</td><td class="mono">2026-08-13 16:58</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00026</td><td>DEL-004</td><td>Nurse_A → Nurse_B → Pharmacy</td><td class="mono">2026-08-13 16:22</td><td class="mono">2026-08-13 16:34</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00025</td><td>DEL-004</td><td>Nurse_A → Nurse_B → Pharmacy</td><td class="mono">2026-08-13 16:02</td><td class="mono">2026-08-13 16:18</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00024</td><td>DEL-003</td><td>Pharmacy</td><td class="mono">2026-08-13 15:59</td><td class="mono">2026-08-13 15:59</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00023</td><td>DEL-004</td><td>Nurse_A → Nurse_B → Pharmacy</td><td class="mono">2026-08-13 15:36</td><td class="mono">2026-08-13 15:53</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+          <tr><td>📦</td><td class="mono">T-20260813-00022</td><td>DEL-003</td><td>Pharmacy</td><td class="mono">2026-08-13 15:14</td><td class="mono">2026-08-13 15:15</td><td><span class="status-pill completed">COMPLETED</span></td><td class="tt-action">詳情</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="section-title" style="margin-top:34px;"><span class="section-num">S.2</span><h3>SLA 達成狀態監控</h3></div>
@@ -1857,22 +1902,136 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
   }
 
   // ---------------------------------------------------------------
-  // Use Case tab: floor plan upload preview
+  // Use Case tab: floor plan upload, scale calibration, distance
+  // measurement, and 3D-preview conversion
   // ---------------------------------------------------------------
   (function(){
     var input = document.getElementById('uc-floorplan-input');
     if (!input) return;
+    var preview = document.getElementById('uc-floorplan-preview');
+    var emptyNote = document.getElementById('uc-floorplan-empty-note');
+    var img = document.getElementById('uc-floorplan-img');
+    var overlay = document.getElementById('uc-floorplan-overlay');
+    var btnCalibrate = document.getElementById('uc-btn-calibrate');
+    var btnMeasure = document.getElementById('uc-btn-measure');
+    var btn3d = document.getElementById('uc-btn-3d');
+    var refDistInput = document.getElementById('uc-ref-dist');
+    var scaleReadout = document.getElementById('uc-scale-readout');
+    var measureResult = document.getElementById('uc-measure-result');
+    var measureVal = document.getElementById('uc-measure-val');
+    var box3d = document.getElementById('uc-3d-box');
+    var img3d = document.getElementById('uc-3d-img');
+
+    var mode = null; // 'calibrate' | 'measure'
+    var points = [];
+    var metersPerPixel = null; // in NATURAL image pixel units
+
+    function svgEl(tag, attrs){
+      var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (var k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+    function clearMarkers(role){
+      var nodes = overlay.querySelectorAll('[data-role="' + role + '"]');
+      Array.prototype.forEach.call(nodes, function(n){ n.remove(); });
+    }
+    function drawDot(p, role, label){
+      var color = role === 'cal' ? 'var(--human)' : 'var(--amr)';
+      overlay.appendChild(svgEl('circle', {cx:p.x, cy:p.y, r:8, fill:color, 'data-role':role}));
+      var t = svgEl('text', {x:p.x, y:p.y - 12, 'text-anchor':'middle', 'font-size':16, 'font-weight':700, fill:color, 'data-role':role});
+      t.textContent = label;
+      overlay.appendChild(t);
+    }
+    function drawLine(p1, p2, role){
+      var color = role === 'cal' ? 'var(--human)' : 'var(--amr)';
+      overlay.appendChild(svgEl('line', {x1:p1.x, y1:p1.y, x2:p2.x, y2:p2.y, stroke:color, 'stroke-width':2.5, 'stroke-dasharray':'6 5', 'data-role':role}));
+    }
+    function naturalXY(e){
+      var r = img.getBoundingClientRect();
+      var scaleX = img.naturalWidth / r.width;
+      var scaleY = img.naturalHeight / r.height;
+      return { x: (e.clientX - r.left) * scaleX, y: (e.clientY - r.top) * scaleY };
+    }
+
     input.addEventListener('change', function(){
       var file = input.files && input.files[0];
-      var preview = document.getElementById('uc-floorplan-preview');
-      var img = document.getElementById('uc-floorplan-img');
-      if (!file || !file.type.startsWith('image/')) { preview.hidden = true; return; }
+      if (!file || !file.type.startsWith('image/')) { preview.hidden = true; emptyNote.hidden = false; return; }
       var reader = new FileReader();
       reader.onload = function(e){
+        img.onload = function(){
+          overlay.setAttribute('viewBox', '0 0 ' + img.naturalWidth + ' ' + img.naturalHeight);
+        };
         img.src = e.target.result;
         preview.hidden = false;
+        emptyNote.hidden = true;
+        mode = null; points = [];
+        overlay.innerHTML = '';
+        metersPerPixel = null;
+        scaleReadout.textContent = '尚未校正比例尺';
+        btnMeasure.disabled = true;
+        measureResult.hidden = true;
+        box3d.hidden = true;
       };
       reader.readAsDataURL(file);
+    });
+
+    img.addEventListener('click', function(e){
+      if (!mode) return;
+      var p = naturalXY(e);
+      points.push(p);
+      drawDot(p, mode === 'calibrate' ? 'cal' : 'meas', mode === 'calibrate' ? (points.length === 1 ? '①' : '②') : (points.length === 1 ? 'A' : 'B'));
+      if (points.length === 2) {
+        var dx = points[1].x - points[0].x, dy = points[1].y - points[0].y;
+        var pixelDist = Math.sqrt(dx * dx + dy * dy);
+        drawLine(points[0], points[1], mode === 'calibrate' ? 'cal' : 'meas');
+        if (mode === 'calibrate') {
+          var refM = parseFloat(refDistInput.value);
+          if (refM > 0 && pixelDist > 0) {
+            metersPerPixel = refM / pixelDist;
+            scaleReadout.textContent = '比例尺：已校正（' + refM + ' 公尺 ÷ ' + pixelDist.toFixed(0) + ' px）';
+            btnMeasure.disabled = false;
+          } else {
+            scaleReadout.textContent = '請先輸入有效的已知參考距離（公尺）再校正';
+          }
+        } else {
+          if (metersPerPixel) {
+            var realDist = pixelDist * metersPerPixel;
+            measureVal.textContent = realDist.toFixed(2) + ' 公尺';
+            measureResult.hidden = false;
+          }
+        }
+        mode = null;
+        points = [];
+      }
+    });
+
+    btnCalibrate.addEventListener('click', function(){
+      var refM = parseFloat(refDistInput.value);
+      if (!(refM > 0)) { scaleReadout.textContent = '請先輸入已知參考距離（公尺）'; return; }
+      clearMarkers('cal');
+      mode = 'calibrate'; points = [];
+      scaleReadout.textContent = '請在圖上點選已知距離的兩個端點…';
+    });
+
+    btnMeasure.addEventListener('click', function(){
+      if (!metersPerPixel) return;
+      clearMarkers('meas');
+      mode = 'measure'; points = [];
+      measureResult.hidden = true;
+    });
+
+    btn3d.addEventListener('click', function(){
+      if (!img.getAttribute('src')) return;
+      var origText = btn3d.textContent;
+      btn3d.disabled = true;
+      btn3d.textContent = '生成中…';
+      setTimeout(function(){
+        img3d.src = img.getAttribute('src');
+        box3d.hidden = false;
+        btn3d.disabled = false;
+        btn3d.textContent = origText;
+        box3d.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }, 900);
     });
   })();
 
