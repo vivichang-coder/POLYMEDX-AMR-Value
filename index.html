@@ -595,19 +595,18 @@
     <p class="section-note" style="margin-top:0; margin-bottom:22px;">最終版將向院方取得年度人事成本</p>
 
     <div class="section-title"><span class="section-num">U.5</span><h3>稼動率與可靠度基礎數據</h3></div>
-    <div class="section-note">以下欄位依「Before/After Raw Data」分頁中各項效標公式回推所需之基礎數據，用於計算稼動率、可用率、任務失敗率等指標</div>
+    <div class="section-note">以下欄位依「Before/After Raw Data」分頁中Before（人工傳送）側之效標公式回推所需的基礎數據，用於計算稼動率、可用率、任務失敗率等指標</div>
     <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
-      <div class="field"><label>AMR每日運作時數(hr)</label><input type="number" id="uc-amr-hours"></div>
-      <div class="field"><label>AMR每日充電次數</label><input type="number" id="uc-charge-count"></div>
+      <div class="field"><label>傳送人力每日運作時數(hr)</label><input type="number" id="uc-labor-hours"></div>
       <div class="field"><label>每日排班班次數</label><input type="number" id="uc-shift-count"></div>
+      <div class="field"><label>白跑趟次<br>（藥師不在／劑量誤判）</label><input type="number" id="uc-fail-empty"></div>
     </div>
     <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
-      <div class="field"><label>白跑趟次<br>（藥師不在／劑量誤判）</label><input type="number" id="uc-fail-empty"></div>
       <div class="field"><label>配送錯誤趟次</label><input type="number" id="uc-fail-wrong"></div>
       <div class="field"><label>護理師自取次數<br>（等不到配送自行取藥）</label><input type="number" id="uc-self-pickup"></div>
+      <div class="field"><label>配送中斷次數</label><input type="number" id="uc-interrupt"></div>
     </div>
     <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
-      <div class="field"><label>配送中斷／導航受阻次數</label><input type="number" id="uc-interrupt"></div>
       <div class="field"><label>藥師作業因物流中斷次數</label><input type="number" id="uc-pharm-interrupt"></div>
       <div class="field"><label>護理端物流操作時間(秒/趟)</label><input type="number" id="uc-nurse-logistics-sec"></div>
     </div>
@@ -1479,11 +1478,11 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
 </tr>
 <tr>
 <td class="metric before-col">護理物流工時</td>
-<td class="formula before-col">Σ護理物流工時 ( )</td>
-<td class="result before-col">5m15s</td>
+<td class="formula before-col">每天的護理物流工時總和</td>
+<td class="result before-col">1h25m12s<span style="display:block;font-weight:400;font-size:10px;color:var(--ink-soft);">3m33s × 24</span></td>
 <td class="metric divider">護理物流工時改善率</td>
 <td class="formula">(導入前物流時間－導入後物流時間)÷導入前物流時間</td>
-<td class="result good">約+73%（推算，見下方說明 ⚠）</td>
+<td class="result pending">資料蒐集中</td>
 </tr>
 <tr>
 <td class="metric before-col">配送可追溯率</td>
@@ -1518,9 +1517,8 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
 </div>
 <div class="caveat-box" style="margin-top:16px;">
 <div class="cv-title">⚠ 兩項需要特別說明的數字</div>
-<p><b>①「病人取得藥物的總等待時間改善率」為 −110%：</b>用官方公式直接代入現有數字，AMR的總完成時間（13m13s）比人工（6m18s）更長，wall-clock意義上的等待時間不降反升。這與Value分頁強調的「Human Touch Time下降40%」並不矛盾——兩者衡量的是不同的東西：一個是「病人等多久」，一個是「人力綁住多久」。若要讓Lead Time也轉正，優化重點應放在Next分頁的Phase 2（導航時間壓縮），而非現階段的宣傳重點。<br/><br/>
-<b>④配送結果的完整性仍取決於護理端掃碼合規率：</b>上表④護理師接收節點雖標示AMR系統「✓」（技術上可自動記錄接收事件），但實際完整性仍取決於護理師是否確實掃碼——Next分頁的易用性缺口已指出護理師可不掃碼直接取藥，這會讓④節點的實際可追溯率低於系統理論值100%，建議搭配掃碼合規率一併追蹤。<br/><br/>
-<b>②「護理物流工時改善率」約+73%為推算值：</b>官方公式中的「護理物流工時」定義尚未完全明確（原表公式括號內容為空），本報告以「護理端接收操作時間」（84秒）作為After值的最佳代理指標，計算得改善率約73%。此數字的可信度取決於「護理物流工時」的官方定義是否等同於此操作時間，建議與黃醫師/PM確認定義後校正。</p>
+<p><b>①「病人取得藥物的總等待時間改善率」為 −110%：</b>用官方公式直接代入現有數字，AMR的總完成時間（13m13s）比人工（6m18s）更長，wall-clock意義上的等待時間不降反升。這與Diff Value分頁強調的「Human Touch Time下降40%」並不矛盾——兩者衡量的是不同的東西：一個是「病人等多久」，一個是「人力綁住多久」。若要讓Lead Time也轉正，優化重點應放在Roadmap分頁的Phase 2（導航時間壓縮），而非現階段的宣傳重點。<br/><br/>
+<b>④配送結果的完整性仍取決於護理端掃碼合規率：</b>上表④護理師接收節點雖標示AMR系統「✓」（技術上可自動記錄接收事件），但實際完整性仍取決於護理師是否確實掃碼——Roadmap分頁的易用性缺口已指出護理師可不掃碼直接取藥，這會讓④節點的實際可追溯率低於系統理論值100%，建議搭配掃碼合規率一併追蹤。</p>
 </div>
 
   </div>
