@@ -16,20 +16,20 @@
   body{ background:var(--bg); color:var(--ink); font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
   .mono{ font-family:'IBM Plex Mono',ui-monospace,monospace; }
   .serif{ font-family:'Noto Serif TC','Songti TC','PMingLiU',serif; }
-  .wrap{ max-width:960px; margin:0 auto; padding:24px 20px 90px; }
+  .wrap{ max-width:1320px; margin:0 auto; padding:24px 20px 90px; }
 
   .eyebrow{ font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
   h1.serif{ font-size:25px; font-weight:700; margin:0 0 14px; letter-spacing:.01em; text-wrap:balance; }
 
   /* ===== TAB NAV ===== */
-  .tabs{ display:flex; gap:6px; flex-wrap:wrap; border-bottom:2px solid var(--line); padding-bottom:0; margin-bottom:18px; position:sticky; top:0; background:var(--bg); z-index:10; padding-top:6px; }
-  .tab-btn{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:13.5px; font-weight:600; color:var(--ink-soft); background:none; border:none; padding:10px 16px; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .15s; }
+  .tabs{ display:flex; gap:2px; flex-wrap:nowrap; overflow-x:auto; border-bottom:2px solid var(--line); padding-bottom:0; margin-bottom:18px; position:sticky; top:0; background:var(--bg); z-index:10; padding-top:6px; }
+  .tab-btn{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); background:none; border:none; padding:10px 11px; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .15s; white-space:nowrap; flex:0 0 auto; }
   .tab-btn:hover{ color:var(--ink); }
   .tab-btn:focus-visible{ outline:2px solid var(--amr); outline-offset:2px; }
   .tab-btn.active{ color:var(--amr); border-bottom-color:var(--amr); }
-  .tab-dropdown-wrap{ display:inline-flex; align-items:center; border-bottom:3px solid transparent; margin-bottom:-2px; }
+  .tab-dropdown-wrap{ display:inline-flex; align-items:center; border-bottom:3px solid transparent; margin-bottom:-2px; flex:0 0 auto; }
   .tab-dropdown-wrap.active{ border-bottom-color:var(--amr); }
-  .tab-dropdown-select{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:13.5px; font-weight:600; color:var(--ink-soft); background:none; border:none; padding:10px 16px; cursor:pointer; }
+  .tab-dropdown-select{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); background:none; border:none; padding:10px 8px; cursor:pointer; white-space:nowrap; }
   .tab-dropdown-wrap.active .tab-dropdown-select{ color:var(--amr); }
   .tab-dropdown-select:focus-visible{ outline:2px solid var(--amr); outline-offset:2px; }
   .tab-panel{ display:none; }
@@ -440,6 +440,15 @@
   .diffvalue-collapse[open] .diffvalue-collapse-summary{ border-radius:12px 12px 0 0; border-bottom:1px solid var(--line); }
   .diffvalue-collapse-body{ border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; padding:20px 18px 4px; }
 
+  .subtabs-wrap{ margin-top:20px; }
+  .subtabs{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .subtab-btn{ font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:8px 16px; cursor:pointer; transition:all .15s; }
+  .subtab-btn:hover{ border-color:var(--amr); color:var(--ink); }
+  .subtab-btn.active{ background:var(--amr); color:#fff; border-color:var(--amr); }
+  .subtab-btn:focus-visible{ outline:2px solid var(--amr); outline-offset:2px; }
+  .subtab-panel{ display:none; }
+  .subtab-panel.active{ display:block; }
+
 </style>
 </head>
 <body>
@@ -539,7 +548,7 @@
           <option value="manipulation">Manipulation</option>
         </select>
       </div>
-      <div class="field">
+      <div class="field"><label style="visibility:hidden;">任務類型</label>
         <select id="uc-task-type">
           <option value="med" selected>藥品運送</option>
           <option value="instrument">器械運送</option>
@@ -585,7 +594,26 @@
     </div>
     <p class="section-note" style="margin-top:0; margin-bottom:22px;">最終版將向院方取得年度人事成本</p>
 
-    <div class="section-title"><span class="section-num">U.5</span><h3>空間掃描檔上傳與場域尺寸量測</h3><span class="badge-live">🔄 2D→3D Rendering</span></div>
+    <div class="section-title"><span class="section-num">U.5</span><h3>稼動率與可靠度基礎數據</h3></div>
+    <div class="section-note">以下欄位依「Before/After Raw Data」分頁中各項效標公式回推所需之基礎數據，用於計算稼動率、可用率、任務失敗率等指標</div>
+    <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
+      <div class="field"><label>AMR每日運作時數(hr)</label><input type="number" id="uc-amr-hours"></div>
+      <div class="field"><label>AMR每日充電次數</label><input type="number" id="uc-charge-count"></div>
+      <div class="field"><label>每日排班班次數</label><input type="number" id="uc-shift-count"></div>
+    </div>
+    <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
+      <div class="field"><label>白跑趟次<br>（藥師不在／劑量誤判）</label><input type="number" id="uc-fail-empty"></div>
+      <div class="field"><label>配送錯誤趟次</label><input type="number" id="uc-fail-wrong"></div>
+      <div class="field"><label>護理師自取次數<br>（等不到配送自行取藥）</label><input type="number" id="uc-self-pickup"></div>
+    </div>
+    <div class="calc-inputs" style="grid-template-columns:repeat(3,1fr); margin-bottom:8px;">
+      <div class="field"><label>配送中斷／導航受阻次數</label><input type="number" id="uc-interrupt"></div>
+      <div class="field"><label>藥師作業因物流中斷次數</label><input type="number" id="uc-pharm-interrupt"></div>
+      <div class="field"><label>護理端物流操作時間(秒/趟)</label><input type="number" id="uc-nurse-logistics-sec"></div>
+    </div>
+    <p class="section-note" style="margin-top:0; margin-bottom:22px;">以上欄位目前無預填值，待貴院提供完整期間之實測數據後填入，供後續與Before/After Raw Data分頁對照校準</p>
+
+    <div class="section-title"><span class="section-num">U.6</span><h3>空間掃描檔上傳與場域尺寸量測</h3><span class="badge-live">🔄 2D→3D Rendering</span></div>
     <div class="section-note">依下方步驟上傳平面圖，即可轉換為3D場域模型，或量測任意兩點間的實際直線距離</div>
     <div class="upload-box">
       <div class="flow-step-label">STEP 1 · 上傳平面圖檔</div>
@@ -1187,17 +1215,47 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
 <div class="rm2-when">Phase 1 — Workflow Optimization</div>
 <div class="rm2-title">Human Touch Time ↓20%</div>
 <div class="rm2-desc">藥品運送進度追溯不透明，藥師與護理師無法即時掌握，造成多餘溝通成本，導致可追溯性與效益數字都會被稀釋。</div>
-<div class="eb-link">→ 詳見下方3.1／3.2</div>
+<div class="eb-link">→ 詳見下方「Phase 1」分頁</div>
 </div>
 <div class="rm2-card stage2">
 <div class="rm2-when">Phase 2 — Context-aware Navigation</div>
 <div class="rm2-title">Navigation Time ↓20%</div>
 <div class="rm2-desc">先以規則調整解決人流與禮讓問題，導入智慧監視系統，即時辨識院內應優先禮讓的物件（如移動中的病床、輪椅、急救推車等），以落實院內禮讓原則，才能真正達到「等待與禮讓」的社交導航能力。</div>
-<div class="eb-link">→ 詳見下方3.1／3.2</div>
+<div class="eb-link">→ 詳見下方「Phase 2」分頁</div>
 </div>
 </div>
 
-<div class="section-title"><span class="section-num">3.1</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
+<div class="subtabs-wrap">
+<div class="subtabs">
+<button class="subtab-btn active" type="button" data-subtab="phase1">Phase 1 · Workflow Optimization</button>
+<button class="subtab-btn" type="button" data-subtab="phase2">Phase 2 · Context-aware Navigation</button>
+</div>
+<div class="subtab-panel active" id="subpanel-phase1">
+<div class="section-title"><span class="section-num">3.1</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
+<div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
+<div class="catsum-grid" id="catsum-grid">
+<div class="catsum-card">
+<div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
+<div id="cs-rows-pharm"></div>
+</div>
+<div class="catsum-card">
+<div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
+<div id="cs-rows-nurse"></div>
+</div>
+</div>
+<div class="caveat-box">
+<div class="cv-title">一眼看重點</div>
+<ul>
+<li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
+<li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
+<li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
+<li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
+</ul>
+<p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
+</div>
+</div>
+<div class="subtab-panel" id="subpanel-phase2">
+<div class="section-title"><span class="section-num">3.2</span><h3>Social Navigation：能力落差與優化路徑</h3><span class="badge-live">🔄 現場觀察持續累積</span></div>
 <div class="section-note">取自P1 Value Report簡報《AMR Capability Summary》：7/22–23現場實測問題整理</div>
 <div class="cap-grid">
 <div class="cap-card">
@@ -1222,27 +1280,8 @@ Financial Impact　＝　額外可服務病人量 × （次均醫療收入 × �
 <div class="rm2-desc">導入智慧監視系統，即時辨識病床、輪椅、急救推車等應優先禮讓的物件，才能真正落實「等待與禮讓」的社交導航——這是規則調整做不到的，需要感知能力升級才能實現</div>
 </div>
 </div>
-<div class="section-title"><span class="section-num">3.2</span><h3>UI 與現行 Workflow 易用性缺口</h3><span class="badge-live">🔄 隨匯入資料更新</span></div>
-<div class="section-note">依問題來源（藥師端／護理端）與問題類型分類，一眼看出哪端、哪類問題最多；逐項細節列於附錄A.2</div>
-<div class="catsum-grid" id="catsum-grid">
-<div class="catsum-card">
-<div class="catsum-title"><h4>藥師端（Pharmacy）</h4><span class="cs-count" id="cs-count-pharm">8項</span></div>
-<div id="cs-rows-pharm"></div>
+
 </div>
-<div class="catsum-card">
-<div class="catsum-title"><h4>護理端（Nurse Station）</h4><span class="cs-count" id="cs-count-nurse">6項</span></div>
-<div id="cs-rows-nurse"></div>
-</div>
-</div>
-<div class="caveat-box">
-<div class="cv-title">一眼看重點</div>
-<ul>
-<li>藥師端問題數最多（8項），「資訊呈現不足」「狀態不明／確認機制缺失」「操作路徑設計衝突」各占2項。</li>
-<li>新補上的『刷錯藥袋系統無提示』與『站別選擇增加藥師負擔』，建議與既有的「清除鍵誤觸風險」一併優先修正。</li>
-<li>護理端問題（6項）中「操作引導不足」與「狀態語意衝突」各占2項。</li>
-<li>『忘記按出發鍵』會讓任務卡住未派送，建議優先加上強制提醒機制。</li>
-</ul>
-<p style="margin-top:8px;">（本段為依目前資料撰寫的分析，重新匯入資料後請對照上方最新分類與件數）</p>
 </div>
   </div>
 
@@ -2554,6 +2593,20 @@ if(xr(e,"index.xml"))throw new Error("Unsupported NUMBERS 09 file");throw new Er
       window.scrollTo({top:0, behavior:'smooth'});
     });
   }
+
+  // ---------------------------------------------------------------
+  // Roadmap tab: Phase 1 / Phase 2 sub-tabs
+  // ---------------------------------------------------------------
+  document.querySelectorAll('.subtabs-wrap').forEach(function(wrap){
+    wrap.querySelectorAll('.subtab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        wrap.querySelectorAll('.subtab-btn').forEach(function(b){ b.classList.remove('active'); });
+        wrap.querySelectorAll('.subtab-panel').forEach(function(p){ p.classList.remove('active'); });
+        btn.classList.add('active');
+        wrap.querySelector('#subpanel-' + btn.dataset.subtab).classList.add('active');
+      });
+    });
+  });
 
   // ---------------------------------------------------------------
   // Task Management table: expandable detail rows
